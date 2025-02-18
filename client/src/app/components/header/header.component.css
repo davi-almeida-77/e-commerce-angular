@@ -1,0 +1,68 @@
+Resetando margens e paddings
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f8f8f8;
+    border-top: none;
+  }
+  
+header .logo h1  a {
+    font-size: 40px;
+    font-weight: bold;     
+    text-transform: capitalize; 
+    text-decoration: none;
+    color: black;
+}
+
+  header .nav ul {
+    display: flex;
+    list-style-type: none;
+  }
+  
+  header .nav ul li {
+    margin: 0 15px;
+  }
+  
+  header .nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: black;
+  }
+  
+  
+  header .icons a {
+    margin-left: 10px;
+    font-size: 18px;
+    color: black;
+    padding: 0 5px;
+  }
+
+  header .ShopArrow {
+    margin-right: 10px;
+  }
+  
+  .ShopArrow i {
+    display: inline-block;
+    animation: MoveArrow 1s ease-in-out infinite;
+    padding-left: 1px;
+}
+
+@keyframes MoveArrow {
+    0%, 100% {
+        transform: translateY(-3px);
+    }
+    50% {
+        transform: translateY(2px);
+    }
+}

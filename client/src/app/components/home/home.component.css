@@ -1,0 +1,20 @@
+.layout {
+    min-height: 100vh; /* Garante que o layout ocupe toda a altura da tela */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    height: 10vh; /* Ajusta a altura do cabeçalho */
+  }
+  
+  .footer {
+    height: 10vh; /* Ajusta a altura do rodapé */
+  }
+  
+  .main-content {
+    flex: 1; /* Preenche o restante da tela com o conteúdo principal */
+    padding: 20px;
+    overflow: auto;
+  }
+  

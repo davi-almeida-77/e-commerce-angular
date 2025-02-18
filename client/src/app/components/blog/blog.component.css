@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container-blog {
+    width: 80%;
+    height: 150vh;
+    margin: 0 auto;
+    display: flex;
+    padding: 40px 30px;
+    gap: 20px;
+}
+
+/* Área de 70% para os posts */
+.left-column {
+    width: 70%;
+    padding: 0 20px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Blocos empilhados dentro da área de 70% */
+.post-block {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.post-block h3 {
+    margin: 0;
+    font-size: 1.4em;
+}
+
+.post-block p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.post-block a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Área de 30% para Recent Posts e Categories */
+.right-column {
+    width: 30%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.recent-posts h3, .categories h3 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+}
+
+.recent-post {
+    margin-bottom: 15px;
+}
+
+.recent-post a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+/* Listagem de categorias */
+.categories ul {
+    list-style: none;
+    padding: 0;
+}
+
+.categories li {
+    margin-bottom: 10px;
+}
+
+.categories a {
+    text-decoration: none;
+    color: #333;
+}

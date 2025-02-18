@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+.container {
+    width: 80%;
+    /* height: 100vh; */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Espaço grande para título */
+.title {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+/* Grande div que ocupa quase a página inteira */
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.block {
+    width: 48%;
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.block-left {
+    margin-right: 2%;
+}
+
+.block-right {
+    margin-left: 2%;
+}
+
+/* Bloco de nossa história */
+.history-block {
+    width: 100%;
+    padding: 50px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 40px 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Bloco de nossa comunidade */
+.community-block {
+    width: 100%;
+    padding: 50px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 40px 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Estilo de comentário de usuários */
+.comment {
+    font-style: italic;
+    color: #666;
+    margin-top: 20px;
+    text-align: center;
+}
+
