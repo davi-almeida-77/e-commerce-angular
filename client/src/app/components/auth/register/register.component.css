@@ -1,11 +1,12 @@
-body {
+.container {
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     background-color: #f4f4f4;
     margin: 0;
+    height: 100vh;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
   }
 
   .card {
