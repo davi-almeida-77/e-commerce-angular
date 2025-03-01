@@ -66,3 +66,25 @@ header .logo h1  a {
         transform: translateY(2px);
     }
 }
+
+
+.cart-container {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-badge {
+position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: rgb(73, 68, 68);
+  color: white;
+  font-size: 7px;
+  font-weight: bold;
+  width: 13px;
+  height: 11px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

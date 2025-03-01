@@ -1,29 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-  <link rel="stylesheet" href="header.component.css">
-</head>
-<body>
-  <header>
-    <div class="logo">
-        <h1><a href="#">StyleStreet</a></h1>
-      </div>
-      <nav class="nav">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#" routerLink="/shop" class="ShopArrow">Shop  <i class="fa-solid fa-chevron-down"></i>  </a></li>
-          <li><a href="#" routerLink="/about">About</a></li>
-          <li><a href="#" routerLink="/contact">Contact</a></li>
-          <li><a href="#" routerLink="/blog">Blog</a></li>
-        </ul>
-      </nav>
-      <div class="icons">
-        <a href="#" class="icon" routerLink="/register"><i class="fas fa-user"></i></a>
-        <a href="#" class="icon"><i class="fa solid fa-cart-shopping"></i></a>
-      </div>
-  </header>
-</body>
-</html>
+<header>
+  <div class="logo">
+    <h1><a href="#">StyleStreet</a></h1>
+  </div>
+  <nav class="nav">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#" routerLink="/shop" class="ShopArrow">Shop  <i class="fa-solid fa-chevron-down"></i>  </a></li>
+      <li><a href="#" routerLink="/about">About</a></li>
+      <li><a href="#" routerLink="/contact">Contact</a></li>
+      <li><a href="#" routerLink="/blog">Blog</a></li>
+    </ul>
+  </nav>
+  <div class="icons">
+
+
+
+    <a href="#" routerLink="/cart" class="cart-container">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="cart-badge" *ngIf="totalItens > 0">{{ totalItens }}</span>
+    </a>
+  
+
+    <a href="#" routerLink="/login"><i class="fa-solid fa-user"></i></a>
+
+
+  </div>
+</header>
