@@ -1,0 +1,46 @@
+<div class="product-container">
+
+  <div class="product-image">
+    <img [src]="product?.image" alt="{{ product?.image }}" class="product-image">
+  </div>
+
+
+  <div class="product-info">
+
+  <p class="product-title"> {{ product?.p_name }} <a>{{ product?.category}}</a> </p> 
+
+
+    <p class="description">{{ product?.product_desc }}</p>
+
+
+    <div class="option">
+      <label for="size">Size :</label>
+      <div class="size-options">
+        <span class="size">S</span>
+        <span class="size">M</span>
+        <span class="size">L</span>
+        <span class="size">XL</span>
+      </div>
+    </div>
+
+
+    <div class="option">
+      <label for="color">Cor:</label>
+      <div class="color-options">
+        <span class="color" style="background-color: #2e2f30;"></span>
+        <span class="color" style="background-color: #ffffff;"></span>
+      </div>
+    </div>
+
+
+    <div class="quantity">
+      <label for="quantity"> Quantity :</label>
+      <input type="number" [(ngModel)]="quantity"  min="1" value="1">
+    </div>
+
+
+    <p class="price"> $ {{ product?.price   }}</p>
+
+    <button class="add-to-cart" (click)="addToCart()">Add To Cart </button>
+  </div>
+</div>
