@@ -10,28 +10,28 @@ export class ApiService {
 
   private baseUrl = environment.apiUrl;
 
-  constructor(private _http:  HttpClient) {}
+  constructor( private _http:  HttpClient ) {}
 
-  getTypeRequest(url: string){
+  getTypeRequest( url: string ){
     return this._http.get(`${this.baseUrl}${url}`).pipe(
-      map((res) => {
-        return res;
+      map(( response ) => {
+        return response;
       })
     );
   }
 
-  postTypeRequest(url: string,  payload: any) {
+  postTypeRequest( url: string,  payload: any )  {
     return this._http.post(`${this.baseUrl}${url}`, payload).pipe(
-      map((res) => {
-        return res;
+      map((response) => {
+        return response;
       })
     );
   }
 
   putTypeRequest(url: string,  payload: any) {
     return this._http.put(`${this.baseUrl}${url}`, payload).pipe(
-      map((res) => {
-        return res;
+      map((response) => {
+        return response;
       })
     );
   }
