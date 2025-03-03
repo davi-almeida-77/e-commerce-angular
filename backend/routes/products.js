@@ -16,17 +16,17 @@ router.get("/", (req, res) => {
   router.get("/:id", (req, res) => {
     const productId = req.params.id; 
 
-    console.log(`Requisição para obter o produto com ID: ${productId}`);
+    console.log(`Request to obtain product with ID: ${productId}`);
 
     db.query("SELECT * FROM products WHERE id_product = ?", [productId], (err, results) => {
         if (err) {
             console.log(err);
-            res.status(500).json({ error: 'Erro ao buscar o produto' });
+            res.status(500).json({ error: 'Error In Get Product ' });
         } else {
             if (results.length > 0) {
                 res.json(results[0]);  
             } else {
-                res.status(404).json({ error: 'Produto não encontrado' });
+                res.status(404).json({ error: 'Product Not Found ' });
             }
         }
     });
