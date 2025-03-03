@@ -4,7 +4,8 @@ const db = require('../database/db');
 
 
 router.get("/", (req, res) => {
-    db.query("SELECT * FROM user", (err, results) => {
+  console.log(" Requisition For Users ");
+    db.query("SELECT * FROM users", (err, results) => {
       if (err) console.log(err);
       else res.json(results);
     });
