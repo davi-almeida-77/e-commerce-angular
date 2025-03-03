@@ -56,84 +56,19 @@
     </div>
   </div>
   
-
-    <div id="products">
-        <div class="product-item">
-            <h3>Produto 1</h3>
-            <p>Descrição do produto 1</p>
-            <button>Adicionar ao Carrinho</button>
-          </div>
-          <div class="product-item">
-            <h3>Produto 1</h3>
-            <p>Descrição do produto 1</p>
-            <button>Adicionar ao Carrinho</button>
-          </div>
-          <div class="product-item">
-            <h3>Produto 1</h3>
-            <p>Descrição do produto 1</p>
-            <button>Adicionar ao Carrinho</button>
-          </div>
-          <div class="product-item">
-            <h3>Produto 1</h3>
-            <p>Descrição do produto 1</p>
-            <button>Adicionar ao Carrinho</button>
-          </div>
-          <div class="product-item">
-            <h3>Produto 1</h3>
-            <p>Descrição do produto 1</p>
-            <button>Adicionar ao Carrinho</button>
-          </div>
-          <div class="product-item">
-            <h3>Produto 1</h3>
-            <p>Descrição do produto 1</p>
-            <button>Adicionar ao Carrinho</button>
-          </div>
-          <div class="product-item">
-            <h3>Produto 1</h3>
-            <p>Descrição do produto 1</p>
-            <button>Adicionar ao Carrinho</button>
-          </div>
-
-          <div class="product-item">
-            <h3>Produto 1</h3>
-            <p>Descrição do produto 1</p>
-            <button>Adicionar ao Carrinho</button>
-          </div>
-          <div class="product-item">
-            <h3>Produto 1</h3>
-            <p>Descrição do produto 1</p>
-            <button>Adicionar ao Carrinho</button>
-          </div>
-
-      <div class="product-item">
-        <h3>Produto 1</h3>
-        <p>Descrição do produto 1</p>
-        <button>Adicionar ao Carrinho</button>
-      </div>
-      <div class="product-item">
-        <h3>Produto 2</h3>
-        <p>Descrição do produto 2</p>
-        <button>Adicionar ao Carrinho</button>
-      </div>
-      <div class="product-item">
-        <h3>Produto 3</h3>
-        <p>Descrição do produto 3</p>
-        <button>Adicionar ao Carrinho</button>
-      </div>
-      <div class="product-item">
-        <h3>Produto 4</h3>
-        <p>Descrição do produto 4</p>
-        <button>Adicionar ao Carrinho</button>
-      </div>
-      <div class="product-item">
-        <h3>Produto 5</h3>
-        <p>Descrição do produto 5</p>
-        <button>Adicionar ao Carrinho</button>
-      </div>
-      <div class="product-item">
-        <h3>Produto 6</h3>
-        <p>Descrição do produto 6</p>
-        <button>Adicionar ao Carrinho</button>
+  <div class="product-list">
+    <div class="product-card" *ngFor="let product of products">
+      <img [src]="product.image" alt="{{ product.p_name }}" class="product-image" />
+      <div class="product-details">
+        <h3>{{ product.p_name }}</h3>
+        <p>{{ product.product_desc }}</p>
+        <p>{{ product.avaliation }}</p>
+        <p>{{ product.model }}</p>
+        <p><strong>{{ product.price }}</strong></p>
+        <button (click)="SingleProductPage(product.id_product)" ><i class="fa-solid fa-arrow-right"></i></button>
+        <button (click)="addToCart(product)"><i class="fa-solid fa-cart-plus"></i></button>
       </div>
     </div>
   </div>
+  
+    </div>
