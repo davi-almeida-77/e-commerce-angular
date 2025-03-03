@@ -54,7 +54,7 @@ export class CheckoutComponent {
         
         if (cartItems && userId) {
 
-          this.visualizarDadosAntesDeEnviar(cartItems, userId);
+          this.VisualizeDataBeforeGo(cartItems, userId);
         } else {
           console.log('Error in cart ');
         }
@@ -67,7 +67,7 @@ export class CheckoutComponent {
   }
 
 
-  visualizarDadosAntesDeEnviar(cartItems: any[], userId: number): void {
+  VisualizeDataBeforeGo(cartItems: any[], userId: number): void {
     const orderItems = cartItems.map(item => ([
       userId,        
       item.id_product, 
