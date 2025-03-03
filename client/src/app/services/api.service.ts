@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 })
 export class ApiService {
 
-  private baseUrl = environment.apiUrl;
+  public baseUrl = environment.apiUrl;
 
   constructor( private _http:  HttpClient ) {}
 

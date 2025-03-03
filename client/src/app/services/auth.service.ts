@@ -55,4 +55,23 @@ export class AuthService {
     this._token.clearStorage();
     this.userData.next(null);
   }
+
+getUserId() {
+  const user = sessionStorage.getItem('auth-user');
+  if (user) {
+    const parsedUser = JSON.parse(user);
+    const userId = parsedUser.userId;
+    console.log(userId);
+    return userId;
+  } else {
+    console.log('Usuário não encontrado no sessionStorage');
+    return null; 
+  }
+}
+  
+
+  isUserLoggedIn(): boolean {
+    return !!sessionStorage.getItem('auth-user');
+  }
+  
 }
