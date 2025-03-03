@@ -5,8 +5,9 @@ export interface productModel {
     short_desc: string;
     price: number;
     image: string;
-    stock_status: string;
     category: string;
-    quantity?: number;
+    avaliation: string;
+    model: string;
+     quantity?: number;
 }
   
