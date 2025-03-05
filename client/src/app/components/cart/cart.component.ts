@@ -28,4 +28,10 @@ export class CartComponent implements OnInit {
       this.totalPrice = this.cartService.getTotalPrice(); 
     });
   }
+
+  cleanCart() {
+    this.cartService.resetCart();
+    window.location.reload();
+  }
+
 }

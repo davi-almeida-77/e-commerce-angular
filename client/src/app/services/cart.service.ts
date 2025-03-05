@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { productModel } from '../shared/models/product.model'; 
-import { NzMenuItemComponent } from 'ng-zorro-antd/menu';
+import { productModel } from '../shared/models/product.model';
+ import { NzMenuItemComponent } from 'ng-zorro-antd/menu';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class CartService {
   totalItens: number = 0;
   totalPrice: number = 0;
 
-  constructor() {
+  constructor( private router: Router ) {
     const storedCart = JSON.parse(sessionStorage.getItem('cart') || '[]');
     this.cartSubject.next(storedCart);  
     this.updateCart();  
@@ -74,9 +75,7 @@ export class CartService {
   }
 
   resetCart() {
-
+    sessionStorage.removeItem('cart');
   }
-
-  sendOrder () {}
 
 }

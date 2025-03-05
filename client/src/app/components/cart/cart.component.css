@@ -77,6 +77,7 @@
   align-items: center;
   margin: 40px 0;
   flex-grow: 1;
+  gap: 15px;
 }
 
 .btn-finish {
@@ -214,4 +215,15 @@
   100% {
     transform: rotate(0deg);
   }
+}
+
+.btn-clean-cart {
+  background-color: #393b3a;
+  color: white;
+  font-size: 18px;
+  padding: 15px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3sease;
 }
