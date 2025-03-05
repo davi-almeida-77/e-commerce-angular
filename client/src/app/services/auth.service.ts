@@ -35,6 +35,7 @@ export class AuthService {
           };
           this._token.setToken(response.token);
           this._token.setUser(response.data[0]);
+          console.log(response.data[0])
           console.log(response);
           this.userData.next(user);
           return user;
@@ -60,11 +61,11 @@ getUserId() {
   const user = sessionStorage.getItem('auth-user');
   if (user) {
     const parsedUser = JSON.parse(user);
-    const userId = parsedUser.userId;
+    const userId = parsedUser.id;
     console.log(userId);
     return userId;
   } else {
-    console.log('Usuário não encontrado no sessionStorage');
+    console.log('User not found in sessionStorage ');
     return null; 
   }
 }
