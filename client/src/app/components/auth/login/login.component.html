@@ -5,6 +5,8 @@
       <input type="email" name="email" placeholder="email" required  [(ngModel)]="email">
       <input type="password" name="u_password" placeholder="password" required [(ngModel)]="u_password">
       <button type="submit" [disabled]="!canSubmit()">Submit</button>
+
+      <div class="register-box"> Don't Have an Account <a [routerLink]="['/register']" > Register Here </a></div>
     </form>
   </div>
 </div>
