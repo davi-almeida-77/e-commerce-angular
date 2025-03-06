@@ -37,7 +37,7 @@
         <h2>Resumo do Pedido</h2>
         <p><strong>Endereço:</strong> {{ residenceInfo.address }}, {{ residenceInfo.city }}, {{ residenceInfo.postalCode }}</p>
         <p><strong>Cartão:</strong> {{ paymentInfo.cardNumber }}</p>
-        <button class="submit-btn" (click)="finishOrder()">Finalizar Pedido</button>
+        <button class="submit-btn" (click)="sendOrderToDatabase()">Finalizar Pedido</button>
       </div>
   
       <div class="navigation-buttons">

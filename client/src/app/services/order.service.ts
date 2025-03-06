@@ -18,13 +18,16 @@ export class OrderService {
   }
  
   sendOrderToDatabase(orderData: any): void {
-    this.apiService.postTypeRequest('create/orders', orderData).subscribe(response => {
-      console.log('Order successfully saved:', response);
+
+    const apiUrl = `${this.apiService.baseUrl}orders/create`;
+  
+    this.http.post(apiUrl, orderData).subscribe(response => {
+      console.log('Response received:', response);
     }, error => {
       console.log('Error saving the order:', error);
     });
   }
-
+  
   createOrder() {
   if ( this.authService.isUserLoggedIn()) {
     const cartItems = this.cartService.getCartItems();
@@ -42,14 +45,23 @@ export class OrderService {
 
   orderParams(cartItems: any[], userId: number): void {
 
-    const orderItems = cartItems.map(item => ([
-      userId,     
-      item.id_product,
-      item.quantity     
-    ]));
-    console.log('Order Items for DB insertion: ', orderItems);
+    userId = this.authService.getUserId();
+    console.log('User ID:', userId);
 
-    this.sendOrderToDatabase(orderItems);
+    const orderItems = cartItems.map(item => ({
+      id_product: item.id_product,
+      quantity: item.quantity
+    }));
+  
+
+    const orderData =  {
+      user_id: userId,     
+      products: orderItems
+    }
+  
+    console.log('Order Items for DB insertion: ', orderData);
+
+    this.sendOrderToDatabase(orderData);
   }
   
 }

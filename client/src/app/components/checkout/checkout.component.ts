@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -8,6 +9,7 @@ import { CartService } from '../../services/cart.service';
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css'
 })
+
 export class CheckoutComponent {
   currentStep: number = 1;  
 
@@ -42,48 +44,25 @@ export class CheckoutComponent {
 
   constructor(
     private authService: AuthService, 
-    private cartService: CartService
+    private cartService: CartService,
+    private orderService: OrderService
   ) {}
 
-
-  finishOrder(): void {
-    if (this.authService.isUserLoggedIn()) {
-
+  sendOrderToDatabase(): void {
+    if ( this.authService.isUserLoggedIn() ) {
       this.cartService.getCartItems().subscribe(cartItems => {
-        const userId = this.authService.getUserId();
-        
+        const userId = this.authService.getUserId(); 
+    
         if (cartItems && userId) {
-
-          this.VisualizeDataBeforeGo(cartItems, userId);
+          console.log('Sending order with the following items:', cartItems);
+  
+          this.orderService.orderParams(cartItems, userId);
         } else {
-          console.log('Error in cart ');
+          console.log('Error in cart');
         }
       }, error => {
-        console.log('Error in Get Items from Cart: ', error);
+        console.error('Error in get Cart Products ', error);
       });
-    } else {
-      console.log('User is Not Logged .');
     }
   }
-
-
-  VisualizeDataBeforeGo(cartItems: any[], userId: number): void {
-    const orderItems = cartItems.map(item => ([
-      userId,        
-      item.id_product, 
-      item.quantity  
-    ]));
-
-
-    console.log('Preparing Order for Backend: ', orderItems);
-
-    const orderPreview = orderItems.map(item => ({
-      user_id: item[0],
-      product_id: item[1],
-      quantity: item[2]
-    }));
-
-    console.log('Pre Visualization: ', orderPreview);
-  }
-
 }
