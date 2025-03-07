@@ -52,8 +52,6 @@ const generateOrderNumber = () => {
 
 exports.createOrderService = async (params) => {
 
-    // if ( !user_id ) throw {  message: "user_id was not provided", statusCode: 400 }
-    // if ( !products ) throw {  message: "products was not provided", statusCode: 400 }
 
     const { user_id, products } = params;
 
