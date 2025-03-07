@@ -5,12 +5,14 @@ import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { AuthService } from './auth.service';
 import { CartService } from './cart.service';
+import { orderModel } from '../shared/models/order.model';
+import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-
+  private url = environment.apiUrl; 
   apiUrl: string;
 
   constructor( private http: HttpClient, private apiService: ApiService,  private cartService: CartService, private authService: AuthService ) {
@@ -62,6 +64,11 @@ export class OrderService {
     console.log('Order Items for DB insertion: ', orderData);
 
     this.sendOrderToDatabase(orderData);
+  }
+
+  getOrders(): Observable<orderModel[]> {
+    const id = this.authService.getUserId();
+    return this.http.get<orderModel[]>(`${this.url + 'orders'}/${id}`);
   }
   
 }
