@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +21,10 @@ export class RegisterComponent {
   loading: Boolean = false;
   error: any = '';
 
-  constructor ( private _auth: AuthService, private _router: Router ) {}
+  constructor ( private _auth: AuthService, 
+    private _router: Router,
+    private cdr: ChangeDetectorRef
+   ) {}
 
   ngOnInit(): void {}
 
@@ -47,6 +50,7 @@ matchPasswords( u_password: string, m_password: string ): boolean {
         response => {
           this.loading = false;
           this._router.navigate(['/']);
+          this.cdr.detectChanges();  
         },
         (err) => {
           console.log(err)
