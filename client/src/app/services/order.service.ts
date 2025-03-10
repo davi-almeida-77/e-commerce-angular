@@ -7,6 +7,8 @@ import { AuthService } from './auth.service';
 import { CartService } from './cart.service';
 import { orderModel } from '../shared/models/order.model';
 import { environment } from '../../environment/environment';
+import { NotificationService } from './notification.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,12 @@ export class OrderService {
   private url = environment.apiUrl; 
   apiUrl: string;
 
-  constructor( private http: HttpClient, private apiService: ApiService,  private cartService: CartService, private authService: AuthService ) {
+  constructor (
+  private http: HttpClient, 
+  private apiService: ApiService, 
+  private cartService: CartService, 
+  private authService: AuthService,
+  private notify: NotificationService ) {
     this.apiUrl = this.apiService.baseUrl; 
   }
  
@@ -23,47 +30,49 @@ export class OrderService {
 
     const apiUrl = `${this.apiService.baseUrl}orders/create`;
   
-    this.http.post(apiUrl, orderData).subscribe(response => {
-      console.log('Response received:', response);
+    this.http.post(apiUrl, orderData).subscribe( response => {
+      
+      return response;
+
     }, error => {
-      console.log('Error saving the order:', error);
+
+      return error;
     });
   }
   
   createOrder() {
   if ( this.authService.isUserLoggedIn()) {
     const cartItems = this.cartService.getCartItems();
+
     const userId = this.authService.getUserId();
+
     if ( cartItems && userId ) {
-      console.log('Successful oder with the Next Items: ', cartItems, 'and UserId: ', userId);
+      this.notify.showSuccess('Order Created Successfully')
     }
     else {
-      console.log('Cart is Empty ');
+      this.notify.showError('Cart is Empty')
     }
   } else {
-    console.log('User is not on ');
+    this.notify.showError('User is not On ')
   }
   }
 
   orderParams(cartItems: any[], userId: number): void {
 
     userId = this.authService.getUserId();
-    console.log('User ID:', userId);
 
     const orderItems = cartItems.map(item => ({
       id_product: item.id_product,
       quantity: item.quantity
     }));
   
-
     const orderData =  {
       user_id: userId,     
       products: orderItems
     }
   
-    console.log('Order Items for DB insertion: ', orderData);
-
     this.sendOrderToDatabase(orderData);
+    
   }
 
   getOrders(): Observable<orderModel[]> {
