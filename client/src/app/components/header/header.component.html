@@ -4,25 +4,39 @@
   </div>
   <nav class="nav">
     <ul>
-      <li><a href="#">Home</a></li>
+      <li><a href="#" routerLink="/">Home</a></li>
       <li><a href="#" routerLink="/shop" class="ShopArrow">Shop  <i class="fa-solid fa-chevron-down"></i>  </a></li>
       <li><a href="#" routerLink="/about">About</a></li>
       <li><a href="#" routerLink="/contact">Contact</a></li>
       <li><a href="#" routerLink="/blog">Blog</a></li>
+      <li><a href="#" routerLink="/order-history" *ngIf="userOn">Order-History</a></li>
     </ul>
   </nav>
+
   <div class="icons">
-
-
-
     <a href="#" routerLink="/cart" class="cart-container">
       <i class="fa-solid fa-cart-shopping"></i>
       <span class="cart-badge" *ngIf="totalItens > 0">{{ totalItens }}</span>
     </a>
   
+    <div *ngIf="userOn; else notLoggedInTemplate">
 
-    <a href="#" routerLink="/login"><i class="fa-solid fa-user"></i></a>
-
+      <button class="logout-button" (click)="logout()" >Logout </button>
+    </div>
+    
+    <ng-template #notLoggedInTemplate>
+      
+      <a href="#" routerLink="/login" class="login-logout-box">
+        <span>Enter</span>
+      </a>
+    
+      <a href="#" routerLink="/register" class="login-register-box">
+        <span>Register</span>
+      </a>
+    </ng-template>
+    
 
   </div>
+
+  
 </header>

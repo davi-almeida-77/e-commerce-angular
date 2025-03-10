@@ -42,10 +42,11 @@ header .logo h1  a {
   
   
   header .icons a {
-    margin-left: 10px;
-    font-size: 18px;
+    margin: 0 15px 0 0;
     color: black;
     padding: 0 5px;
+    text-decoration: none;
+    font-size: 15px;
   }
 
   header .ShopArrow {
@@ -74,17 +75,67 @@ header .logo h1  a {
 }
 
 .cart-badge {
-position: absolute;
-  top: 0px;
-  right: 0px;
-  background-color: rgb(73, 68, 68);
-  color: white;
-  font-size: 7px;
-  font-weight: bold;
-  width: 13px;
-  height: 11px;
-  border-radius: 50%;
+    position: absolute;
+    top: -13px;
+    right: -8px;
+    background-color: rgb(24 24 24);
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 700;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto';
+    letter-spacing: 1px;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-container, .login-logout-box {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+.login-logout-box span {
+    padding: 0 5px;
+    background: #000;
+    padding: 10px 8px;
+    border-radius: 25px;
+    color: #f8f8f8;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.login-register-box  span { 
+  padding: 0 5px;
+  background: #ffffff;
+  padding: 10px 8px;
+  border-radius: 25px;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #b1b0b0;
+  text-decoration: none;
+}
+
+.logout-button {
+  background: #000;
+  padding: 10px 8px;
+  border-radius: 25px;
+  color: #f8f8f8;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
 }
