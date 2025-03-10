@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { productModel } from '../shared/models/product.model';
- import { NzMenuItemComponent } from 'ng-zorro-antd/menu';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -42,7 +41,6 @@ export class CartService {
     this.cartSubject.next(cart);  
     this.updateCart();  
 
-    console.log(cart)
   }
 
   

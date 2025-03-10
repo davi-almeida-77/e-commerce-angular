@@ -1,47 +1,48 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
-import { map } from 'rxjs/operators';
+import { map  } from 'rxjs/operators';
 import { TokenStorageService } from './token-storage.service';
+import { HttpClient  } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private userData: BehaviorSubject<any>;
-  public userState: Observable<any>;
+  private userDataSubject: BehaviorSubject<any>;
+  public userState$: Observable<any>;
 
-  constructor( private _api: ApiService, private _token: TokenStorageService ) { 
-    this.userData = new BehaviorSubject<any>(this._token.getUser());
-    this.userState = this.userData.asObservable();
+  constructor( private _api: ApiService, private _token: TokenStorageService, private http: HttpClient ) { 
+    this.userDataSubject = new BehaviorSubject<any>(this._token.getUser());
+    this.userState$ = this.userDataSubject.asObservable();
   }
+
   getUser(){
-    console.log(this.userData);
-    console.log(this.userData?.value);
-    return this.userData?.value
+    return this.userDataSubject?.value
   }
 
-  login(credentials: any): Observable<any> {
+  login( credentials: any ): Observable<any> {
     return this._api
       .postTypeRequest('auth/login', {
         email: credentials.email,
         u_password: credentials.password,
       })
       .pipe(
-        map((response: any) => {
+        map(( response: any ) => {
           let user = {
             email: credentials.email,
             token: response.token,
           };
           this._token.setToken(response.token);
           this._token.setUser(response.data[0]);
-          console.log(response.data[0])
-          console.log(response);
-          this.userData.next(user);
+          sessionStorage.setItem('auth-user', JSON.stringify(response.data[0]));
+
+          this.userDataSubject.next(user); 
           return user;
         })
       );
   }
+
   register(user: any): Observable<any> {
     return this._api.postTypeRequest('auth/register', {
       username: user.username,
@@ -54,25 +55,30 @@ export class AuthService {
 
   logout() {
     this._token.clearStorage();
-    this.userData.next(null);
+
+    this.userDataSubject.next(null);  
+
   }
 
-getUserId() {
-  const user = sessionStorage.getItem('auth-user');
-  if (user) {
-    const parsedUser = JSON.parse(user);
-    const userId = parsedUser.id;
-    console.log(userId);
-    return userId;
-  } else {
-    console.log('User not found in sessionStorage ');
-    return null; 
+  getUserId() {
+    const user = sessionStorage.getItem('auth-user');
+    if (user) {
+
+      const parsedUser = JSON.parse(user);
+
+      const userId = parsedUser.id;
+
+      return userId;
+
+    } else {
+
+      return null; 
+    }
   }
-}
-  
 
   isUserLoggedIn(): boolean {
+
     return !!sessionStorage.getItem('auth-user');
   }
-  
+
 }
