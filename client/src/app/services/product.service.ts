@@ -23,7 +23,7 @@ export class ProductService {
   }
 
   getProductImages(id: number): Observable<ProductImage[]> {
-    return this.http.get<ProductImage[]>(`${this.url}/products/images/${id}`);
+    return this.http.get<ProductImage[]>(`${this.url}products/images/${id}`);
   }
   
 }
