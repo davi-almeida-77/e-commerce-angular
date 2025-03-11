@@ -1,20 +1,43 @@
 <div class="product-container">
 
+  <div class="product-image-carousel" *ngIf="images.length > 0">
+    <div class="image-carousel">
+      <div class="image-list">
+        <div
+          *ngFor="let image of images; let i = index"
+          class="image-item"
+          (mouseover)="setActiveImage(i)"  
+          (click)="setActiveImage(i)"  
+        >
+          <img [src]="image?.image_url" alt="Product Image {{i + 1}}" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="product-image">
-    <img [src]="product?.image" alt="{{ product?.image }}" class="product-image">
+    <img *ngIf="images.length >  0 && activeImageIndex >= 0 && activeImageIndex < images.length"
+    [src]="images[activeImageIndex].image_url" alt="Active Product Image" class="product-image-main">
   </div>
 
 
   <div class="product-info">
+    <p class="product-title"> 
+      {{ product?.p_name }} <a>{{ product?.category}}</a> 
+    </p> 
 
-  <p class="product-title"> {{ product?.p_name }} <a>{{ product?.category}}</a> </p> 
 
+<div class="description-container">
+  <p class="description">
+    {{ product?.short_desc }} 
+  </p>
 
-    <p class="description">{{ product?.product_desc }}</p>
+</div>
 
 
     <div class="option">
-      <label for="size">Size :</label>
+      <label  class="selectors" >Size </label>
       <div class="size-options">
         <span class="size">S</span>
         <span class="size">M</span>
@@ -23,24 +46,42 @@
       </div>
     </div>
 
-
     <div class="option">
-      <label for="color">Cor:</label>
-      <div class="color-options">
-        <span class="color" style="background-color: #2e2f30;"></span>
-        <span class="color" style="background-color: #ffffff;"></span>
-      </div>
+
     </div>
 
+    <p class="price"> $ {{ product?.price }}</p>
 
     <div class="quantity">
-      <label for="quantity"> Quantity :</label>
-      <input type="number"  min="1" value="1">
+      <label   class="selectors" > Qty  </label>
+
+      <div class="input-box">
+
+        <button (click)="pickQuantity(1)"> + </button>
+      
+
+        <h5>{{ quantityItems }}</h5>
+      
+
+        <button (click)="pickQuantity(-1)"> - </button>
+      </div>
+      
     </div>
 
 
-    <p class="price"> $ {{ product?.price   }}</p>
+<div class="add-to-cart-container">
+  <button class="add-to-cart" (click)="addToCart()">Add To Cart</button>
+  
 
-    <button class="add-to-cart" (click)="addToCart()">Add To Cart </button>
+  <div class="icon-bubbles">
+    <div class="icon-bubble">
+      <i class="fa fa-heart"></i> 
+    </div>
+    <div class="icon-bubble" (click)="copyUrl()" >
+      <i class="fa-regular fa-copy"></i>
+    </div>
+  </div>
+</div>
+
   </div>
 </div>
