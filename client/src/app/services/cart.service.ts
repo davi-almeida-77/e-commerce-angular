@@ -74,6 +74,10 @@ export class CartService {
 
   resetCart() {
     sessionStorage.removeItem('cart');
+
+    this.cartSubject.next([]); 
+    
+    this.updateCart();
   }
 
 }
