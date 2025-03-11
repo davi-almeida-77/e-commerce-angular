@@ -10,23 +10,29 @@ export class NotificationService {
   constructor( private snackBar: MatSnackBar ) { }
 
   showSuccess(message: string): void {
-    this.snackBar.open(message, 'Close', {
+    this.snackBar.open(message, ' X ', {
       duration: 5000,
-      panelClass: ['success-snackbar']
+      panelClass: ['success-snackbar'],
+      verticalPosition: 'top',
+      horizontalPosition: 'right',
     });
   }
 
   showError(message: string): void {
-    this.snackBar.open(message, 'Close', {
+    this.snackBar.open(message, 'X', {
       duration: 5000,
-      panelClass: ['error-snackbar']
+      panelClass: ['error-snackbar'],
+      verticalPosition: 'top',
+      horizontalPosition: 'right'
     });
   }
 
   showInfo(message: string): void {
-    this.snackBar.open(message, 'Close', {
+    this.snackBar.open(message, 'X', {
       duration: 5000,
-      panelClass: ['info-snackbar']
+      panelClass: ['info-snackbar'],
+      verticalPosition: 'top',
+      horizontalPosition: 'right'
     });
   }
 
