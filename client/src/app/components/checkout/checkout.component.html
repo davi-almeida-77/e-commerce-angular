@@ -1,49 +1,87 @@
 <div class="checkout-container">
 
-    <div class="progress-bar-container">
-        <div class="progress-bar" [ngClass]="{'progress-30': currentStep === 1, 'progress-60': currentStep === 2, 'progress-100': currentStep === 3}"></div>
+  <h1>Checkout Page </h1>
+
+  <div class="progress-bar-container">
+      <div class="progress-bar" [ngClass]="{'progress-30': currentStep === 1, 'progress-60': currentStep === 2, 'progress-100': currentStep === 3}"></div>
+  </div>
+    
+  <div class="checkout-card">
+    <div *ngIf="currentStep === 1">
+      <h2>Residential Information </h2>
+      <form>
+        <label for="address"><i class="fa-solid fa-house"></i> </label>
+        <input type="text" id="address" [(ngModel)]="residenceInfo.address" name="address" placeholder="Enter your address">
+
+        <label for="city"> <i class="fa-solid fa-location-dot"></i> </label>
+        <input type="text" id="city" [(ngModel)]="residenceInfo.city" name="city" placeholder="Enter your city">
+
+        <label for="postalCode"><i class="fa-solid fa-signs-post"></i> </label>
+        <input type="text" id="postalCode" [(ngModel)]="residenceInfo.postalCode" name="postalCode" placeholder="Enter your postal code">
+      </form>
+    </div>
+
+    <div *ngIf="currentStep === 2">
+      <h2>Payment Information</h2>
+      <form>
+        <label for="cardNumber"><i class="fa-solid fa-credit-card"></i> </label>
+        <input type="text" id="cardNumber" [(ngModel)]="paymentInfo.cardNumber" name="cardNumber" placeholder="Enter card number">
+
+        <label for="expirationDate"><i class="fa-solid fa-clock"></i> </label>
+        <input type="text" id="expirationDate" [(ngModel)]="paymentInfo.expirationDate" name="expirationDate" placeholder="MM/YY">
+
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" [(ngModel)]="paymentInfo.cvv" name="cvv" placeholder="Security code">
+        <label for="cvv"><i class="fa-solid fa-user"></i></label>
+        <input type="text" id="name" [(ngModel)]="paymentInfo.name" name="name" placeholder="Card name ">
+      </form>
+    </div>
+
+
+    <div *ngIf="currentStep === 3" class="order-summary">
+
+      <div class="address-info">
+        <h2>Confirm  Information</h2>
+        <div class="address-buttons">
+          <button class="address-btn"><strong>Address:</strong> {{ residenceInfo.address }}</button>
+          <button class="address-btn"><strong>City:</strong> {{ residenceInfo.city }}</button>
+          <button class="address-btn"><strong>Postal Code:</strong> {{ residenceInfo.postalCode }}</button>
+        </div>
       </div>
+    
+
+      <div class="credit-card">
+
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fa-solid fa-credit-card"></i> 
+          </div>
+          <h2>Virtual Card </h2>
+        </div>
       
-    <div class="checkout-card">
-      <div *ngIf="currentStep === 1">
-        <h2>Informações de Residência</h2>
-        <form>
-          <label for="address">Endereço</label>
-          <input type="text" id="address" [(ngModel)]="residenceInfo.address" name="address" placeholder="Digite seu endereço">
-  
-          <label for="city">Cidade</label>
-          <input type="text" id="city" [(ngModel)]="residenceInfo.city" name="city" placeholder="Digite sua cidade">
-  
-          <label for="postalCode">CEP</label>
-          <input type="text" id="postalCode" [(ngModel)]="residenceInfo.postalCode" name="postalCode" placeholder="Digite seu CEP">
-        </form>
+
+        <div class="card-number">
+          <p>{{ paymentInfo.cardNumber | slice:0:4 }} {{ paymentInfo.cardNumber | slice:4:8 }} {{ paymentInfo.cardNumber | slice:8:12 }} {{ paymentInfo.cardNumber | slice:12:16 }}</p>
+        </div>
+      
+
+        <div class="card-footer">
+          <div><strong> {{ paymentInfo.name }}</strong></div> 
+          <div><strong>EXP </strong> {{ paymentInfo.expirationDate }}</div> 
+          <div><strong>CVV </strong> {{ paymentInfo.cvv }}</div> 
+        </div>
+
       </div>
-  
-      <div *ngIf="currentStep === 2">
-        <h2>Informações de Pagamento</h2>
-        <form>
-          <label for="cardNumber">Número do Cartão</label>
-          <input type="text" id="cardNumber" [(ngModel)]="paymentInfo.cardNumber" name="cardNumber" placeholder="Digite o número do cartão">
-  
-          <label for="expirationDate">Data de Expiração</label>
-          <input type="text" id="expirationDate" [(ngModel)]="paymentInfo.expirationDate" name="expirationDate" placeholder="MM/AA">
-  
-          <label for="cvv">CVV</label>
-          <input type="text" id="cvv" [(ngModel)]="paymentInfo.cvv" name="cvv" placeholder="Código de segurança">
-        </form>
-      </div>
-  
-      <div *ngIf="currentStep === 3">
-        <h2>Resumo do Pedido</h2>
-        <p><strong>Endereço:</strong> {{ residenceInfo.address }}, {{ residenceInfo.city }}, {{ residenceInfo.postalCode }}</p>
-        <p><strong>Cartão:</strong> {{ paymentInfo.cardNumber }}</p>
-        <button class="submit-btn" (click)="sendOrderToDatabase()">Finalizar Pedido</button>
-      </div>
-  
-      <div class="navigation-buttons">
-        <button *ngIf="currentStep > 1" (click)="prevStep()">Voltar</button>
-        <button *ngIf="currentStep < 3" (click)="nextStep()">Avançar</button>
-      </div>
+
+    </div>
+    
+
+    <div class="navigation-buttons">
+      <button *ngIf="currentStep > 1" (click)="prevStep()">Back</button>
+      <button *ngIf="currentStep < 3" (click)="nextStep()">Next</button>
     </div>
   </div>
-  
+
+  <button class="SendOrder"  *ngIf="currentStep === 3"  (click)="sendOrderToDatabase()"> Finalize Order </button>
+
+</div>
