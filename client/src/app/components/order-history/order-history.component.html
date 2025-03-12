@@ -1,26 +1,46 @@
 <div class="order-history-container">
-  <h1>  Order History  </h1>
+  <h1>Order History Hello <strong>{{ username }}</strong>! Welcome Back!</h1>
 
-  <table class="order-table">
-    <thead>
-      <tr>
-        <th>Product </th>
-        <th>Quantity </th>
-        <th>Price </th>
-        <th>Total Value </th>
-        <th> Order Date </th>
-        <th> Order ID </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orders">
-        <td>{{ order.product_name }}</td>
-        <td>{{ order.product_quantity }}</td>
-        <td>{{ order.product_price | currency  }}</td>
-        <td>{{ order.total_product_value| currency  }}</td>
-        <td> {{ order.order_created_at | date }}</td>
-        <td>{{ order.order_number  }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="order-box" *ngFor="let order of groupedOrders">
+    
+
+    <div class="order-header" (click)="toggleOrderDetails(order.orderId)">
+      <strong>Order ID: {{ order.orderId }}</strong>
+      <button>{{ orderVisibility[order.orderId] ? 'Hide Order' : 'Show Order' }}</button>
+    </div>
+    
+
+    <div [ngClass]="{'order-details': true, 'show': orderVisibility[order.orderId]}" class="order-details">
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total Value</th>
+            <th>Order Date</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let product of order.products">
+            <td>{{ product.product_name }}</td>
+            <td>{{ product.product_quantity }}</td>
+            <td>{{ product.product_price | currency }}</td>
+            <td>{{ product.total_product_value | currency }}</td>
+            <td>{{ order.orderDate | date }}</td>
+          </tr>
+
+
+          <tr>
+
+            <td colspan="3"><strong>Total</strong></td>
+            <td>{{ order.totalValue | currency }}</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
