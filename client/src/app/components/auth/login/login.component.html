@@ -1,14 +1,35 @@
 <div class="container">
-  <div class="card">
-    <h2>Login</h2>
-    <form action="#" method="post" (ngSubmit)="onSubmit()">
-      <input type="email" name="email" placeholder="email" required  [(ngModel)]="email">
-      <input type="password" name="u_password" placeholder="password" required [(ngModel)]="u_password">
-      <button type="submit" [disabled]="!canSubmit()">Submit</button>
 
-      <div class="register-box"> Don't Have an Account <a [routerLink]="['/register']" > Register Here </a></div>
+  <div class="card">
+
+    <h1>Login</h1>
+
+    <form action="#" method="post" (ngSubmit)="onSubmit()">
+
+      <div class="input-container">
+
+        <i class="fa-solid fa-user" id="user"></i>
+
+        <input type="email" name="email" placeholder="email" required [(ngModel)]="email">
+
+      </div>
+    
+      <div class="input-container">
+
+        <i class="fa-solid fa-lock" id="pass"></i>
+
+        <input type="password" name="u_password" placeholder="password"  required [(ngModel)]="u_password">
+
+      </div>
+    
+      <button type="submit" [disabled]="!canSubmit()">Submit</button>
+    
+      <div class="register-box">Don't Have an Account <a [routerLink]="['/register']"> Register Here </a></div>
+
     </form>
+    
   </div>
+
 </div>
 
 

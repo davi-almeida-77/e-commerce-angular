@@ -1,15 +1,47 @@
-
 <div class="container">
+
   <div class="card">
-    <h2> Register </h2>
+
+    <h1> Register </h1>
+
     <form action="#" method="post" (ngSubmit)="onSubmit()">
-      <input type="text" name="username" placeholder="Username" required [(ngModel)]="username">
-      <input type="text" name="first_name" placeholder="First Name" required  [(ngModel)]="f_name">
-      <input type="text" name="last_name" placeholder="Last Name" required [(ngModel)]="l_name">
-      <input type="email" name="email" placeholder="Email" required [(ngModel)]="email"> 
-      <input type="password" name="password" placeholder="password" required [(ngModel)]="u_password">
-      <input type="password" name="confirm_password" placeholder="confirm password" required [(ngModel)]="m_password">
+
+      <div class="input-container">
+        <i class="fa-solid fa-user" id="user"></i>
+        <input type="text" name="username" placeholder="Username" required [(ngModel)]="username">
+      </div>
+
+      <div class="input-container">
+        <i class="fa-solid fa-user" id="userF"></i>
+        <input type="text" name="first_name" placeholder="First Name" required  [(ngModel)]="f_name">
+      </div>
+
+      <div class="input-container">
+        <i class="fa-solid fa-user" id="userL"></i>
+        <input type="text" name="last_name" placeholder="Last Name" required [(ngModel)]="l_name">
+      </div>
+
+      <div class="input-container">
+        <i class="fa-solid fa-envelope" id="envelope"></i>
+        <input type="email" name="email" placeholder="Email" required [(ngModel)]="email">
+      </div>
+
+      <div class="input-container">
+        <i class="fa-solid fa-lock" id="pass"></i>
+        <input type="password" name="password" placeholder="Password" required [(ngModel)]="u_password">
+      </div>
+
+      <div class="input-container">
+        <i class="fa-solid fa-lock-open" id="cPass"></i>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required [(ngModel)]="m_password">
+      </div>
+
       <button type="submit"  [disabled]="!canSubmit()"> Submit </button>
+
     </form>
+
+    <div class="already-have-account">Already Have an Account <a [routerLink]="['/login']"> Login  </a></div>
+
   </div>
+
 </div>

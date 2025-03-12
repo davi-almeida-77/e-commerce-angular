@@ -1,47 +1,182 @@
 .container {
-    font-family: Arial, sans-serif;
-    display: flex;
-    background-color: #f4f4f4;
-    margin: 0;
-    height: 100vh;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-  }
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+  margin: 0;
+}
 
-  .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    box-sizing: border-box;
-  }
+#user {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
 
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+#userF {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
 
-  input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    box-sizing: border-box;
-  }
+#userL {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
 
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
 
-  button:hover {
-    background-color: #000000;
-  }
+#pass {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+#cPass {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+#envelope {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f3770a;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+h1:hover {
+  transition: 600ms;
+  color: #fd9e4a;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.input-container .icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+
+.input-container input {
+  padding-left: 30px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-container input::placeholder {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: #7a7878;
+  font-family: 'Arial', sans-serif;
+}
+
+#user, #envelope, #pass, #cPass, #userF, #userL {
+  color: #5f5e5e;
+}
+
+input {
+  text-align: center;
+  font-weight: bold;
+}
+
+input:focus {
+  outline: none;
+  border: none;
+}
+
+input {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  background: #f3770a;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f57c4d;
+  transition: 600ms;
+}
+
+.register-box {
+  margin-top: 45px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.register-box a {
+  text-decoration: none;
+  color: #f3770a;
+  padding: 10px 20px;
+  border: 2px solid #f3770a;
+  border-radius: 25px;
+}
+
+.register-box a:hover {
+  transition: 600ms;
+  background: #eeebe8;
+}
+
+.already-have-account {
+  height: 65px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.already-have-account a {
+  text-decoration: none;
+  color: #f3770a;
+  padding: 10px 20px;
+  border: 2px solid #f3770a;
+  border-radius: 25px;
+}
+
+.already-have-account a:hover {
+  transition: 600ms;
+  background: #eeebe8;
+}

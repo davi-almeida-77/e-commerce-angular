@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
     margin: 0;
   }
 
@@ -13,18 +13,80 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 350px;
     box-sizing: border-box;
   }
 
-  h2 {
+  h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: #f3770a;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  h1:hover {
+    transition: 600ms;
+    color: #fd9e4a;
+  }
+
+  .input-container {
+    position: relative;
+    margin-bottom: 15px; 
+  }
+
+  .input-container .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+  }
+  
+  .input-container input {
+    padding-left: 30px; 
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+ 
+  .input-container input::placeholder {
+    text-align: center; 
+    text-align: center; 
+    font-weight: bold;  
+    font-size: 16px;   
+    color: #7a7878;    
+    font-family: 'Arial', sans-serif; 
+  }
+
+  #user {
+    position: absolute;
+    top: 9px;
+    left: 12px;
+    color: #5f5e5e;
+  }
+
+  #pass {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #5f5e5e;
+  }
+
+  input {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  input:focus {
+    outline: none;
+    border: none; 
   }
 
   input {
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #ddd;
@@ -32,20 +94,41 @@
   }
 
   button {
+    padding: 20px;
+    box-sizing: border-box;
     width: 100%;
-    padding: 10px;
-    background-color: #000000;
-    color: white;
+    background: #f3770a;
     border: none;
     border-radius: 5px;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 15px;
     cursor: pointer;
   }
 
-  button:hover {
-    background-color: #000000;
+  button:hover {    background-color: white;
+    transition: 600ms;
+    background-color: #f57c4d;
   }
 
   .register-box {
-    margin-top: 10px;
+    margin-top: 45px;
     font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .register-box a {
+    text-decoration: none;
+    color: #f3770a;
+    padding: 10px 20px;
+    border: 2px solid #f3770a;
+    border-radius: 25px;
+  }
+
+  .register-box a:hover {
+    transition: 600ms;
+    background: #eeebe8;
   }

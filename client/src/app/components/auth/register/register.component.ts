@@ -2,6 +2,8 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NotificationService } from '../../../services/notification.service';
+
 
 
 @Component({
@@ -23,7 +25,8 @@ export class RegisterComponent {
 
   constructor ( private _auth: AuthService, 
     private _router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private notify: NotificationService
    ) {}
 
   ngOnInit(): void {}
@@ -37,11 +40,11 @@ matchPasswords( u_password: string, m_password: string ): boolean {
     this.loading = true;
     this.error = '';
     if (!this.username || !this.f_name || !this.l_name || !this.email || !this.u_password) {
-      console.log("Please fill out all Forms, and Try again ")
+      this.notify.showError('Please fill out all Forms, and Try again')
       return;
     }
     if (!this.matchPasswords(this.u_password, this.m_password)) {
-      console.log("The passwords do not match. Please try again.");
+      this.notify.showError('The passwords do not match. Please try again')
       return;
     }
     else {
@@ -50,6 +53,7 @@ matchPasswords( u_password: string, m_password: string ): boolean {
         response => {
           this.loading = false;
           this._router.navigate(['/']);
+          this.notify.showSuccess('Login  Sucessful ')
           this.cdr.detectChanges();  
         },
         (err) => {
