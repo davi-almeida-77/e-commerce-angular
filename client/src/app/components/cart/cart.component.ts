@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { productModel } from '../../shared/models/product.model';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { NotificationService } from '../../services/notification.service';
+
+
 
 
 
@@ -18,7 +21,11 @@ export class CartComponent implements OnInit {
   totalItems: number = 0;           
   totalPrice: number = 0;          
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private notify: NotificationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     
@@ -29,9 +36,16 @@ export class CartComponent implements OnInit {
     });
   }
 
-  cleanCart() {
-    this.cartService.resetCart();
-    window.location.reload();
+  resetCart() {
+    this.cartService.resetCart(); 
+  
+    this.notify.showInfo('Cart was Cleaned ');
+  
+    setTimeout(() => {
+
+      this.router.navigate(['/shop']);
+    }, 3000);  
   }
+  
 
 }

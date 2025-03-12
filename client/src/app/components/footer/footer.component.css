@@ -11,6 +11,10 @@ footer {
     text-align: center;
 }
 
+h3 {
+    color: #f3770a;
+}
+
 .footer-content {
     display: flex;
     justify-content: space-between;
@@ -46,7 +50,7 @@ footer {
 }
 
 .social-links a {
-    color: #555;
+    color: #f3770a;
     margin: 0 10px;
     font-size: 20px;
 }

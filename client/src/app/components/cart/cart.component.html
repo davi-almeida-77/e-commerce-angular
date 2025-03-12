@@ -15,7 +15,7 @@
     
       <div class="finish">
       <button class="btn-finish"  routerLink="/checkout"> Checkout </button>
-      <button class="btn-clean-cart"  (click)="cleanCart()"> Clean Cart </button>
+      <button class="btn-clean-cart"  (click)="resetCart()"> Clean Cart </button>
     </div>
 
   </div>
@@ -23,6 +23,9 @@
 
 <ng-template #noItems>
   <div class="cart-empty-template">
-    <p>Your cart is empty</p>
+    <h1>Your cart is empty </h1>
+
+    <h3 routerLink="/shop">  <i class="fa-solid fa-arrow-left"></i> Back </h3>
+
   </div>
 </ng-template>

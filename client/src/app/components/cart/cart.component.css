@@ -15,7 +15,44 @@
   text-align: center;
   font-size: 18px;
   color: #333;
-  background-color: #f9f9f9;
+  flex-direction: column;
+}
+
+.cart-empty-template h1 {
+  font-size: 95px;
+  color: #b3b3b3;
+}
+
+.cart-empty-template h3 {
+  padding: 10px 70px;
+  border: 1px solid;
+  border-radius: 50px;
+  color: #fff;
+  background: #ff7700;
+  font-weight: 300;
+  cursor: pointer;
+}
+.cart-empty-template h3:hover {
+  transition: 600ms;
+  background: #fa8a28;
+}
+
+.p-name {
+  color: #b3b3b3;
+}
+
+.p-value {
+  color: #b3b3b3;
+  letter-spacing: 2.2px;
+}
+
+.p-quantity {
+  color: #f3770a;
+}
+
+.p-total {
+  color: #b3b3b3;
+  letter-spacing: 2.2px;
 }
 
 .cart-empty-template p {
@@ -47,7 +84,7 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  overflow-y: auto; /* Permite rolagem caso haja muitos itens */
+  overflow-y: auto; 
 }
 
 .order-table th,
@@ -81,8 +118,8 @@
 }
 
 .btn-finish {
-  background-color: #393b3a;
-  color: white;
+  background-color: #ff7700;
+  color: #ffffff;
   font-size: 18px;
   padding: 15px 30px;
   border: none;
@@ -92,7 +129,8 @@
 }
 
 .btn-finish:hover {
-  background-color: #302d2f;
+  transition: 300ms;
+  background-color: #fc9f4f;
 }
 
 .order-table th {
@@ -218,12 +256,17 @@
 }
 
 .btn-clean-cart {
-  background-color: #393b3a;
-  color: white;
+  background-color: #ff7700;
+  color: #ffffff;
   font-size: 18px;
-  padding: 15px 15px;
+  padding: 15px 30px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3sease;
+  transition: background-color 0.3s ease;
+}
+
+.btn-clean-cart:hover {
+  transition: 300ms;
+  background-color: #fc9f4f;
 }

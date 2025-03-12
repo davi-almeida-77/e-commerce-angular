@@ -7,8 +7,8 @@ body {
     text-align: center;
     padding-top: 50px;
     display: flex;
-    font-family: 'Georgia', 'Times New Roman', serif; /* Fonte clássica de livros */
-    line-height: 1.6; /* Melhorar a legibilidade */
+    font-family: 'Georgia', 'Times New Roman', serif; 
+    line-height: 1.6; 
 }
 
 h1 {
@@ -20,7 +20,6 @@ h1 {
 }
 
 p {
-    font-size: 1.2rem;
     line-height: 1.6;
     color: #555;
     margin-bottom: 20px;
@@ -30,14 +29,13 @@ p {
 }
 
 .highlight {
-    background-color: #ff0;
+    background-color: #ffc593;
     padding: 0.2rem 0.4rem;
     border-radius: 5px;
     font-weight: bold;
 }
 
 .container {
-    /* height: 80vh; */
     padding: 20px;
 }
 
@@ -46,14 +44,18 @@ p {
 }
 
 
-        p {
-            text-indent: 50px; /* Recuo no começo do parágrafo */
-            margin-bottom: 40px; /* Espaçamento entre os parágrafos */
-        }
+p {
+    text-indent: 50px; 
+    margin-bottom: 40px; 
+}
 
 
-       
-        p:first-of-type {
-            margin-top: 0; 
-        }
 
+p:first-of-type {
+    margin-top: 0; 
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
