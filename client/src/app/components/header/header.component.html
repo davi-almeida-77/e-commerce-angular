@@ -4,17 +4,17 @@
   </div>
   <nav class="nav">
     <ul>
-      <li><a href="#" routerLink="/">Home</a></li>
-      <li><a href="#" routerLink="/shop" class="ShopArrow">Shop  <i class="fa-solid fa-chevron-down"></i>  </a></li>
-      <li><a href="#" routerLink="/about">About</a></li>
-      <li><a href="#" routerLink="/contact">Contact</a></li>
-      <li><a href="#" routerLink="/blog">Blog</a></li>
-      <li><a href="#" routerLink="/order-history" *ngIf="userOn">Order-History</a></li>
+      <li><a href="#" >Home</a></li>
+      <li><a href="#" routerLink="/shop" class="ShopArrow" routerLinkActive="active" >Shop  <i class="fa-solid fa-chevron-down"></i>  </a></li>
+      <li ><a href="#" routerLink="/about" routerLinkActive="active" >About</a></li>
+      <li><a href="#" routerLink="/contact" routerLinkActive="active" >Contact</a></li>
+      <li><a href="#" routerLink="/blog" routerLinkActive="active" >Blog</a></li>
+      <li><a href="#" routerLink="/order-history" *ngIf="userOn" routerLinkActive="active" >Order-History</a></li>
     </ul>
   </nav>
 
   <div class="icons">
-    <a href="#" routerLink="/cart" class="cart-container">
+    <a href="#" routerLink="/cart" class="cart-container" id="cart">
       <i class="fa-solid fa-cart-shopping"></i>
       <span class="cart-badge" *ngIf="totalItens > 0">{{ totalItens }}</span>
     </a>
