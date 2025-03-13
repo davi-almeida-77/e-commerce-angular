@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+.mat-typography {
+  height: 0;
+}
+
 body {
   height: 0;
   font-family: 'Roboto', sans-serif;
@@ -16,4 +20,85 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
 }
-  
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.success-snackbar.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: rgb(135, 226, 150) !important;  
+  color: rgb(243, 241, 241) !important;      
+  padding: 30px 16px !important;         
+  border-radius: 8px !important;         
+}
+
+.info-snackbar.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: rgb(138, 224, 220) !important;  
+  color: rgb(243, 241, 241) !important;      
+  padding: 30px 16px !important;         
+  border-radius: 8px !important; 
+}
+
+.error-snackbar.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: rgb(253, 118, 118) !important;  
+  color: rgb(243, 241, 241) !important;      
+  padding: 30px 16px !important;         
+  border-radius: 8px !important;     
+}
+
+.info-snackbar .mdc-snackbar__label {
+  font-size: 18px !important;             
+  font-weight: bold !important;           
+  font-family: 'Arial', sans-serif !important; 
+}
+
+.error-snackbar  .mdc-snackbar__label {
+  font-size: 18px !important;             
+  font-weight: bold !important;           
+  font-family: 'Arial', sans-serif !important; 
+}
+
+
+.success-snackbar .mdc-snackbar__label {
+  font-size: 18px !important;             
+  font-weight: bold !important;           
+  font-family: 'Arial', sans-serif !important; 
+}
+
+
+.success-snackbar .fa {
+  margin-right: 10px !important;        
+  font-size: 24px !important;          
+  color: white !important;             
+}
+
+
+.success-snackbar .mat-mdc-snack-bar-action {
+  color: rgb(243, 241, 241) !important;      
+  font-size: 16px !important;
+  font-weight: bold !important;
+  padding: 10px !important;
+}
+
+.error-snackbar .mat-mdc-snack-bar-action {
+  color: rgb(243, 241, 241) !important;      
+  font-size: 16px !important;
+  font-weight: bold !important;
+  padding: 10px !important;
+}
+
+.info-snackbar   .mat-mdc-snack-bar-action {
+  color: rgb(243, 241, 241) !important;      
+  font-size: 16px !important;
+  font-weight: bold !important;
+  padding: 10px !important;
+}
+
+
+
+.success-snackbar .mdc-snackbar__actions {
+  display: flex;
+  justify-content: flex-end; 
+}
