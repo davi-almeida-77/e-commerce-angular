@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
+import { NotificationService } from '../../services/notification.service';
 
 import { productModel } from '../../shared/models/product.model'; 
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-shop',
@@ -14,7 +16,12 @@ import { Router } from '@angular/router';
 export class ShopComponent implements OnInit {
   products: productModel[] = []; 
 
-  constructor(private productService: ProductService, private router: Router ,  private cartService: CartService ,  ) {}  
+  constructor(
+    private productService: ProductService, 
+    private router: Router ,
+    private cartService: CartService ,
+    private notify: NotificationService
+     ) {}  
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(
@@ -22,19 +29,20 @@ export class ShopComponent implements OnInit {
         this.products = data; 
       },
       (error) => {
-        console.error('Erro ao buscar produtos:', error);
+        this.notify.showError('Error in Find Products ')
       }
     );
   }
 
-  SingleProductPage(productId: number): void {
+  singleProductPage(productId: number): void {
     this.router.navigate([`/product/${productId}`]);
   }
 
   addToCart(product: productModel): void {
+    this.notify.showSuccess('Product added on Cart ')
     this.cartService.addToCart({
       ...product,
-      quantity: 1,  
+      quantity: 1, 
     });
   }
   

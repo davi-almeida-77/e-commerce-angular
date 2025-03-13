@@ -3,7 +3,7 @@
 <div id="shop-container">
 
   <div class="filters">
-    <!-- Filtro de Categorias -->
+
     <div class="filter-category">
       <h3>Categories</h3>
       <ul>
@@ -14,7 +14,7 @@
       </ul>
     </div>
   
-    <!-- Filtro de Preço -->
+
     <div class="filter-price">
       <h3>Price Range</h3>
       <input type="range" id="price" min="0" max="1000" step="10" value="500">
@@ -23,7 +23,7 @@
       </div>
     </div>
   
-    <!-- Filtro de Marcas -->
+
     <div class="filter-brands">
       <h3>Brands</h3>
       <ul>
@@ -34,7 +34,7 @@
       </ul>
     </div>
   
-    <!-- Filtro de Tamanho -->
+
     <div class="filter-size">
       <h3>Size</h3>
       <ul>
@@ -44,8 +44,7 @@
         <li><input type="checkbox" id="sizeXL"> <label for="sizeXL">XL</label></li>
       </ul>
     </div>
-  
-    <!-- Filtro de Modelo -->
+
     <div class="filter-model">
       <h3>Model</h3>
       <ul>
@@ -61,11 +60,10 @@
       <img [src]="product.image" alt="{{ product.p_name }}" class="product-image" />
       <div class="product-details">
         <h3>{{ product.p_name }}</h3>
-        <p>{{ product.product_desc }}</p>
         <p>{{ product.avaliation }}</p>
         <p>{{ product.model }}</p>
         <p><strong>{{ product.price }}</strong></p>
-        <button (click)="SingleProductPage(product.id_product)" ><i class="fa-solid fa-arrow-right"></i></button>
+        <button (click)="singleProductPage(product.id_product)" ><i class="fa-solid fa-arrow-right"></i></button>
         <button (click)="addToCart(product)"><i class="fa-solid fa-cart-plus"></i></button>
       </div>
     </div>
