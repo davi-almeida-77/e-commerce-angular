@@ -1,71 +1,40 @@
 
-    <div class="container-blog">
-        <!-- Área 70% - Lista de Posts -->
-        <div class="left-column">
-            <div class="post-block">
-                <h3><a href="#">Post 1 - Título do Post</a></h3>
-                <p>Resumo do post ou uma breve descrição do conteúdo. <a href="#">Leia mais</a></p>
-            </div>
+<div class="container-blog">
 
-            <div class="post-block">
-                <h3><a href="#">Post 2 - Título do Post</a></h3>
-                <p>Resumo do post ou uma breve descrição do conteúdo. <a href="#">Leia mais</a></p>
-            </div>
-
-            <div class="post-block">
-                <h3><a href="#">Post 3 - Título do Post</a></h3>
-                <p>Resumo do post ou uma breve descrição do conteúdo. <a href="#">Leia mais</a></p>
-            </div>
-
-            <div class="post-block">
-                <h3><a href="#">Post 4 - Título do Post</a></h3>
-                <p>Resumo do post ou uma breve descrição do conteúdo. <a href="#">Leia mais</a></p>
-            </div>
-
-            <div class="post-block">
-                <h3><a href="#">Post 5 - Título do Post</a></h3>
-                <p>Resumo do post ou uma breve descrição do conteúdo. <a href="#">Leia mais</a></p>
-            </div>
-
-            <div class="post-block">
-                <h3><a href="#">Post 6 - Título do Post</a></h3>
-                <p>Resumo do post ou uma breve descrição do conteúdo. <a href="#">Leia mais</a></p>
+    <div class="left-column">
+        <div class="post-block" *ngFor="let post of posts">
+            <img src="{{ post.image }}" alt="Imagem do Post">
+            <div>
+                <h3>{{ post.title }} </h3>
+                <p>   {{ post.preview }} </p>
+                <button (click)="singlePostPage(post.id)"> See More </button>
             </div>
         </div>
 
-        <!-- Área 30% - Recent Posts e Categories -->
-        <div class="right-column">
-            <!-- Recent Posts -->
-            <div class="recent-posts">
-                <h3>Recent Posts</h3>
-                <div class="recent-post">
-                    <a href="#">Post Recente 1</a>
-                </div>
-                <div class="recent-post">
-                    <a href="#">Post Recente 2</a>
-                </div>
-                <div class="recent-post">
-                    <a href="#">Post Recente 3</a>
-                </div>
-                <div class="recent-post">
-                    <a href="#">Post Recente 4</a>
-                </div>
-                <div class="recent-post">
-                    <a href="#">Post Recente 5</a>
-                </div>
-            </div>
-
-            <!-- Categories -->
-            <div class="categories">
-                <h3>Categories</h3>
-                <ul>
-                    <li><a href="#">Categoria 1</a></li>
-                    <li><a href="#">Categoria 2</a></li>
-                    <li><a href="#">Categoria 3</a></li>
-                    <li><a href="#">Categoria 4</a></li>
-                    <li><a href="#">Categoria 5</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
 
+
+    <div class="right-column">
+
+        <div class="recent-posts">
+            <h3>Recent Posts</h3>
+            <div class="recent-post" *ngFor="let post of posts">
+                <img src="{{ post.image}} " alt="" (click)="singlePostPage(post.id)"> 
+                <div class="recent-post-content">
+                    <a (click)="singlePostPage(post.id)" >{{ post.title }}</a>
+                    <p> {{ post.create_date |date }} </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="categories">
+            <h3>Categories</h3>
+
+            <ul  *ngFor="let post of posts">
+                 {{ post.category }} 
+             </ul>
+
+        </div>
+    </div>
+</div>

@@ -1,88 +1,153 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-}
 
-.container-blog {
-    width: 80%;
-    height: 150vh;
-    margin: 0 auto;
+ .container-blog {
     display: flex;
-    padding: 40px 30px;
-    gap: 20px;
+    margin: 30px;
+    justify-content: space-between;
 }
-
-/* Área de 70% para os posts */
 .left-column {
-    width: 70%;
-    padding: 0 20px;
-    background-color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    width: 120%;
+    margin-left: 5%;
 }
-
-/* Blocos empilhados dentro da área de 70% */
+.right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px;
+    padding: 33px;
+}
 .post-block {
-    background-color: #fff;
-    margin-bottom: 20px;
-    padding: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    justify-content: start;
+}
+.post-block img {
+    width: 30%;
+    max-width: 100%;
+    height: auto; 
+    display: block;
 }
 
 .post-block h3 {
-    margin: 0;
-    font-size: 1.4em;
+    font-size: 25px;
+    text-decoration: none;
+    color: #333;
+}
+
+.post-block h3, .post-block p {
+    margin: 0 auto;
+    padding: 35px 0 0 0;
 }
 
 .post-block p {
-    margin: 10px 0;
-    color: #666;
-}
-
-.post-block a {
-    color: #007BFF;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Área de 30% para Recent Posts e Categories */
-.right-column {
-    width: 30%;
-    background-color: white;
     padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    max-width: 100%;
+    color: #ccc;
 }
 
-.recent-posts h3, .categories h3 {
-    font-size: 1.6em;
-    margin-bottom: 20px;
+.post-block div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    height: 100%;
+    width: 35%;
 }
 
 .recent-post {
+    display: flex;
+    flex-direction: row;
     margin-bottom: 15px;
+    height: 125px;
+    padding: 25px;
+    gap: 20px;
+    align-items: start;
+    border-bottom: 1px solid #ccc;
+}
+.recent-post img {
+    width: 75px;
+    height: 80px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.recent-post a {
+.recent-posts {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 20px
+}
+
+.recent-posts h3 {
+    font-size: 25px;
+    font-family: "Poppins";
+    text-transform: uppercase;
+    color: #7d7878;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+.recent-post-content {
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+}
+
+.recent-post-content a {
+    color: gray;
     text-decoration: none;
-    color: #007BFF;
-    font-weight: bold;
+    font-size: 20px;
 }
 
-/* Listagem de categorias */
-.categories ul {
-    list-style: none;
-    padding: 0;
-}
-
-.categories li {
-    margin-bottom: 10px;
-}
-
-.categories a {
-    text-decoration: none;
+.recent-post-content p {
+    font-size: 10px;
+    font-weight: 500;
     color: #333;
+}
+
+.categories h3 {
+    font-size: 30px;
+    text-transform: capitalize;
+    color: #7d7878;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #cccc;
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    border: none;
+    padding: 10px 15px;
+    background: #f3770a;
+    border-radius: 5px;
+    color: #FFF;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.categories {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 25px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.categories ul  {
+    font-size: 20px;
+    color: #ccc;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.categories ul:hover {
+    transition: 600ms;
+    color: #f3770a;
 }
