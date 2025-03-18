@@ -6,8 +6,8 @@ export interface productModel {
     price: number;
     image: string;
     category: string;
-    avaliation: string;
+    avaliation: number;
     model: string;
-     quantity?: number;
+    quantity?: number;
 }
   
