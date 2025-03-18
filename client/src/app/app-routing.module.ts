@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogComponent },
   {path: 'post/:id', component: PostComponent},
-  { path: 'order-history', component: OrderHistoryComponent },
+  { path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuardService] },
   { path: '**', component: PageNotFoundComponent },
 ];
 
