@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 import { NotificationService } from '../../services/notification.service';
@@ -16,11 +16,21 @@ import { Router } from '@angular/router';
 export class ShopComponent implements OnInit {
   products: productModel[] = []; 
 
+  activeClass: boolean  = false;
+
+  filterCategory: string = '';
+  filterPrice: string = '';
+  filterModel: string = ''
+
+  itensByPage: number = 14;
+  currentLimit = this.itensByPage;
+
   constructor(
     private productService: ProductService, 
     private router: Router ,
     private cartService: CartService ,
-    private notify: NotificationService
+    private notify: NotificationService,
+    private cdr: ChangeDetectorRef
      ) {}  
 
   ngOnInit(): void {
@@ -32,6 +42,8 @@ export class ShopComponent implements OnInit {
         this.notify.showError('Error in Find Products ')
       }
     );
+
+    window.scrollTo(0, 0);
   }
 
   singleProductPage(productId: number): void {
@@ -44,6 +56,29 @@ export class ShopComponent implements OnInit {
       ...product,
       quantity: 1, 
     });
+  }
+
+  toggleActive(): void { 
+    this.activeClass =  !this.activeClass;
+  }
+
+  changeLimit( newLimit:  number): void {
+    this.itensByPage = newLimit
+    this.currentLimit = newLimit;
+
+    this.notify.showInfo('Change Quantity  of products listed ')
+
+    this.cdr.detectChanges();
+  }
+
+  resetFilters() {
+    this.filterCategory = '';
+    this.filterPrice = '';
+    this.filterModel = '';
+    this.currentLimit =  14;
+    this.changeLimit(this.currentLimit);
+
+    this.cdr.detectChanges();
   }
   
 }

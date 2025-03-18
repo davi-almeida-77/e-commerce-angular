@@ -1,72 +1,112 @@
+<div class="out-door">
 
+  <div class="page">
+    <h1>Shop</h1>
+    <h3>Home / Shop </h3>
+  </div>
+
+</div>
 
 <div id="shop-container">
 
   <div class="filters">
 
     <div class="filter-category">
-      <h3>Categories</h3>
+      <h3>Product Categories</h3>
       <ul>
-        <li><input type="checkbox" id="category1"> <label for="category1">Electronics</label></li>
-        <li><input type="checkbox" id="category2"> <label for="category2">Fashion</label></li>
-        <li><input type="checkbox" id="category3"> <label for="category3">Home</label></li>
-        <li><input type="checkbox" id="category4"> <label for="category4">Sports</label></li>
+        <li (click)="filterCategory = 'LOW'" [class.active]="filterCategory === 'LOW'"><label >LOW </label></li>
+        <li (click)="filterCategory = 'MID'" [class.active]="filterCategory === 'MID'"> <label>MID</label></li>
+        <li (click)="filterCategory = 'HIGH'" [class.active]="filterCategory === 'HIGH'"><label >HIGH </label></li>
       </ul>
     </div>
   
 
     <div class="filter-price">
-      <h3>Price Range</h3>
-      <input type="range" id="price" min="0" max="1000" step="10" value="500">
-      <div class="price-value">
-        <span id="min-price">$0</span> - <span id="max-price">$1000</span>
-      </div>
+      <h3>Pricing</h3>
+
+      <button (click)="filterPrice = 'highPrice'" [class.active]="filterPrice === 'highPrice'">
+        High Price
+      </button>
+      <button (click)="filterPrice = 'lowPrice'" [class.active]="filterPrice === 'lowPrice'">
+        Low Price
+      </button>
+      <button (click)="filterPrice = 'highAvaliation'" [class.active]="filterPrice === 'highAvaliation'">
+        Better Avaliations
+      </button>
+
     </div>
   
-
-    <div class="filter-brands">
-      <h3>Brands</h3>
-      <ul>
-        <li><input type="checkbox" id="brand1"> <label for="brand1">Nike</label></li>
-        <li><input type="checkbox" id="brand2"> <label for="brand2">Adidas</label></li>
-        <li><input type="checkbox" id="brand3"> <label for="brand3">Apple</label></li>
-        <li><input type="checkbox" id="brand4"> <label for="brand4">Samsung</label></li>
-      </ul>
-    </div>
-  
-
-    <div class="filter-size">
-      <h3>Size</h3>
-      <ul>
-        <li><input type="checkbox" id="sizeS"> <label for="sizeS">S</label></li>
-        <li><input type="checkbox" id="sizeM"> <label for="sizeM">M</label></li>
-        <li><input type="checkbox" id="sizeL"> <label for="sizeL">L</label></li>
-        <li><input type="checkbox" id="sizeXL"> <label for="sizeXL">XL</label></li>
-      </ul>
-    </div>
 
     <div class="filter-model">
-      <h3>Model</h3>
       <ul>
-        <li><input type="checkbox" id="model1"> <label for="model1">Model A</label></li>
-        <li><input type="checkbox" id="model2"> <label for="model2">Model B</label></li>
-        <li><input type="checkbox" id="model3"> <label for="model3">Model C</label></li>
+
+      <h3>MODEL </h3>
+        <li (click)="filterModel= 'Basketball' " [class.active]="filterModel === 'Basketball'"><label >Basketball </label></li>
+        <li (click)="filterModel = 'Casual'  " [class.active]="filterModel === 'Casual'"><label >  Casual   </label></li>
+        <li (click)="filterModel = 'Fashion'  " [class.active]="filterModel === 'Fashion'"><label >  Fashion   </label></li>
+        <li (click)="filterModel = 'Running'  " [class.active]="filterModel === 'Running'"><label >  Running   </label></li>
       </ul>
+
     </div>
+
+    <div class="reset-filters">
+      <button (click)="resetFilters()">Reset Filters</button>
+    </div>
+  
+
   </div>
   
   <div class="product-list">
-    <div class="product-card" *ngFor="let product of products">
-      <img [src]="product.image" alt="{{ product.p_name }}" class="product-image" />
-      <div class="product-details">
-        <h3>{{ product.p_name }}</h3>
-        <p>{{ product.avaliation }}</p>
-        <p>{{ product.model }}</p>
-        <p><strong>{{ product.price }}</strong></p>
-        <button (click)="singleProductPage(product.id_product)" ><i class="fa-solid fa-arrow-right"></i></button>
-        <button (click)="addToCart(product)"><i class="fa-solid fa-cart-plus"></i></button>
+
+    <div class="filter-bar">
+
+      <div class="showing">
+        <i class="fa-solid fa-grip"></i>
+        <i class="fa-solid fa-bars"></i>
+  
+        <p>Showing   {{ currentLimit }} of {{ products.length }} Item (s)</p>
       </div>
+  
+      <div class="filter-options">
+        <div class="show">
+          <p> Show </p>
+
+          <button mat-button [matMenuTriggerFor]="menu">
+            {{ currentLimit }} <i class="fa-solid fa-chevron-down"></i>
+          </button>
+      
+          <mat-menu #menu="matMenu">
+            <button class="Chosen" mat-menu-item (click)="changeLimit(8)"> 8 </button>
+            <button class="Chosen" mat-menu-item (click)="changeLimit(10)"> 10 </button>
+            <button class="Chosen" mat-menu-item (click)="changeLimit(14)"> 14 </button>
+          </mat-menu>
+        </div>
+      </div>
+      
+  
     </div>
+
+
+    <div class="products">
+      <div  class="product-card" *ngFor="let product of products.slice(0, itensByPage) | FilterCategory: filterCategory | FilterPrice: filterPrice  | FilterModel: filterModel">
+        <img (click)="singleProductPage(product.id_product)"   [src]="product.image" alt="{{ product.p_name }}" class="product-image"/>
+        <div class="product-details">
+
+            <div class="name-avaliation">
+              <h3>{{ product.p_name }}</h3>
+              <h3 class="aval"> <i class="fa-solid fa-star"></i> ({{ product.avaliation }}) </h3>
+            </div>
+
+            <div class="price-add-cart">
+              <p><strong>$ {{ product.price  }}</strong></p>
+              <button class="addCart" (click)="addToCart(product)"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+
+        </div>
+      </div>
+    </div>  
+
+
   </div>
   
     </div>
