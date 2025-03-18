@@ -3,7 +3,7 @@ import { productModel } from '../models/product.model';
 
 @Pipe({
   name: 'FilterPrice',
-  standalone: true,
+  standalone: false,
 })
 
 export class FilterPrice implements PipeTransform {
