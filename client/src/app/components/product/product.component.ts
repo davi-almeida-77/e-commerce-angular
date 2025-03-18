@@ -31,6 +31,8 @@ export class ProductComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.productId = +params.get('id')!; 
       this.loadProductData(); 
+
+      window.scrollTo(0, 0);
     });
   }
 

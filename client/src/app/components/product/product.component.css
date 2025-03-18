@@ -58,7 +58,7 @@
 }
 
 .product-title  a {
-  color: #e64a19;
+  color: #f3770a;
 }
 
 .description {
@@ -113,7 +113,7 @@
 }
 
 .add-to-cart {
-  background-color: #ff5722;
+  background-color: #f3770a;
   color: white;
   border: none;
   padding: 10px;
@@ -218,5 +218,5 @@
 
 .icon-bubble i {
   font-size: 20px;  
-  color: #e64a19;  
+  color: #f3770a;  
 }
