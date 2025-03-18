@@ -19,6 +19,14 @@ import { ShopComponent } from './components/shop/shop.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { ListenProductsPipe } from './shared/pipes/listen-products.pipe';
+
+import { FilterModel } from './shared/pipes/filter-model.pipe';
+import { FilterCategoryPipe } from './shared/pipes/filter-category.pipe';
+import { FilterPrice } from './shared/pipes/filter-price.pipe';
+
 
 
 @NgModule({
@@ -33,15 +41,21 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ProductComponent,
     ShopComponent,
     PageNotFoundComponent,
+    ListenProductsPipe,
+    FilterCategoryPipe,
+    FilterModel,
+    FilterPrice
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
-    MatSnackBarModule ,
-    FormsModule
-  ],
+    MatSnackBarModule,
+    MatButtonModule,
+    MatMenuModule,
+    FormsModule,
+],
   providers: [],
   bootstrap: [AppComponent]
 })
