@@ -1,45 +1,114 @@
 <div class="layout">
 
     <div class="main-content">
-            <!-- Seção: Produto de Destaque -->
-    <div id="highlight-product" style="height: 100vh;">
-        <!-- Aqui vai o conteúdo do produto em destaque -->
-        <h1>Produto de Destaque</h1>
+
+    <div id="highlight-product" >
+
+        <div class="container-highlights">
+            <div class="title-box">
+
+                <div class="title">
+                    <div class="Sh">
+                        <h1>Sh</h1>
+                    </div>
+                
+                    <div class="element">
+                        <div class="circle"></div> 
+                    </div>
+                
+                    <div class="es">
+                        <h1>es</h1>
+                    </div>
+                </div>
+                
+                <div class="collect">
+                    <h1>Collect !</h1>
+                </div>
+
+                <div class="text-apresentation">
+                    <p>Discover Our Stylish and Comfortable  shoes, perfect for Every 
+                        occasiation and need. 
+                    </p>
+
+                    <button routerLink="/shop"> Shop Now </button>
+                </div>
+                
+            
+            
+            </div>
+
+            <div class="product-image">
+                
+                <img src="https://images.footlocker.com/is/image/FLEU/316705460604_01?wid=500&hei=500&fmt=png-alpha" alt="">
+
+
+            </div>
+        </div>
     </div>
 
-    <!-- Seção: Trending Products -->
-    <div id="trending-products" style="height: 60vh;">
-        <!-- Conteúdo dos produtos em alta -->
-        <h2>Trending Products</h2>
+
+    <div id="trending-products">
+
+        <div class="title-and-arrow">
+                <div class="title-box-arrow">
+                    <h2>Trending Products</h2>
+                </div>
+
+                <div class="arrow-box">
+                    <button class="active"> <i class="fa-solid fa-arrow-left"></i> </button>
+                    <button> <i class="fa-solid fa-arrow-right"></i> </button>
+                </div>
+
+        </div>
+
+        <!-- <div class="trending-products-cards">
+
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+
+                <div class="swiper-slide" *ngFor="let cardProduct of products">
+                  <div class="product-card">
+                    <img [src]="cardProduct.image" alt="{{ cardProduct.p_name }}" class="card-image"/>
+                    <div class="product-details">
+                      <div class="name-avaliation">
+                        <h3>{{ cardProduct.p_name }}</h3>
+                        <h3 class="aval"><i class="fa-solid fa-star"></i> ({{ cardProduct.avaliation }})</h3>
+                      </div>
+                      <div class="price-add-cart">
+                        <p><strong>$ {{ cardProduct.price }}</strong></p>
+                        <button class="addCart" (click)="addToCart(cardProduct)">
+                          <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+           -->
+
     </div>
 
-    <!-- Seção: See Our Collection -->
-    <div id="see-our-collection" style="height: 60vh;">
-        <!-- Coleção disponível -->
-        <h2>See Our Collection</h2>
-    </div>
-
-    <!-- Seção: Best Seller -->
     <div id="best-seller" style="height: 60vh;">
-        <!-- Produtos mais vendidos -->
+
         <h2>Best Seller</h2>
     </div>
 
-    <!-- Seção: Details -->
     <div id="details" style="height: 4vh;">
-        <!-- Detalhes do e-commerce ou página -->
+
         <h2>Details</h2>
     </div>
 
-    <!-- Seção: Why Choose Us -->
-    <div id="why-choose-us" style="height: 40vh;">
-        <!-- Razões para escolher o e-commerce -->
-        <h2>Why Choose Us</h2>
-    </div>
 
-    <!-- Seção: Blog -->
+
     <div id="blog" style="height: 60vh;">
-        <!-- Postagens de blog ou artigos -->
+   
         <h2>Blog</h2>
     </div>
     </div>

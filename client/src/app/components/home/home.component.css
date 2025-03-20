@@ -1,20 +1,121 @@
 .layout {
-    min-height: 100vh; /* Garante que o layout ocupe toda a altura da tela */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
   
   .header {
-    height: 10vh; /* Ajusta a altura do cabeçalho */
+    height: 10vh;
   }
   
   .footer {
-    height: 10vh; /* Ajusta a altura do rodapé */
+    height: 10vh; 
   }
   
   .main-content {
-    flex: 1; /* Preenche o restante da tela com o conteúdo principal */
+    flex: 1; 
     padding: 20px;
     overflow: auto;
   }
   
+  .container-highlights {
+    display: flex;
+  }
+
+  .container-highlights{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+  }
+
+  .container-highlights .title-box h1 {
+    font-size: 110px;
+  }
+
+  .container-highlights .title-box .element {
+    height: 10px;
+    width: 190px;
+    border: 10px solid #f3770a;
+    padding: 20px;
+    border-radius: 25px;
+    margin-top: 10px;
+  }
+
+  .product-image {
+    width: 50%;
+  }
+
+  .title-box {
+  display: flex;
+  flex-direction: column;
+  margin: 10% auto;
+  width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+ .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+ }
+
+.text-apresentation  p {
+  width: 40%;
+  color: #ccc;
+  margin: 0 auto;
+  text-align: start;
+}
+
+.text-apresentation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-apresentation button {
+  border: none;
+  padding: 20px 40px;
+  border-radius: 25px;
+  background: #f3770a;
+  color: #fff;
+  cursor: pointer;
+}
+
+.text-apresentation button:hover {
+  transition: 300ms;
+  background: #e98d3d;
+}
+
+.title-and-arrow  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 90px;
+}
+
+.title-box-arrow h2 {
+    font-size: 60px;
+    color: #49494C;
+    font-weight: 500;
+}
+
+.arrow-box  button {
+  border: none;
+    width: 50px;
+    height: 50px;
+    background: #f3770a;
+    border-radius: 50%;
+    color: #fff;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.arrow-box  button.active {
+  background: #fbca9e;
+  border: 1px solid #f3770a;
+}
