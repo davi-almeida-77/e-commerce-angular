@@ -94,10 +94,52 @@
           
     </div>
 
-    <div class="best-seller" style="height: 100vh;">
-        <div class="best-seller-title">
-            <h2> Best Seller </h2>
+    <div class="best-seller">
+
+      <div class="best-seller-title">
+        <h2> Best Seller </h2>
+    </div>
+
+    <div class="best-seller-grid">
+      <div class="best-seller-four-elements">
+
+        <div class="best-seller-card" *ngFor="let product of bestSellers.slice(1, 5); let i = index">
+          <img src="{{ product.image }}" alt="">
+
+          <div class="best-seller-card-info">
+            <h3> {{ product.p_name }} </h3>
+            <p> {{ product.price | currency  }} </p>
+          </div>
+
         </div>
+
+    </div>
+
+      <div class="best-seller-main-element">
+        <div class="best-seller-card" *ngFor="let product of bestSellers let i = index">
+
+          <div class="best-seller-main-card" *ngIf="i=== 0">
+            <img src="{{ product.image }}" alt="">
+
+            <div class="main-card-info">
+              <h3> {{ product.p_name }} </h3>
+              <p> {{ product.price | currency  }} </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+  </div>
+
+
+    </div>
+
+    <div class="technology">
+      
     </div>
 
     </div>

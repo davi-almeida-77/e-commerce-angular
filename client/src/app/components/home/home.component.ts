@@ -15,7 +15,8 @@ import 'swiper/swiper-bundle.css';
 export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   products: productModel[] = [];
-  swiperInitialized = false;  
+  swiperInitialized = false; 
+  bestSellers: any[] = [];
 
   constructor(
     private productService: ProductService,
@@ -25,13 +26,23 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(
-      (data: productModel[]) => {
+      ( data: productModel[] ) => {
         this.products = data;
       },
-      (error) => {
+      ( error ) => {
         this.notify.showError('Error in Find Products');
       }
     );
+
+    this.productService.getBestSeller().subscribe(
+      ( data ) => {
+        this.bestSellers = data; 
+      },
+      ( error ) => {
+        console.error('Error fetching best sellers:', error);
+      }
+    )
+
   }
 
   ngAfterViewInit(): void {

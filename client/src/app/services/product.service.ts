@@ -25,5 +25,9 @@ export class ProductService {
   getProductImages(id: number): Observable<ProductImage[]> {
     return this.http.get<ProductImage[]>(`${this.url}products/images/${id}`);
   }
+
+  getBestSeller(): Observable<productModel[]> {
+    return this.http.get<productModel[]>(this.url + 'products/most-sold');
+  }
   
 }
