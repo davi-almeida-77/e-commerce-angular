@@ -47,70 +47,59 @@
     </div>
 
 
-    <div id="trending-products">
-
+    <div class="trending-products">
         <div class="title-and-arrow">
-                <div class="title-box-arrow">
-                    <h2>Trending Products</h2>
-                </div>
-
-                <div class="arrow-box">
-                    <button class="active"> <i class="fa-solid fa-arrow-left"></i> </button>
-                    <button> <i class="fa-solid fa-arrow-right"></i> </button>
-                </div>
-
-        </div>
-
-        <!-- <div class="trending-products-cards">
-
-            <div class="swiper-container">
-              <div class="swiper-wrapper">
-
-                <div class="swiper-slide" *ngFor="let cardProduct of products">
-                  <div class="product-card">
-                    <img [src]="cardProduct.image" alt="{{ cardProduct.p_name }}" class="card-image"/>
-                    <div class="product-details">
-                      <div class="name-avaliation">
-                        <h3>{{ cardProduct.p_name }}</h3>
-                        <h3 class="aval"><i class="fa-solid fa-star"></i> ({{ cardProduct.avaliation }})</h3>
-                      </div>
-                      <div class="price-add-cart">
-                        <p><strong>$ {{ cardProduct.price }}</strong></p>
-                        <button class="addCart" (click)="addToCart(cardProduct)">
-                          <i class="fa-solid fa-cart-plus"></i>
-                        </button>
-                      </div>
+            <div class="title-box-arrow">
+                <h2>Trending Products</h2>
+            </div>
+    
+            <div class="arrow-box">
+                <button 
+                  class="custom-prev" 
+                  [ngClass]="{'active': isActivePrev}" 
+                  (click)="toggleActive('prev')">
+                  <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button 
+                  class="custom-next" 
+                  [ngClass]="{'active': isActiveNext}" 
+                  (click)="toggleActive('next')">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+              
+    
+    </div>
+    
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" *ngFor="let product of products">
+                <div class="product-card">
+                  <img [src]="product.image" alt="{{ product.p_name }}" class="product-image"/>
+                  <div class="product-details">
+                    <div class="name-avaliation">
+                      <h3>{{ product.p_name }}</h3>
+                      <h3 class="aval"><i class="fa-solid fa-star"></i> ({{ product.avaliation }})</h3>
+                    </div>
+                    <div class="price-add-cart">
+                      <p><strong>$ {{ product.price }}</strong></p>
+                      <button class="addCart" (click)="addToCart(product)"><i class="fa-solid fa-cart-plus"></i></button>
                     </div>
                   </div>
                 </div>
               </div>
-          
-
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-pagination"></div>
             </div>
+          
           </div>
-           -->
-
+          
     </div>
 
-    <div id="best-seller" style="height: 60vh;">
-
-        <h2>Best Seller</h2>
+    <div class="best-seller" style="height: 100vh;">
+        <div class="best-seller-title">
+            <h2> Best Seller </h2>
+        </div>
     </div>
 
-    <div id="details" style="height: 4vh;">
-
-        <h2>Details</h2>
-    </div>
-
-
-
-    <div id="blog" style="height: 60vh;">
-   
-        <h2>Blog</h2>
-    </div>
     </div>
     
 </div>
