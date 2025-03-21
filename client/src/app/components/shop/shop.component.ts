@@ -66,7 +66,6 @@ export class ShopComponent implements OnInit {
     this.itensByPage = newLimit
     this.currentLimit = newLimit;
 
-    this.notify.showInfo('Change Quantity  of products listed ')
 
     this.cdr.detectChanges();
   }
@@ -77,6 +76,8 @@ export class ShopComponent implements OnInit {
     this.filterModel = '';
     this.currentLimit =  14;
     this.changeLimit(this.currentLimit);
+
+    this.notify.showInfo('Reseted Filters ')
 
     this.cdr.detectChanges();
   }
