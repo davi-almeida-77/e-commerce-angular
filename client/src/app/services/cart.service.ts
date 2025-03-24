@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { productModel } from '../shared/models/product.model';
 import { Router } from '@angular/router';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class CartService {
   totalItens: number = 0;
   totalPrice: number = 0;
 
-  constructor( private router: Router ) {
+  constructor( private router: Router, notify: NotificationService ) {
     const storedCart = JSON.parse(sessionStorage.getItem('cart') || '[]');
     this.cartSubject.next(storedCart);  
     this.updateCart();  
@@ -22,26 +23,30 @@ export class CartService {
   totalItens$ = this.totalItensSubject.asObservable();
 
   
-  addToCart( product: productModel ): void {
+  addToCart(product: productModel): void {
     let cart = this.cartSubject.getValue();  
+  
+    const existentProduct = cart.find((item: productModel) => item.id_product === product.id_product);
 
-    const existentProduct = cart.find(( item: productModel ) => item.id_product === product.id_product);
-
-
-    if ( existentProduct ) {
-      existentProduct.quantity = (existentProduct.quantity || 0) + 1;  
+    const quantityToAdd = product.quantity ?? 1;
+  
+    if (existentProduct) {
+      
+      existentProduct.quantity = (existentProduct.quantity || 0) + quantityToAdd;
     } 
     else {
       cart.push({
         ...product,
-        quantity: 1,
+        quantity: quantityToAdd,
       });
     }
+  
+    
     sessionStorage.setItem('cart', JSON.stringify(cart));
     this.cartSubject.next(cart);  
     this.updateCart();  
-
   }
+  
 
   
   updateCart(): void {

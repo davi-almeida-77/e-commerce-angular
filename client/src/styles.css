@@ -104,3 +104,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: flex;
   justify-content: flex-end; 
 }
+
+::selection {
+  background-color:  rgba(255, 128, 17, 0.8); 
+  color: white; 
+  transition: 300ms;
+}
