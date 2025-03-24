@@ -10,3 +10,5 @@ src/environments/
 
 
 .DS_Store
+
+src/.angular/cache
