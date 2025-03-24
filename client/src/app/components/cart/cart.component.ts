@@ -5,10 +5,6 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { NotificationService } from '../../services/notification.service';
 
-
-
-
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -19,7 +15,9 @@ import { NotificationService } from '../../services/notification.service';
 export class CartComponent implements OnInit {
   cartItems: productModel[] = [];  
   totalItems: number = 0;           
-  totalPrice: number = 0;          
+  totalPrice: number = 0;
+  cartExists: boolean = false;
+        
 
   constructor(
     private cartService: CartService,
@@ -28,24 +26,28 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    
+
+    this.cartExists = sessionStorage.getItem('cart') !== null;    
+
     this.cartService.getCartItems().subscribe((cart: productModel[]) => {
       this.cartItems = cart; 
-      this.totalItems = this.cartService.getTotalItems(); 
-      this.totalPrice = this.cartService.getTotalPrice(); 
+      this.totalItems = this.cartService.getTotalItems();  
+      this.totalPrice = this.cartService.getTotalPrice();  
+    });
+
+   
+    this.cartService.totalItens$.subscribe((total) => {
+      this.totalItems = total;  
     });
   }
 
   resetCart() {
     this.cartService.resetCart(); 
-  
-    this.notify.showInfo('Cart was Cleaned ');
+
+    this.notify.showInfo('Cart was Cleaned');
   
     setTimeout(() => {
-
-      this.router.navigate(['/shop']);
+      this.router.navigate(['/shop']);  
     }, 3000);  
   }
-  
-
 }
