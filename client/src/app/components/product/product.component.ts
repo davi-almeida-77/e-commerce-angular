@@ -14,7 +14,7 @@ import { NotificationService } from '../../services/notification.service';
 export class ProductComponent implements OnInit {
   productId!: number; 
   product: any; 
-  quantity: number = 1;  
+
   images: ProductImage [] = [];
   activeImageIndex: number = 0;
 
@@ -60,12 +60,16 @@ export class ProductComponent implements OnInit {
   }
   
   addToCart() {
-    this.notify.showSuccess('Sucess  ! Product Add On Cart ')
+    this.notify.showSuccess('Success! Product added to cart.');
+
     if (this.product) {
-      this.cartService.addToCart( {
+
+      const quantityToAdd = this.quantityItems > 1 ? this.quantityItems : 1;
+
+      this.cartService.addToCart({
         ...this.product,
-        quantity: this.quantity,
-      })
+        quantity: quantityToAdd,
+      });
     }
   }
 
