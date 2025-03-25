@@ -1,7 +1,7 @@
 .page-info {
     height: 570px;
     width: 100%;
-    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354087225964367963/image.png?ex=67e40380&is=67e2b200&hm=28119eec4b6bc1c1975d89f7d6d1d88418f74de65c8825d3c46d5457dc19a6f6&');
+    background: url('/assets/img/Contact.png');
     background-size: cover;
   }
 
@@ -106,7 +106,7 @@
 .addres-img {
     height: 600px;
     width: 100%;
-    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354081442551828481/image.png?ex=67e3fe1d&is=67e2ac9d&hm=32cfd509125ea7670863decd7f7656ee0f872cd7773fedc8dc6b03a9578b6094&');
+    background: url('/assets/img/Map.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
