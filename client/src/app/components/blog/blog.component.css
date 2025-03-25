@@ -1,3 +1,10 @@
+.page-info {
+    height: 570px;
+    width: 100%;
+    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354087148701093909/image.png?ex=67e4036d&is=67e2b1ed&hm=8b7c3a162fcfba85d2220323a2b95d0cafda4c6e84d5eabffc97d7a688378238&');
+    background-size: cover;
+  }
+  
 
  .container-blog {
     display: flex;

@@ -1,3 +1,10 @@
+.page-info {
+  height: 570px;
+  width: 100%;
+  background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354085812937031720/image.png?ex=67e4022f&is=67e2b0af&hm=73d6e95124f9ea8f10bdb4c57eb09e543d99988f3336ffd389231525c7dce85f&');
+  background-size: cover;
+}
+
 .our-story {
     margin: 30px 0;
 }
@@ -10,14 +17,14 @@
 }
 
 .our-story-box {
-    height: 450px;
-    width: 90%;
-    margin: 0 auto;
-    display: flex
-;
-    background: #F7F7F7;
-    align-items: center;
-    padding: 0 0 0 45px;
+  height: 450px;
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  background: #F7F7F7;
+  align-items: center;
+  padding: 0 0 0 45px;
+  justify-content: space-between;
 }
 
 .box {
@@ -39,7 +46,7 @@
 .journey .journey-img {
     height: 100%;
     width: 40%;
-    background: url('https://www.instyle.com/thmb/ReW2rjfAJSijec71rpxzhuSQjJE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1257311919-9c242f9e9f16477a899922f26fc165e4.jpg');
+    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354083504803283034/image.png?ex=67e40009&is=67e2ae89&hm=c97abe5dfda5d2ec6a4353dbf6c638bd2510d98cc4b3075c623fed749ce821da&');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
@@ -80,11 +87,11 @@
 
 .image {
     height: 100%;
-    width: 40%;
-    background: url('https://www.denovo.shoes/cdn/shop/articles/Looks-com-tenis-casual_-veja-6-inspiracoes-para-o-seu-dia-a-dia-Denovo-Shoes-22094921.png?v=1697226652');
+    width: 500px;
+    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354083699053821992/image.png?ex=67e40037&is=67e2aeb7&hm=ef05760c6c2d453a6dde71a11ee3f747e913eee5da1d4d5d7789e1a3729673da&');
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: contain;
+    background-size: cover;
 }
 
 .our-commitment {
@@ -155,7 +162,7 @@
   }
   
   .image-2 {
-    background: url('https://w0.peakpx.com/wallpaper/233/676/HD-wallpaper-girl-wearning-nike-sneakers-girls-model.jpg');
+    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354082857894674493/image.png?ex=67e3ff6e&is=67e2adee&hm=d7884897f06763fed107c8f13c5465fdcbf8842f33e080e99126e7ba9fb87b91&');
     background-size: cover;
     background-position: center left;
     z-index: 1;
@@ -245,7 +252,7 @@
     height: 100%;
     width: 30%;
     border-radius: 15px;
-    background: url('https://img.freepik.com/fotos-premium/mao-segurando-o-tenis-com-fundo-desfocado-de-loja-de-moda_368093-928.jpg');
+    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354082611005231194/image.png?ex=67e3ff34&is=67e2adb4&hm=e5a1e6b8d8b72f4badc653d28e26f7ad5bffd8cea8b024bb61059573df82b0ad&');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
