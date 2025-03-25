@@ -27,6 +27,7 @@ import { FilterModel } from './shared/pipes/filter-model.pipe';
 import { FilterCategoryPipe } from './shared/pipes/filter-category.pipe';
 import { FilterPrice } from './shared/pipes/filter-price.pipe';
 
+import { IMAGE_CONFIG } from '@angular/common';
 
 
 @NgModule({
@@ -56,7 +57,15 @@ import { FilterPrice } from './shared/pipes/filter-price.pipe';
     MatMenuModule,
     FormsModule,
 ],
-  providers: [],
+  providers: [
+    {
+      provide: IMAGE_CONFIG,
+      useValue: {
+        disableImageSizeWarning: true,
+        disableImageLazyLoadWarning: true
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
