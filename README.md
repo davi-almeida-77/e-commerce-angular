@@ -20,6 +20,13 @@ In summary, this project not only provided me the opportunity to deepen my knowl
 
 ## Here's an example GIF that shows how the project works:
 
+# Demo Of All Pages in Site  
+
 ![Demo Pages GIF](https://github.com/DaviAlmeidaD3V/e-commerce-angular/raw/main/client/src/assets/img/DemoPages.gif)<br><br>
+
+# Demo Of Buy  
 ![Buy Demo GIF](https://github.com/DaviAlmeidaD3V/e-commerce-angular/raw/main/client/src/assets/img/BuyDemo.gif)<br><br><br>
+
+# Demo Of Login and Register  
+
 ![Login Register Demo GIF](https://github.com/DaviAlmeidaD3V/e-commerce-angular/blob/main/client/src/assets/img/LoginRegisterDemo.gif)
