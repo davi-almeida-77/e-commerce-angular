@@ -20,6 +20,6 @@ In summary, this project not only provided me the opportunity to deepen my knowl
 
 ## Here's an example GIF that shows how the project works:
 
-![Demo Pages GIF](https://github.com/DaviAlmeidaD3V/e-commerce-angular/raw/main/client/src/assets/img/DemoPages.gif)<br>
-![Buy Demo GIF](https://github.com/DaviAlmeidaD3V/e-commerce-angular/raw/main/client/src/assets/img/BuyDemo.gif)<br>
+![Demo Pages GIF](https://github.com/DaviAlmeidaD3V/e-commerce-angular/raw/main/client/src/assets/img/DemoPages.gif)<br><br>
+![Buy Demo GIF](https://github.com/DaviAlmeidaD3V/e-commerce-angular/raw/main/client/src/assets/img/BuyDemo.gif)<br><br><br>
 ![Login Register Demo GIF](https://github.com/DaviAlmeidaD3V/e-commerce-angular/blob/main/client/src/assets/img/LoginRegisterDemo.gif)
