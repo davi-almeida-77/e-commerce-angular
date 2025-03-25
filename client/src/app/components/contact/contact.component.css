@@ -1,61 +1,198 @@
+.page-info {
+    height: 570px;
+    width: 100%;
+    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354087225964367963/image.png?ex=67e40380&is=67e2b200&hm=28119eec4b6bc1c1975d89f7d6d1d88418f74de65c8825d3c46d5457dc19a6f6&');
+    background-size: cover;
+  }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
+.container h3 {
+    font-size: 14px;
+    width: 620px;
     text-align: center;
-    padding-top: 50px;
+    margin: 30px auto;
+    color: #86888C;
+    font-weight: 500;
+}
+
+.container h3 span {
+    color: #000;
+}
+
+.container h1 {
+    margin: 40px 0 0 auto;
+    font-size: 70px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.contact-send-message {
     display: flex;
-    font-family: 'Georgia', 'Times New Roman', serif; 
-    line-height: 1.6; 
+    margin: 10% auto;
+    width: 80%;
 }
 
-h1 {
-    color: #333;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+.infos {
+    width: 50%;
     margin: 0 auto;
+
+}
+
+.infos h1 {
+    font-size: 30px;
     text-align: center;
-}
-
-p {
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.highlight {
-    background-color: #ffc593;
-    padding: 0.2rem 0.4rem;
-    border-radius: 5px;
     font-weight: bold;
 }
 
-.container {
+.infos h3 {
+    font-size: 14px;
+    width: 350px;
+    margin: 0 auto;
+    color: #86888C;
+    font-weight: 500;
+    text-align: start;
+}
+
+.send-message {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #E8E8E8;
+    border-radius: 15px;
+    height: 665px;
+    padding: 25px;
+}
+
+.send-message h3 {
+    font-size: 38px;
+    color: #000000;
+    font-weight: 500;
+}
+
+.box-info {
+    display: flex
+    ;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        padding: 20px;
+}
+
+.box-info h3 {
+    font-size: 25px;
+    font-weight: 900;
+    color: #000;
+}
+
+.box-info h5 {
+    color: #86888C;
+    font-weight: 400;
+    font-size: 16px;
+    width: 170px;
+}
+
+.box-info i {
+    color: #f3770a;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.box-info .op {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px;
+}
+
+.addres-img {
+    height: 600px;
+    width: 100%;
+    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354081442551828481/image.png?ex=67e3fe1d&is=67e2ac9d&hm=32cfd509125ea7670863decd7f7656ee0f872cd7773fedc8dc6b03a9578b6094&');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+
+.form-card {
+    background-color: #fff;
     padding: 20px;
+    margin: 50px auto;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
 }
 
-.content {
-    margin-top: 30px;
-}
-
-
-p {
-    text-indent: 50px; 
-    margin-bottom: 40px; 
-}
-
-
-
-p:first-of-type {
-    margin-top: 0; 
-}
-
-a {
-    text-decoration: none;
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
     color: #333;
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus {
+    border-color: #64625b;
+    outline: none;
+}
+
+
+button {
+    background-color: #f3770a;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #ff9360;
+}
+
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-group input {
+    width: 100%;
+}
+
+
+@media (max-width: 600px) {
+    .form-card {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group input {
+        width: 100%;
+    }
 }
