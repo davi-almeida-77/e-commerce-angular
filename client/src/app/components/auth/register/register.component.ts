@@ -53,7 +53,7 @@ matchPasswords( u_password: string, m_password: string ): boolean {
         response => {
           this.loading = false;
           this._router.navigate(['/']);
-          this.notify.showSuccess('Login  Sucessful ')
+          this.notify.showSuccess('Register  Sucessful ')
           this.cdr.detectChanges();  
         },
         (err) => {

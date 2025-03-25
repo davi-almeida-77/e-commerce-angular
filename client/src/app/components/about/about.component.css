@@ -1,7 +1,7 @@
 .page-info {
   height: 570px;
   width: 100%;
-  background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354085812937031720/image.png?ex=67e4022f&is=67e2b0af&hm=73d6e95124f9ea8f10bdb4c57eb09e543d99988f3336ffd389231525c7dce85f&');
+  background: url('/assets/img/About.png');
   background-size: cover;
 }
 
@@ -46,7 +46,7 @@
 .journey .journey-img {
     height: 100%;
     width: 40%;
-    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354083504803283034/image.png?ex=67e40009&is=67e2ae89&hm=c97abe5dfda5d2ec6a4353dbf6c638bd2510d98cc4b3075c623fed749ce821da&');
+    background: url('/assets/img/ModelOne.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
@@ -88,7 +88,7 @@
 .image {
     height: 100%;
     width: 500px;
-    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354083699053821992/image.png?ex=67e40037&is=67e2aeb7&hm=ef05760c6c2d453a6dde71a11ee3f747e913eee5da1d4d5d7789e1a3729673da&');
+    background: url('/assets/img/ModelTwo.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -150,7 +150,7 @@
   }
   
   .image-1 {
-    background: url('https://images.pexels.com/photos/15336566/pexels-photo-15336566.jpeg?cs=srgb&dl=pexels-wesleydavi-15336566.jpg&fm=jpg');
+    background: url('/assets/img/ModelFive.jpg');
     background-size: cover;
     background-position: center center;
     z-index: -1;
@@ -162,7 +162,7 @@
   }
   
   .image-2 {
-    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354082857894674493/image.png?ex=67e3ff6e&is=67e2adee&hm=d7884897f06763fed107c8f13c5465fdcbf8842f33e080e99126e7ba9fb87b91&');
+    background: url('/assets/img/Model3.png');
     background-size: cover;
     background-position: center left;
     z-index: 1;
@@ -252,7 +252,7 @@
     height: 100%;
     width: 30%;
     border-radius: 15px;
-    background: url('https://cdn.discordapp.com/attachments/1280989997394165951/1354082611005231194/image.png?ex=67e3ff34&is=67e2adb4&hm=e5a1e6b8d8b72f4badc653d28e26f7ad5bffd8cea8b024bb61059573df82b0ad&');
+    background: url('/assets/img/ModelFour.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
