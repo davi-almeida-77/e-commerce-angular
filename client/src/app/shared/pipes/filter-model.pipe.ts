@@ -26,6 +26,9 @@ export class FilterModel implements PipeTransform {
     if (model === 'Running') {
       return sortedProducts.filter(product => product.model === 'Running');
     }
+    if (model === 'Football') {
+      return sortedProducts.filter(product => product.model === 'Football');
+    }
 
     return sortedProducts;
   }

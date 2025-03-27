@@ -35,7 +35,6 @@ CREATE TABLE `products` (
     p_name VARCHAR(255) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     product_desc TEXT,
-    short_desc TEXT,
     image VARCHAR (355),
     category VARCHAR(100) NOT NULL,
     model VARCHAR(100) NOT NULL,

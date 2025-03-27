@@ -21,13 +21,13 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { ListenProductsPipe } from './shared/pipes/listen-products.pipe';
 
 import { FilterModel } from './shared/pipes/filter-model.pipe';
 import { FilterCategoryPipe } from './shared/pipes/filter-category.pipe';
 import { FilterPrice } from './shared/pipes/filter-price.pipe';
 
 import { IMAGE_CONFIG } from '@angular/common';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -42,10 +42,10 @@ import { IMAGE_CONFIG } from '@angular/common';
     ProductComponent,
     ShopComponent,
     PageNotFoundComponent,
-    ListenProductsPipe,
     FilterCategoryPipe,
     FilterModel,
-    FilterPrice
+    FilterPrice,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

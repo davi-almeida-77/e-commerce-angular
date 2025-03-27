@@ -38,6 +38,7 @@
         <li (click)="filterModel = 'Casual'  " [class.active]="filterModel === 'Casual'"><label >  Casual   </label></li>
         <li (click)="filterModel = 'Fashion'  " [class.active]="filterModel === 'Fashion'"><label >  Fashion   </label></li>
         <li (click)="filterModel = 'Running'  " [class.active]="filterModel === 'Running'"><label >  Running   </label></li>
+        <li (click)="filterModel = 'Football'  " [class.active]="filterModel === 'Football'"><label >  Football   </label></li>
       </ul>
 
     </div>
@@ -55,9 +56,9 @@
 
       <div class="showing">
 
-  
-        <p>Showing   {{ currentLimit }} of {{ products.length }} Item (s)</p>
+        <p>Showing  {{ (products | FilterCategory: filterCategory | FilterPrice: filterPrice | FilterModel: filterModel).length }} of {{ currentLimit }} item(s)</p>
       </div>
+      
   
       <div class="filter-options">
         <div class="show">
@@ -68,10 +69,16 @@
           </button>
       
           <mat-menu #menu="matMenu">
-            <button class="Chosen" mat-menu-item (click)="changeLimit(8)"> 8 </button>
-            <button class="Chosen" mat-menu-item (click)="changeLimit(10)"> 10 </button>
-            <button class="Chosen" mat-menu-item (click)="changeLimit(14)"> 14 </button>
+            <button 
+              *ngFor="let limit of limits" 
+              mat-menu-item 
+              class="Chosen" 
+              (click)="changeLimit(limit)">
+              {{ limit }} 
+            </button>
           </mat-menu>
+          
+
         </div>
       </div>
       
@@ -80,7 +87,8 @@
 
 
     <div class="products">
-      <div  class="product-card" *ngFor="let product of products.slice(0, itensByPage) | FilterCategory: filterCategory | FilterPrice: filterPrice  | FilterModel: filterModel">
+      <div  class="product-card" *ngFor="let product of (products | FilterCategory: filterCategory | FilterPrice: filterPrice | FilterModel: filterModel)
+                                      .slice(0, currentLimit)">
         <img (click)="singleProductPage(product.id_product)"   [src]="product.image" alt="{{ product.p_name }}" class="product-image"/>
         <div class="product-details">
 
