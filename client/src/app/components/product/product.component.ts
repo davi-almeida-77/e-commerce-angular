@@ -4,6 +4,7 @@ import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 import { ProductImage } from '../../shared/models/product.images';
 import { NotificationService } from '../../services/notification.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product',
@@ -60,7 +61,23 @@ export class ProductComponent implements OnInit {
   }
   
   addToCart() {
-    this.notify.showSuccess('Success! Product added to cart.');
+
+    let product_name =  this.product.p_name;
+    let productImage = this.product.image;
+
+    Swal.fire({
+      title: `  "${product_name}"  Added to Cart`, 
+      text: 'The Product Was Added on Cart ',
+      icon: 'success',
+      imageUrl: productImage,  
+      imageWidth: 120,  
+      imageHeight: 120,
+      position: 'top-right',  
+      showConfirmButton: false,   
+      timer: 3000,  
+      toast: true,  
+      timerProgressBar: true  
+    });
 
     if (this.product) {
 

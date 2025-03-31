@@ -4,6 +4,7 @@ import { CartService } from '../../services/cart.service';
 import { NotificationService } from '../../services/notification.service';
 import { productModel } from '../../shared/models/product.model'; 
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-shop',
@@ -41,7 +42,15 @@ export class ShopComponent implements OnInit, OnChanges {
         this.calcLimits();  
       },
       (error) => {
-        this.notify.showError('Error in Find Products');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error on Load Products ',
+          position: 'top-right',  
+          showConfirmButton: false,   
+          timer: 3000,  
+          toast: true,  
+          timerProgressBar: true 
+        });
       }
     );
 
@@ -76,7 +85,23 @@ export class ShopComponent implements OnInit, OnChanges {
 
 
   addToCart(product: productModel): void {
-    this.notify.showSuccess('Product added on Cart');
+
+    if ( product ) {
+      Swal.fire({
+        title: `  "${product.p_name}"  Added to Cart`, 
+        text: 'The Product Was Added on Cart ',
+        icon: 'success',
+        imageUrl: product.image,  
+        imageWidth: 120,  
+        imageHeight: 120,
+        position: 'top-right',  
+        showConfirmButton: false,   
+        timer: 3000,  
+        toast: true,  
+        timerProgressBar: true  
+      })
+    }
+
     this.cartService.addToCart({
       ...product,
       quantity: 1,
@@ -102,7 +127,15 @@ export class ShopComponent implements OnInit, OnChanges {
 
     this.changeLimit(this.currentLimit);
 
-    this.notify.showInfo('Reseted Filters');
+    Swal.fire({
+      icon: 'info',
+      title: 'Reseted Filters',
+      position: 'top-right',  
+      showConfirmButton: false,   
+      timer: 3000,  
+      toast: true,  
+      timerProgressBar: true 
+    });
     this.cdr.detectChanges(); 
   }
 }
