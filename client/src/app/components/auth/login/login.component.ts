@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';  
 import { NotificationService } from '../../../services/notification.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -37,15 +38,42 @@ export class LoginComponent {
           response => {
             this.loading = false;
             this._router.navigate(['/']);
-            this.notify.showSuccess('Login  Sucessful ')
+                  Swal.fire ({
+                    title: "Sucessful",
+                    text: 'Login  Sucessful',
+                    icon: 'success',
+                    position: 'top-right',  
+                    showConfirmButton: false,   
+                    timer: 3000, 
+                    toast: true,  
+                    timerProgressBar: true  
+                  })
             this.cdr.detectChanges();  
           },
           (err) => {
             if (err.status === 401) {
-              this.notify.showError('Your email or password are incorrect');
+              Swal.fire ({
+                title: "Error",
+                text: 'Your email or password are incorrect',
+                icon: 'error',
+                position: 'top-right',  
+                showConfirmButton: false,   
+                timer: 3000, 
+                toast: true,  
+                timerProgressBar: true  
+              })
             } else {
+              Swal.fire ({
+                title: "Error",
+                text: 'An error occurred. Please try again',
+                icon: 'error',
+                position: 'top-right',  
+                showConfirmButton: false,   
+                timer: 3000, 
+                toast: true,  
+                timerProgressBar: true  
+              })
 
-              this.notify.showError('An error occurred. Please try again');
             }
             if (err.status !== 401) {
               console.error('Error:', err); 
