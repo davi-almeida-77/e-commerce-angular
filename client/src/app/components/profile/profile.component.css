@@ -1,0 +1,255 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 55px;
+    gap: 30px;
+    height: 100vh;
+}
+
+.container-pic {
+    height: 300px;
+    width: 255px;
+    width: 255px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.container-pic .img {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.container-pic .background {
+    background: url('https://t3.ftcdn.net/jpg/06/33/54/78/360_F_633547842_AugYzexTpMJ9z1YcpTKUBoqBF0CUCk10.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    height: 90px;
+    width: 90px;
+}
+
+.container-pic .email {
+    color: #ccc;
+    font-weight: lighter;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.container-pic .name {
+    margin: 0 auto;
+    text-transform: lowercase;
+    color: #f3770a;
+}
+
+.personal-details {
+    height: 500px;
+    width: 825px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+::ng-deep .mat-mdc-tab-body-wrapper {
+    margin: 10px;
+}
+  
+::ng-deep .mat-mdc-tab-body-content mat-tab-body-content-can-animate {
+    overflow: hidden;
+}
+
+::ng-deep .mat-mdc-tab-body-content {
+    overflow: hidden !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper mdc-text-field mdc-text-field--filled {
+    background-color: #fdfdfd;
+}
+
+.account-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr; 
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto; 
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+  }
+  
+  .info-item {
+    display: contents; 
+  }
+  
+  label {
+    font-weight: bold;
+    text-align: right;
+  }
+  
+  span {
+    text-align: left; 
+    color: #333;
+  }
+  
+  .container-profile {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  .container-profile ul li {
+    color: #ff9001;
+    text-transform: capitalize;
+    list-style-type: none;
+    padding: 10px 0;
+    font-weight: bold;
+  }
+
+  .container-profile  .title span {
+    color: #f3770a;
+    text-transform: uppercase;
+    font-size: 15px;
+  }
+
+  .profile-content {
+    padding: 20px;
+    margin: 0 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .profile-content ul span {
+    text-align: left;
+    color: #9b9b9b;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  .title {
+    color: #6d6f73;
+  }
+
+  .personal-details h1 {
+    color: #6d6f73;
+    padding: 5px;
+  }
+
+  .example-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 35%;
+  }
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  height: 60px !important;
+  width: 285px !important;
+  background-color: #f7f7f7 !important;
+}
+
+
+.mat-mdc-button,
+.mat-mdc-unelevated-button,
+.mat-mdc-raised-button,
+.mat-mdc-outlined-button {
+  color: #6d6d6d !important;
+  -webkit-tap-highlight-color: #ffe10800 !important;
+}
+
+::ng-deep .mat-mdc-button:hover,
+.mat-mdc-unelevated-button:hover,
+.mat-mdc-raised-button:hover,
+.mat-mdc-outlined-button:hover {
+  background-color: #f3770a;
+  color: white !important;
+  transition: 100ms;
+}
+
+::ng-deep .mat-mdc-button:focus,
+.mat-mdc-unelevated-button:focus,
+.mat-mdc-raised-button:focus,
+.mat-mdc-outlined-button:focus {
+  outline: none !important;
+  box-shadow: none !important; 
+}
+
+
+::ng-deep .mdc-floating-label--float-above {
+  color: #f3770a !important;
+}
+
+::ng-deep .mat-mdc-form-field:not(.mdc-text-field--disabled) .mdc-floating-label--float-above {
+  color: #f3770a !important;
+}
+
+::ng-deep .mat-mdc-form-field:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+  background-color: #f3770a !important; 
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-line-ripple::after {
+  background-color: #f3770a !important
+}
+
+::ng-deep .mdc-tab-bar .mdc-tab-indicator--active .mdc-tab-indicator__content--underline {
+  background-color: #f3770a !important;
+}
+
+:host ::ng-deep   .mdc-tab.mat-mdc-tab.mat-focus-indicator.mdc-tab--active.mdc-tab-indicator--active {
+
+  border-color: #f3770a;
+}
+
+.delete-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-delete-account {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  background: #f3770a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button-delete-account i {
+  font-size: 35px;
+  color: #fff;
+}
+
+.delete-container h1 {
+  text-align: center;
+  margin: 45px 0 0 0;
+  font-size: 20px;
+  padding: 30px;
+}
+
+.container-update-profile {
+  display: flex;
+}

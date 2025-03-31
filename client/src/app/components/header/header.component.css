@@ -162,3 +162,28 @@ header .logo h1  a:hover {
 header .nav ul li a.active {
   color: #f3770a;
 }
+
+.login-logout {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.login-logout i {
+  color: #877d75;
+  cursor: pointer;
+}
+
+.favorite {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  color: #877d75;
+  cursor: pointer;
+}
+
+.favorite  i:hover  {
+  color: #f3770a;
+  transition: 300ms;
+}

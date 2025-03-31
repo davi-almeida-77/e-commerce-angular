@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="container-pic">
+        <div class="img">
+
+            <div class="background">
+
+            </div>
+            <div class="email">
+                <div class="span"> {{ userProfile?.email }}</div>
+            </div>
+
+        </div>
+
+        <div class="name">
+            <h1> {{ userProfile?.username }} </h1>
+        </div>
+
+    </div>  
+
+    <div class="personal-details">
+
+        <h1>Account  Settings </h1>
+
+        <mat-tab-group>
+          
+          <mat-tab label="Profile">
+            <div class="container-profile">
+              <div class="title">
+                <h3> My Account </h3>
+              </div>
+
+  
+              <div class="profile-content">
+
+                <div class="persona-info">
+                  <ul>
+                    <span>First Name</span>
+                    <li>{{ userProfile?.f_name }} </li>
+                    <span>Last name</span>
+                    <li>   {{ userProfile?.l_name }}</li>
+                    <span>Password</span>
+                    <li>   {{ userProfile?.u_password }} </li>
+                  </ul>
+                </div>
+
+                <div class="email-info">
+                  <ul>
+                    <span>Email </span>
+                    <li>{{ userProfile?.email }} </li>
+                    <span> Creation </span>
+                    <li> {{ userProfile?.created_at  | date }} </li>
+                    <span> User Id </span>
+                    <li> {{ userProfile?.id   }} </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+            
+          </mat-tab>
+
+          <mat-tab label="Update" class="overflow-hidden-tab">
+
+            <div class="container-update-profile">
+              <form class="example-form" #myForm="ngForm">
+
+                <mat-form-field class="example-full-width">
+                  <mat-label>New  Account Email  </mat-label>
+                  <input  [(ngModel)]="userUpdate.email" matInput placeholder="Ex. email@domain.com" value="" name="email">
+                </mat-form-field>
+    
+                <mat-form-field class="example-full-width">
+                  <mat-label>New   Password </mat-label>
+                  <input [(ngModel)]="userUpdate.password"  matInput placeholder="Ex. Password" value="" matInput type="password" name="password">
+                </mat-form-field>
+    
+                <mat-form-field class="example-full-width">
+                  <mat-label>Confirm    Password </mat-label>
+                  <input [(ngModel)]="userUpdate.matchPassword"  matInput placeholder="Ex. Password" value="" matInput type="password" name="matchPassword">
+                </mat-form-field>
+                
+                <button mat-raised-button (click)="sendAccountUpdate()">Confirm </button>
+  
+              </form>
+            </div>
+
+          
+
+          </mat-tab>
+
+          <mat-tab label="Delete">
+            <div class="delete-container">
+              <h1> Do You Want to Delete Your Account ? </h1>
+
+              <div class="button-delete-account" (click)="showAlert()"><i class="fa-solid fa-triangle-exclamation"></i></div>
+
+            </div>
+
+          </mat-tab>
+
+        </mat-tab-group>
+
+          
+
+    </div>
+
+</div>

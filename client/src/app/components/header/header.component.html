@@ -13,15 +13,28 @@
     </ul>
   </nav>
 
-  <div class="icons">
+  <div class="favorite">
+    <i class="fa-solid fa-heart" routerLink="/favorites"></i>
+
     <a href="#" routerLink="/cart" class="cart-container" id="cart">
+
       <i class="fa-solid fa-cart-shopping"></i>
+
       <span class="cart-badge" *ngIf="totalItens > 0">{{ totalItens }}</span>
+
     </a>
+
+  </div>
+
+  <div class="icons">
   
-    <div *ngIf="userOn; else notLoggedInTemplate">
+    <div *ngIf="userOn; else notLoggedInTemplate" class="login-logout">
+
+      <i class="fa-solid fa-user" routerLink="/profile"></i>
+
 
       <button class="logout-button" (click)="logout()" >Logout </button>
+
     </div>
     
     <ng-template #notLoggedInTemplate>
