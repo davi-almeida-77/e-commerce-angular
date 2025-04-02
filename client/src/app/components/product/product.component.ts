@@ -5,6 +5,7 @@ import { CartService } from '../../services/cart.service';
 import { ProductImage } from '../../shared/models/product.images';
 import { NotificationService } from '../../services/notification.service';
 import Swal from 'sweetalert2';
+import { productModel } from '../../shared/models/product.model';
 
 @Component({
   selector: 'app-product',
@@ -15,9 +16,9 @@ import Swal from 'sweetalert2';
 export class ProductComponent implements OnInit {
   productId!: number; 
   product: any; 
-
   images: ProductImage [] = [];
   activeImageIndex: number = 0;
+  quantityItems: number = 1;
 
 
   constructor(
@@ -41,7 +42,8 @@ export class ProductComponent implements OnInit {
     this.productService.getSingleProduct(this.productId).subscribe({
       next: (data) => {
         this.product = data;
-       
+
+
         this.productService.getProductImages(this.productId).subscribe({
           next: (images) => {
             this.images = images;
@@ -102,15 +104,45 @@ export class ProductComponent implements OnInit {
     navigator.clipboard.writeText(url)
   }
 
-  quantityItems: number = 1;
-
-
   pickQuantity(incremento: number): void {
     this.quantityItems += incremento;  
 
     if (this.quantityItems < 1) {
       this.quantityItems = 1
     }
+  }
+
+  addToFavorites( product_id: number  ) {
+
+  const favoriteProduct: productModel = this.product;
+
+
+  let favoriteStored =  JSON.parse(localStorage.getItem('favorites') || '[]' )
+
+  if ( !favoriteStored.some(( item: productModel ) => item.id_product === favoriteProduct.id_product )) {
+  
+    favoriteStored.push( favoriteProduct );
+
+    localStorage.setItem('favorites', JSON.stringify(favoriteStored));
+    
+  }
+
+    let product_name =  this.product.p_name;
+    let productImage = this.product.image;
+
+    Swal.fire({
+      title: `  "${product_name}"  Added to Favorites`, 
+      text: 'The Product Was Added on Favorites List ',
+      icon: 'success',
+      imageUrl: productImage,  
+      imageWidth: 120,  
+      imageHeight: 120,
+      position: 'top-right',  
+      showConfirmButton: false,   
+      timer: 3000,  
+      toast: true,  
+      timerProgressBar: true  
+    });
   }
 
 }

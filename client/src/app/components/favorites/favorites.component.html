@@ -1,0 +1,25 @@
+<div class="container" style="margin: 120px;" *ngIf="favoritesExists; else noItems">
+
+        <table class="order-table">
+
+            <tbody>
+              <tr *ngFor="let item of favoriteList">
+                <td><img class="product-image" [src]="item.image" alt="{{ item.p_name }}"></td>
+                <td class="p-name">{{ item.p_name }}</td>
+                <td class="p-quantity">{{ item.quantity }}</td>
+                <td class="p-value"> {{ item.price  | currency }} </td>
+              </tr>
+            </tbody>
+
+        </table>
+        <div class="clean-favorites" (click)="cleanFavorites()"><h1>Clean</h1></div>
+    </div>
+
+
+<ng-template #noItems>
+    <div class="favorites-empty-template">
+        <h1>  Favorite List is empty</h1>
+
+        <h3 routerLink="/shop">  <i class="fa-solid fa-arrow-left"></i> Back </h3>
+    </div>
+</ng-template>

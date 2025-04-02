@@ -5,6 +5,8 @@ import { NotificationService } from '../../services/notification.service';
 import { CartService } from '../../services/cart.service';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +23,8 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
   constructor(
     private productService: ProductService,
     private notify: NotificationService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -83,7 +86,21 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
   }
 
   addToCart(product: productModel): void {
-    this.notify.showSuccess('Product added on Cart');
+    if ( product ){ 
+      Swal.fire({
+        title: `  "${product.p_name}"  Added to Cart`, 
+        text: 'The Product Was Added on Cart ',
+        icon: 'success',
+        imageUrl: product.image,  
+        imageWidth: 120,  
+        imageHeight: 120,
+        position: 'top-right',  
+        showConfirmButton: false,   
+        timer: 3000,  
+        toast: true,  
+        timerProgressBar: true  
+      })
+    }
     this.cartService.addToCart({
       ...product,
       quantity: 1,
@@ -109,5 +126,9 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
         this.isActivePrev = false;
       }
     }
+  }
+
+  singleProductPage(productId: number): void {
+    this.router.navigate([`/product/${productId}`]);
   }
 }
