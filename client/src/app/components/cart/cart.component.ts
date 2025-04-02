@@ -3,7 +3,7 @@ import { CartService } from '../../services/cart.service';
 import { productModel } from '../../shared/models/product.model';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { NotificationService } from '../../services/notification.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +21,6 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private notify: NotificationService,
     private router: Router
   ) {}
 
@@ -44,10 +43,16 @@ export class CartComponent implements OnInit {
   resetCart() {
     this.cartService.resetCart(); 
 
-    this.notify.showInfo('Cart was Cleaned');
+    Swal.fire({
+        title: `Cleaned Cart `, 
+        icon: 'success',
+        position: 'top-right',  
+        showConfirmButton: false,   
+        timer: 2000,  
+        toast: true,  
+        timerProgressBar: true  
+      });
   
-    setTimeout(() => {
-      this.router.navigate(['/shop']);  
-    }, 3000);  
+    this.router.navigate(['/shop']);  
   }
 }
