@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { productModel } from '../../shared/models/product.model';
-import { NotificationService } from '../../services/notification.service';
 import { CartService } from '../../services/cart.service';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
@@ -23,7 +22,6 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   constructor(
     private productService: ProductService,
-    private notify: NotificationService,
     private cartService: CartService,
     private router: Router,
     private favoritesService: FavoritesService
@@ -35,7 +33,7 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
         this.products = data;
       },
       ( error ) => {
-        this.notify.showError('Error in Find Products');
+
       }
     );
 

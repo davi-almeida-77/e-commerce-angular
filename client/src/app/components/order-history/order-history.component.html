@@ -17,8 +17,8 @@
             <th>Product</th>
             <th>Quantity</th>
             <th>Price</th>
-            <th>Total Value</th>
             <th>Order Date</th>
+            <th>Total Value</th>
           </tr>
         </thead>
         <tbody>
@@ -27,14 +27,14 @@
             <td>{{ product.product_name }}</td>
             <td>{{ product.product_quantity }}</td>
             <td>{{ product.product_price | currency }}</td>
-            <td>{{ product.total_product_value | currency }}</td>
             <td>{{ order.orderDate | date }}</td>
+            <td>{{ product.total_product_value | currency }}</td>
           </tr>
 
 
           <tr>
 
-            <td colspan="3"><strong>Total</strong></td>
+            <td colspan="4"><strong>Total</strong></td>
             <td>{{ order.totalValue | currency }}</td>
 
           </tr>
