@@ -30,7 +30,7 @@
                         occasiation and need. 
                     </p>
 
-                    <button routerLink="/shop"> Shop Now </button>
+                    <button routerLink="/shop"> <h4>Shop Now</h4> </button>
                 </div>
                 
             
@@ -83,6 +83,7 @@
                     </div>
                     <div class="price-add-cart">
                       <p><strong>$ {{ product.price }}</strong></p>
+                      <i class="fa-solid fa-heart" id="heart-icon" (click)="addFavorites( product )"></i>
                       <button class="addCart" (click)="addToCart(product)"><i class="fa-solid fa-cart-plus"></i></button>
                     </div>
                   </div>

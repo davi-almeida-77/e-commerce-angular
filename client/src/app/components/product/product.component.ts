@@ -5,7 +5,7 @@ import { CartService } from '../../services/cart.service';
 import { ProductImage } from '../../shared/models/product.images';
 import { NotificationService } from '../../services/notification.service';
 import Swal from 'sweetalert2';
-import { productModel } from '../../shared/models/product.model';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-product',
@@ -25,7 +25,8 @@ export class ProductComponent implements OnInit {
     private route: ActivatedRoute, 
     private productService: ProductService,
     private cartService: CartService,
-    private notify: NotificationService
+    private notify: NotificationService,
+    private favoritesService: FavoritesService
   ) {}
 
   ngOnInit(): void {
@@ -112,23 +113,12 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  addToFavorites( product_id: number  ) {
 
-  const favoriteProduct: productModel = this.product;
-
-
-  let favoriteStored =  JSON.parse(localStorage.getItem('favorites') || '[]' )
-
-  if ( !favoriteStored.some(( item: productModel ) => item.id_product === favoriteProduct.id_product )) {
-  
-    favoriteStored.push( favoriteProduct );
-
-    localStorage.setItem('favorites', JSON.stringify(favoriteStored));
-    
-  }
-
+  addFavorite() {
     let product_name =  this.product.p_name;
     let productImage = this.product.image;
+
+    this.favoritesService.addToFavorites( this.product )
 
     Swal.fire({
       title: `  "${product_name}"  Added to Favorites`, 

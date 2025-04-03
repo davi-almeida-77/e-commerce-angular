@@ -5,6 +5,7 @@ import { NotificationService } from '../../services/notification.service';
 import { productModel } from '../../shared/models/product.model'; 
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-shop',
@@ -32,7 +33,8 @@ export class ShopComponent implements OnInit, OnChanges {
     private router: Router,
     private cartService: CartService,
     private notify: NotificationService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private favoritesService: FavoritesService
   ) {}  
 
   ngOnInit(): void {
@@ -138,4 +140,30 @@ export class ShopComponent implements OnInit, OnChanges {
     });
     this.cdr.detectChanges(); 
   }
-}
+
+
+  addFavorites(product: productModel) {
+    this.favoritesService.addToFavorites(product);
+
+      if ( product ) {
+              Swal.fire({
+        title: `  "${ product.p_name }"  Added to Favorites`, 
+        text: 'The Product Was Added on Favorites List ',
+        icon: 'success',
+        imageUrl: product.image,  
+        imageWidth: 120,  
+        imageHeight: 120,
+        position: 'top-right',  
+        showConfirmButton: false,   
+        timer: 3000,  
+        toast: true,  
+        timerProgressBar: true  
+      });
+      }
+
+
+    }
+
+    
+  }
+

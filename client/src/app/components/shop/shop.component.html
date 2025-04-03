@@ -99,7 +99,12 @@
 
             <div class="price-add-cart">
               <p><strong>$ {{ product.price  }}</strong></p>
-              <button class="addCart" (click)="addToCart(product)"><i class="fa-solid fa-cart-plus"></i></button>
+
+              <div class="favorite-and-add-cart">
+                <i class="fa-solid fa-heart" id="heart" (click)="addFavorites( product )"></i>
+                <button class="addCart" (click)="addToCart(product)"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+              
             </div>
 
         </div>

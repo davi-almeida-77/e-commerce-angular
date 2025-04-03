@@ -15,16 +15,14 @@
 
   <div class="favorite">
     <i class="fa-solid fa-heart" routerLink="/favorites"></i>
-
+    <span matBadge="{{ favoritesLength }}" *ngIf="favoritesLength > 0" class="heart-badge"></span>
+  
     <a href="#" routerLink="/cart" class="cart-container" id="cart">
-
       <i class="fa-solid fa-cart-shopping"></i>
-
-      <span class="cart-badge" *ngIf="totalItens > 0">{{ totalItens }}</span>
-
+      <span matBadge="{{ totalItens }}" *ngIf="totalItens > 0" class="cart-badge"></span>
     </a>
-
   </div>
+  
 
   <div class="icons">
   

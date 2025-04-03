@@ -7,6 +7,7 @@ import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,8 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
     private productService: ProductService,
     private notify: NotificationService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private favoritesService: FavoritesService
   ) {}
 
   ngOnInit(): void {
@@ -107,6 +109,27 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
     });
   }
 
+    addFavorites(product: productModel) {
+      this.favoritesService.addToFavorites(product);
+  
+        if ( product ) {
+                Swal.fire({
+          title: `  "${ product.p_name }"  Added to Favorites`, 
+          text: 'The Product Was Added on Favorites List ',
+          icon: 'success',
+          imageUrl: product.image,  
+          imageWidth: 120,  
+          imageHeight: 120,
+          position: 'top-right',  
+          showConfirmButton: false,   
+          timer: 3000,  
+          toast: true,  
+          timerProgressBar: true  
+        });
+        }
+  
+  
+      }
 
   isActivePrev: boolean = false;
   isActiveNext: boolean = false;

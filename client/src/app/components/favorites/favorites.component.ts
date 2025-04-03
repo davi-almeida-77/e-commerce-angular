@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-favorites',
@@ -17,18 +18,19 @@ export class FavoritesComponent implements OnInit {
   favoriteList: any [] = [];
 
   constructor ( 
-    private router: Router
+    private router: Router,
+    private favoritesService: FavoritesService
    ) {}
 
   ngOnInit(): void {
 
     this.checkFavorites();
-    this.checkQuantity();
 
   }
 
-  cleanFavorites() {
-    localStorage.removeItem('favorites');
+  Clean() {
+    this.favoritesService.cleanFavorites();
+
       Swal.fire({
           title: `Cleaned Favorites `, 
           text: 'Clean Favorite List',
@@ -40,12 +42,7 @@ export class FavoritesComponent implements OnInit {
           timerProgressBar: true  
         });
         this.router.navigate(['/']);  
-  }
-
-
-  checkQuantity() {
-    const quantity = this.favoriteList.length;
-    console.log( quantity )
+        
   }
 
   checkFavorites() {
