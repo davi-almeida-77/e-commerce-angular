@@ -5,12 +5,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.order-history-container h1 {
+.order-history-container .title {
   font-size: 40px;
   color: #555;
 }
 
-.order-history-container h1 strong {
+.order-history-container .title strong {
   font-size: 80px;
   color: #f3770a;
 }
@@ -141,4 +141,36 @@ tr {
 
 .order-table tr:last-child td {
   border-bottom: none; 
+}
+
+.main-title {
+  font-size: 110px;
+  text-align: center;
+  color: #555;
+}
+
+.order-empty-template {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.order-empty-template h1 {
+  font-size: 95px;
+    color: #b3b3b3;
+    margin: 0 30px;
+}
+
+.order-empty-template h3 {
+  padding: 10px 70px;
+  border: 1px solid;
+  border-radius: 50px;
+  color: #fff;
+  background: #ff7700;
+  font-weight: 300;
+  cursor: pointer;
+  width: 220px;
+   margin: 0 auto;
 }
