@@ -48,7 +48,13 @@
   .order-table td img.product-image {
     height: 150px;
     object-fit: cover;
-    padding-left: 40px;
+}
+
+.product-image {
+  background: #f7f7f7;
+    width: 145px;
+    background-position: center;
+    display: flex;
 }
 
 
