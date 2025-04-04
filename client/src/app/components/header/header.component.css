@@ -217,3 +217,7 @@ header .nav ul li a.active {
 .cart-container i {
   margin-left: 10px; 
 }
+
+::ng-deep .mat-badge-content.mat-badge-active {
+  background: #f3770a;
+}
