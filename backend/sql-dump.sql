@@ -1,5 +1,6 @@
 CREATE DATABASE ecommerce_db;
-use ecommerce_db;
+USE ecommerce_db;
+
 
 CREATE TABLE `users` (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -16,7 +17,7 @@ CREATE TABLE `cart` (
     id_user INT NOT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_user) REFERENCES `users`(id)
+    FOREIGN KEY (id_user) REFERENCES `users`(id) ON DELETE CASCADE
 );
 
 CREATE TABLE `order_ecommerce` (
@@ -26,8 +27,8 @@ CREATE TABLE `order_ecommerce` (
     id_cart INT,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_user) REFERENCES `users`(id),
-    FOREIGN KEY (id_cart) REFERENCES `cart`(id_cart)
+    FOREIGN KEY (id_user) REFERENCES `users`(id) ON DELETE CASCADE,  
+    FOREIGN KEY (id_cart) REFERENCES `cart`(id_cart) ON DELETE CASCADE  
 );
 
 CREATE TABLE `products` (
@@ -60,8 +61,8 @@ CREATE TABLE `order_product` (
     id_product INT,
     quantity INT NOT NULL,
     PRIMARY KEY (id_order, id_product),
-    FOREIGN KEY (id_order) REFERENCES `order_ecommerce`(id_order),
-    FOREIGN KEY (id_product) REFERENCES `products`(id_product)
+    FOREIGN KEY (id_order) REFERENCES `order_ecommerce`(id_order) ON DELETE CASCADE,  
+    FOREIGN KEY (id_product) REFERENCES `products`(id_product) ON DELETE CASCADE  
 );
 
 CREATE TABLE posts (
