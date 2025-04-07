@@ -14,6 +14,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PostComponent } from './components/post/post.component';
+import {  ProfileUpdateComponent } from './components/profile/profile.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   {path: 'post/:id', component: PostComponent},
   { path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuardService] },
+  {path: 'profile', component:ProfileUpdateComponent, canActivate:[AuthGuardService]},
+  {path: 'favorites', component:FavoritesComponent},
   { path: '**', component: PageNotFoundComponent },
 ];
 

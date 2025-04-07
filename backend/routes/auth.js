@@ -6,4 +6,8 @@ router.post("/register", authController.register_user);
 
 router.post("/login", authController.login_user);
 
+router.put("/update", authController.update_user);
+
+router.delete("/delete", authController.delete);
+
 module.exports =  router;

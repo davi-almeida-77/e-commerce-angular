@@ -18,6 +18,7 @@ export class OrderHistoryComponent implements OnInit, OnDestroy {
   username: string | null = null;
   groupedOrders: any[] = [];
   orderVisibility: { [orderId: string]: boolean } = {}; 
+  noOrders: boolean = true;
 
   constructor( 
     private orderService: OrderService,
@@ -36,7 +37,7 @@ export class OrderHistoryComponent implements OnInit, OnDestroy {
         this.groupOrders();
       },
       (error) => {
-        this.notify.showError('Error on loading orders');
+        this.noOrders = false;
       }
     );
   }

@@ -1,5 +1,6 @@
-<div class="order-history-container">
-  <h1>Order History Hello <strong>{{ username }}</strong>! Welcome Back!</h1>
+<div class="order-history-container" *ngIf="noOrders; else noItems">
+  <h1 class="main-title">Order History</h1>
+  <h1 class="title"> Hello <strong>{{ username }}</strong> Welcome Back  !</h1>
 
   <div class="order-box" *ngFor="let order of groupedOrders">
     
@@ -17,8 +18,8 @@
             <th>Product</th>
             <th>Quantity</th>
             <th>Price</th>
-            <th>Total Value</th>
             <th>Order Date</th>
+            <th>Total Value</th>
           </tr>
         </thead>
         <tbody>
@@ -27,14 +28,14 @@
             <td>{{ product.product_name }}</td>
             <td>{{ product.product_quantity }}</td>
             <td>{{ product.product_price | currency }}</td>
-            <td>{{ product.total_product_value | currency }}</td>
             <td>{{ order.orderDate | date }}</td>
+            <td>{{ product.total_product_value | currency }}</td>
           </tr>
 
 
           <tr>
 
-            <td colspan="3"><strong>Total</strong></td>
+            <td colspan="4"><strong>Total</strong></td>
             <td>{{ order.totalValue | currency }}</td>
 
           </tr>
@@ -44,3 +45,12 @@
     </div>
   </div>
 </div>
+
+
+<ng-template #noItems>
+  <div class="order-empty-template">
+      <h1>  Order History  empty</h1>
+
+      <h3 routerLink="/shop">  <i class="fa-solid fa-arrow-left"></i> Back </h3>
+  </div>
+</ng-template>

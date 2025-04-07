@@ -4,6 +4,8 @@ import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 import { ProductImage } from '../../shared/models/product.images';
 import { NotificationService } from '../../services/notification.service';
+import Swal from 'sweetalert2';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-product',
@@ -14,16 +16,17 @@ import { NotificationService } from '../../services/notification.service';
 export class ProductComponent implements OnInit {
   productId!: number; 
   product: any; 
-
   images: ProductImage [] = [];
   activeImageIndex: number = 0;
+  quantityItems: number = 1;
 
 
   constructor(
     private route: ActivatedRoute, 
     private productService: ProductService,
     private cartService: CartService,
-    private notify: NotificationService
+    private notify: NotificationService,
+    private favoritesService: FavoritesService
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +43,8 @@ export class ProductComponent implements OnInit {
     this.productService.getSingleProduct(this.productId).subscribe({
       next: (data) => {
         this.product = data;
-       
+
+
         this.productService.getProductImages(this.productId).subscribe({
           next: (images) => {
             this.images = images;
@@ -60,7 +64,23 @@ export class ProductComponent implements OnInit {
   }
   
   addToCart() {
-    this.notify.showSuccess('Success! Product added to cart.');
+
+    let product_name =  this.product.p_name;
+    let productImage = this.product.image;
+
+    Swal.fire({
+      title: `  "${product_name}"  Added to Cart`, 
+      text: 'The Product Was Added on Cart ',
+      icon: 'success',
+      imageUrl: productImage,  
+      imageWidth: 120,  
+      imageHeight: 120,
+      position: 'top-right',  
+      showConfirmButton: false,   
+      timer: 3000,  
+      toast: true,  
+      timerProgressBar: true  
+    });
 
     if (this.product) {
 
@@ -85,15 +105,34 @@ export class ProductComponent implements OnInit {
     navigator.clipboard.writeText(url)
   }
 
-  quantityItems: number = 1;
-
-
   pickQuantity(incremento: number): void {
     this.quantityItems += incremento;  
 
     if (this.quantityItems < 1) {
       this.quantityItems = 1
     }
+  }
+
+
+  addFavorite() {
+    let product_name =  this.product.p_name;
+    let productImage = this.product.image;
+
+    this.favoritesService.addToFavorites( this.product )
+
+    Swal.fire({
+      title: `  "${product_name}"  Added to Favorites`, 
+      text: 'The Product Was Added on Favorites List ',
+      icon: 'success',
+      imageUrl: productImage,  
+      imageWidth: 120,  
+      imageHeight: 120,
+      position: 'top-right',  
+      showConfirmButton: false,   
+      timer: 3000,  
+      toast: true,  
+      timerProgressBar: true  
+    });
   }
 
 }

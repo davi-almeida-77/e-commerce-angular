@@ -20,14 +20,17 @@ const loginValidation = (data) =>{
     return schema.validate(data);  
 }
 
-const updateValidation = (data) =>{
+const updateValidation = (data) => {
     const schema = Joi.object({
-        email: Joi.string().email().required(),
-        u_password: Joi.string().min(6).required(),
+        email: Joi.string().email().required(), 
+        u_password: Joi.string().required(), 
+        new_email: Joi.string().email().required(), 
+        new_u_password: Joi.string().required(), 
     });
 
-    return schema.validate(data); 
-}
+    return schema.validate(data);
+};
+
 
 module.exports = {
     loginValidation,

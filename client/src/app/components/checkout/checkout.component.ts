@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
 import { OrderService } from '../../services/order.service';
 import { NotificationService } from '../../services/notification.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -38,18 +39,37 @@ export class CheckoutComponent {
         if (!this.residenceInfo.address || !this.residenceInfo.city || !this.residenceInfo.postalCode) {
           isValid = false;
           message = 'Please fill in all address fields correctly ';
+
+          Swal.fire({
+            title: `Success `, 
+            text: message, 
+            icon: 'warning',
+            position: 'top-right',  
+            showConfirmButton: false,   
+            timer: 3000,  
+            toast: true,  
+            timerProgressBar: true  
+          });
+
         }
       } else if (this.currentStep === 2) {
 
         if (!this.paymentInfo.cardNumber || !this.paymentInfo.expirationDate || !this.paymentInfo.cvv || !this.paymentInfo.name) {
           isValid = false;
           message = 'Please fill in all payment fields correctly ';
-        }
-      }
-  
-      if (!isValid) {
 
-        this.notify.showInfo(message);
+          Swal.fire({
+            title: ` Success   `, 
+            text: message, 
+            icon: 'warning',
+            position: 'top-right',  
+            showConfirmButton: false,   
+            timer: 3000,  
+            toast: true,  
+            timerProgressBar: true  
+          });
+
+        }
       }
   
       return isValid;
@@ -69,7 +89,18 @@ export class CheckoutComponent {
     }
   
   submitCheckout() {
-    this.notify.showSuccess('Success Checkout')
+
+    Swal.fire({
+      title: ` Success   `, 
+      text: 'Success Checkout',
+      icon: 'success',
+      position: 'top-right',  
+      showConfirmButton: false,   
+      timer: 3000,  
+      toast: true,  
+      timerProgressBar: true  
+    });
+
   }
 
 
@@ -77,24 +108,58 @@ export class CheckoutComponent {
     private authService: AuthService, 
     private cartService: CartService,
     private orderService: OrderService,
-    private notify: NotificationService
   ) {}
 
   sendOrderToDatabase(): void {
+
     if ( this.authService.isUserLoggedIn() ) {
       this.cartService.getCartItems().subscribe(cartItems => {
         const userId = this.authService.getUserId(); 
     
         if (cartItems && userId) {
-          this.notify.showSuccess('Sending order')
+
+              Swal.fire({
+                title: `Sending order  `, 
+                text: 'The Product Was Added on Favorites List ',
+                icon: 'success',
+                position: 'top-right',  
+                showConfirmButton: false,   
+                timer: 3000,  
+                toast: true,  
+                timerProgressBar: true  
+              });
   
           this.orderService.orderParams(cartItems, userId);
         } else {
-          this.notify.showError('Error in cart')
+
+          Swal.fire({
+            title: `Error  `, 
+            text: 'Error in cart',
+            icon: 'error',
+            position: 'top-right',  
+            showConfirmButton: false,   
+            timer: 3000,  
+            toast: true,  
+            timerProgressBar: true  
+          });
+
         }
       }, error => {
-        this.notify.showError('Error in get Cart Products')
+
+        Swal.fire({
+          title: `Error  `, 
+          text: 'Error in get Cart Products',
+          icon: 'error',
+          position: 'top-right',  
+          showConfirmButton: false,   
+          timer: 3000,  
+          toast: true,  
+          timerProgressBar: true  
+        });
       });
     }
+
+    this.cartService.resetCart();
+
   }
 }

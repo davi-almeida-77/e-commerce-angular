@@ -1,4 +1,4 @@
-Resetando margens e paddings
+
 * {
     margin: 0;
     padding: 0;
@@ -93,25 +93,6 @@ header .logo h1  a:hover {
   color: #f3770a;
 }
 
-.cart-badge {
-    position: absolute;
-    top: -13px;
-    right: -8px;
-    background-color:  #f3770a;
-    color: #ffffff;
-    font-size: 9px;
-    font-weight: 700;
-    width: 19px;
-    height: 19px;
-    border-radius: 50%;
-    display: flex
-;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Roboto';
-    letter-spacing: 1px;
-}
-
 .icons {
   display: flex;
   flex-direction: row;
@@ -161,4 +142,82 @@ header .logo h1  a:hover {
 
 header .nav ul li a.active {
   color: #f3770a;
+}
+
+.login-logout {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.login-logout i {
+  color: #877d75;
+  cursor: pointer;
+}
+
+.favorite {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  color: #877d75;
+  cursor: pointer;
+}
+
+.favorite  i:hover  {
+  color: #f3770a;
+  transition: 300ms;
+}
+
+.favorite-badge {
+  position: absolute;
+  top: 40px;
+  right: 406px;
+  background-color:  #f3770a;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  display: flex
+;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto';
+  letter-spacing: 1px;
+}
+
+.favorite {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-container {
+  position: relative; 
+}
+
+.heart-badge {
+  position: relative;
+    top: -13px;
+    left: -16px;
+}
+
+.cart-badge {
+  position: relative;
+  top: -15px;
+}
+
+.favorite i,
+.cart-container i {
+  font-size: 24px; 
+}
+
+.cart-container i {
+  margin-left: 10px; 
+}
+
+::ng-deep .mat-badge-content.mat-badge-active {
+  background: #f3770a;
 }

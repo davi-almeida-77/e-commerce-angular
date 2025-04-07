@@ -255,7 +255,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 90px;
+    gap: 40px;
   }
 
   .price-add-cart strong {
@@ -282,10 +282,7 @@
     font-size: 1.2em;
   }
   
-  .product-details p {
-    font-size: 0.9em;
-  }
-  
+
   .addCart {
     background-color: #f3770a;
     color: white;
@@ -385,4 +382,23 @@
 
 ::ng-deep .mat-mdc-menu-panel.mat-menu-after.mat-menu-below {
   margin-top: 13px;
+}
+
+.favorite-and-add-cart {
+  gap: 15px;
+  display: flex ;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.favorite-and-add-cart #heart {
+  font-size: 35px;
+  color: #f3770a;
+  cursor: pointer;
+}
+
+.favorite-and-add-cart #heart:hover {
+  transition: 600ms;
+  color: #a09a9a;
 }

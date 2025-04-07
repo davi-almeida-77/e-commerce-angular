@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NotificationService } from '../../../services/notification.service';
+import Swal from 'sweetalert2';
 
 
 
@@ -39,12 +40,30 @@ matchPasswords( u_password: string, m_password: string ): boolean {
   onSubmit() {
     this.loading = true;
     this.error = '';
-    if (!this.username || !this.f_name || !this.l_name || !this.email || !this.u_password) {
-      this.notify.showError('Please fill out all Forms, and Try again')
+    if (!this.username || !this.f_name || !this.l_name || !this.email || !this.u_password || !this.m_password ) {
+      Swal.fire ({
+        title: "Error In Registry",
+        text: 'Please fill out all Forms, and Try again',
+        icon: "error",
+        position: 'top-right',  
+        showConfirmButton: false,   
+        timer: 3000, 
+        toast: true,  
+        timerProgressBar: true  
+      })
       return;
     }
     if (!this.matchPasswords(this.u_password, this.m_password)) {
-      this.notify.showError('The passwords do not match. Please try again')
+      Swal.fire ({
+        title: "Error In Registry",
+        text: 'The passwords do not match. Please try again',
+        icon: "error",
+        position: 'top-right',  
+        showConfirmButton: false,   
+        timer: 3000, 
+        toast: true,  
+        timerProgressBar: true  
+      })
       return;
     }
     else {
@@ -53,7 +72,15 @@ matchPasswords( u_password: string, m_password: string ): boolean {
         response => {
           this.loading = false;
           this._router.navigate(['/']);
-          this.notify.showSuccess('Register  Sucessful ')
+          Swal.fire ({
+            title: "Sucessfull Registered ",
+            icon: "success",
+            position: 'top-right',  
+            showConfirmButton: false,   
+            timer: 3000, 
+            toast: true,  
+            timerProgressBar: true  
+          })
           this.cdr.detectChanges();  
         },
         (err) => {

@@ -1,10 +1,12 @@
 import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { productModel } from '../../shared/models/product.model';
-import { NotificationService } from '../../services/notification.service';
 import { CartService } from '../../services/cart.service';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-home',
@@ -20,8 +22,9 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   constructor(
     private productService: ProductService,
-    private notify: NotificationService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router,
+    private favoritesService: FavoritesService
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +33,7 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
         this.products = data;
       },
       ( error ) => {
-        this.notify.showError('Error in Find Products');
+
       }
     );
 
@@ -83,13 +86,48 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
   }
 
   addToCart(product: productModel): void {
-    this.notify.showSuccess('Product added on Cart');
+    if ( product ){ 
+      Swal.fire({
+        title: `  "${product.p_name}"  Added to Cart`, 
+        text: 'The Product Was Added on Cart ',
+        icon: 'success',
+        imageUrl: product.image,  
+        imageWidth: 120,  
+        imageHeight: 120,
+        position: 'top-right',  
+        showConfirmButton: false,   
+        timer: 3000,  
+        toast: true,  
+        timerProgressBar: true  
+      })
+    }
     this.cartService.addToCart({
       ...product,
       quantity: 1,
     });
   }
 
+    addFavorites(product: productModel) {
+      this.favoritesService.addToFavorites(product);
+  
+        if ( product ) {
+                Swal.fire({
+          title: `  "${ product.p_name }"  Added to Favorites`, 
+          text: 'The Product Was Added on Favorites List ',
+          icon: 'success',
+          imageUrl: product.image,  
+          imageWidth: 120,  
+          imageHeight: 120,
+          position: 'top-right',  
+          showConfirmButton: false,   
+          timer: 3000,  
+          toast: true,  
+          timerProgressBar: true  
+        });
+        }
+  
+  
+      }
 
   isActivePrev: boolean = false;
   isActiveNext: boolean = false;
@@ -109,5 +147,9 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
         this.isActivePrev = false;
       }
     }
+  }
+
+  singleProductPage(productId: number): void {
+    this.router.navigate([`/product/${productId}`]);
   }
 }

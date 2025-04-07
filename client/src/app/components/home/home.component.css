@@ -198,7 +198,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 90px;
+  gap: 30px;
+}
+
+#heart-icon {
+  font-size: 25px;
+  color: #f3770a;
+  cursor: pointer;
+}
+
+#heart-icon:hover  {
+  transition: 300ms;
+  color: #898484;
 }
 
 .price-add-cart strong {
