@@ -1,8 +1,9 @@
 
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { NotificationService } from '../../services/notification.service';
 import Swal from 'sweetalert2';
+import { ProfileService } from '../../services/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-update',
@@ -11,29 +12,43 @@ import Swal from 'sweetalert2';
   standalone: false,
 })
 export class ProfileUpdateComponent {
-  constructor ( private authService: AuthService, private notify: NotificationService) {}
+  constructor ( 
+    private authService: AuthService,
+    private profileService: ProfileService,
+    private router: Router
+    ) {}
+  
 
   userProfile: any;
 
+  userId: number | undefined;
+  userEmail: string | undefined;
+  userPassword: string | undefined;
+
   userUpdate = { 
-    email: '',
-    password: '',
+    new_email: '',
+    new_u_password: '',
     matchPassword: '',
   }
 
   ngOnInit(): void {
 
-    this.authService.userState$.subscribe(userData => {
-      this.userProfile = userData;
-    })
+    this.userProfile = this.authService.getUser()
+
+    if ( this.userProfile ) {
+      this.userId = this.userProfile.id
+      this.userEmail = this.userProfile.email
+      this.userPassword = this.userProfile.u_password
+    }
+    
   }
 
   isValidPassword(): Boolean {
-    return this.userUpdate.password === this.userUpdate.matchPassword;
+    return this.userUpdate.new_u_password === this.userUpdate.matchPassword;
   }
 
   isValidEmail(): Boolean  {
-    if ( this.userUpdate.email.length < 5 || this.userUpdate.email.length > 45 ) {
+    if ( this.userUpdate.new_email.length < 1 || this.userUpdate.new_email.length > 45 ) {
       return false;
     }
     return true;
@@ -41,31 +56,97 @@ export class ProfileUpdateComponent {
   }
 
   filterAccount () {
-    const { email, password } =  this.userUpdate;
-    let newAccountParams = { email, password }
-    return newAccountParams;
+    const { new_email, new_u_password} = this.userUpdate;
+
+    let id =  this.userId
+
+    let email = this.userEmail
+
+    let u_password =  this.userPassword
+
+    let newAccountParams = { id, email, u_password, new_email, new_u_password }
+
+    const accountParams = JSON.stringify( newAccountParams )
+
+    return accountParams;
   }
 
-  sendAccountUpdate () {
-    if ( this.isValidPassword() && this.isValidEmail() ) {
-      const newParams = this.filterAccount();
-      console.log( newParams )
-    }
-    else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Erro!',
-        text: 'Something went Wrong ',
-        position: 'top-right',  
-        showConfirmButton: false,   
-        timer: 3000,  
-        toast: true,  
-        timerProgressBar: true 
-      });
-    }
-  }  
+  sendAccountUpdate() {
+  
+    if (this.isValidPassword() && this.isValidEmail()) {
 
-  deleteAccount () {}
+      const updateParams = this.filterAccount();
+
+      this.profileService.updateUser('auth/update', updateParams).subscribe(
+        response => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Success on updating account!',
+            position: 'top-right',  
+            showConfirmButton: false,   
+            timer: 3000,  
+            toast: true,  
+            timerProgressBar: true 
+          });
+        },
+        error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error !',
+            text: 'Something went wrong with the update.',
+            position: 'top-right',  
+            showConfirmButton: false,   
+            timer: 3000,  
+            toast: true,  
+            timerProgressBar: true 
+          });
+        }
+      );
+    }
+
+    this.authService.logout()
+    this.router.navigate(['/'])
+  }
+  
+
+  deleteAccount () {
+
+    let id = this.userId
+
+    let  email = this.userEmail
+
+    let u_password =  this.userPassword
+
+    const deleteParams =  {  id, email, u_password }
+
+    this.profileService.deleteUser('auth/delete', deleteParams)
+    .subscribe(
+      response => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success on Delete account ',
+          position: 'top-right',  
+          showConfirmButton: false,   
+          timer: 3000,  
+          toast: true,  
+          timerProgressBar: true 
+        });
+      },
+      error => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error !',
+          text: 'Something went wrong with the deletion  ',
+          position: 'top-right',  
+          showConfirmButton: false,   
+          timer: 3000,  
+          toast: true,  
+          timerProgressBar: true 
+        });
+      }
+    );
+
+  }
 
 
   showAlert() {
