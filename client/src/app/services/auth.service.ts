@@ -4,6 +4,7 @@ import { ApiService } from './api.service';
 import { map  } from 'rxjs/operators';
 import { TokenStorageService } from './token-storage.service';
 import { HttpClient  } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,20 @@ export class AuthService {
   private userDataSubject: BehaviorSubject<any>;
   public userState$: Observable<any>;
 
-  constructor( private _api: ApiService, private _token: TokenStorageService, private http: HttpClient ) { 
+  constructor( 
+    private _api: ApiService,
+    private _token: TokenStorageService,
+    private http: HttpClient,
+    private router: Router,
+     ) { 
     this.userDataSubject = new BehaviorSubject<any>(this._token.getUser());
     this.userState$ = this.userDataSubject.asObservable();
   }
 
-  getUser(){
-    return this.userDataSubject?.value
+  getUser() {
+    return this._token.getUser();  
   }
+  
 
   login( credentials: any ): Observable<any> {
     return this._api
