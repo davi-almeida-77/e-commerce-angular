@@ -80,7 +80,8 @@
         <ng-container *ngIf="isCombinedFilter; else singleFilter">
 
           <ng-template #multipleFilters>
-            <p>Showing {{ filteredProductCount }} of {{ currentLimit }} item(s)</p>
+
+            <p>Showing {{ (filteredProductCount > currentLimit ? currentLimit : filteredProductCount) }} of {{ currentLimit }} item(s)</p>
           </ng-template>
          
           <ng-container *ngTemplateOutlet="multipleFilters"></ng-container>
@@ -88,7 +89,8 @@
       
 
         <ng-template #singleFilter>
-          <p>Showing  {{ (products | FilterCategory: filterCategory | FilterPrice: filterPrice | FilterModel: filterModel).length }} of {{ currentLimit }} item(s)</p>
+          
+          <p>Showing {{ ((products | FilterCategory: filterCategory | FilterPrice: filterPrice | FilterModel: filterModel).length > currentLimit ? currentLimit : (products | FilterCategory: filterCategory | FilterPrice: filterPrice | FilterModel: filterModel).length) }} of {{ currentLimit }} item(s)</p>
         </ng-template>
       </div>
       
