@@ -29,6 +29,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import {MatIconModule} from '@angular/material/icon';
+import {MatBadgeModule} from '@angular/material/badge';
+
 
 import { FilterModel } from './shared/pipes/filter-model.pipe';
 import { FilterCategoryPipe } from './shared/pipes/filter-category.pipe';
@@ -73,7 +76,9 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
     MatOptionModule,
     MatTabsModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
+    MatBadgeModule
 ],
   providers: [
     {
