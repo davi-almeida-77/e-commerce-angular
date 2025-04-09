@@ -3,7 +3,7 @@ import { BlogService } from '../../services/blog.service';
 import { blogModel } from '../../shared/models/blog.model';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NotificationService } from '../../services/notification.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-blog',
@@ -19,7 +19,6 @@ export class BlogComponent implements OnInit {
   constructor( 
     private blogService: BlogService, 
     private router: Router,
-    private notify: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +27,15 @@ export class BlogComponent implements OnInit {
         this.posts = posts;    
       },
       (error) => {
-        this.notify.showError('Error in get Posts'); 
+            Swal.fire({
+                title: `Error in Get Posts`, 
+                icon: 'error',
+                position: 'top-right',  
+                showConfirmButton: false,   
+                timer: 2000,  
+                toast: true,  
+                timerProgressBar: true  
+              });
       }
     );
   }

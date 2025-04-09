@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; 
 import { BlogService } from '../../services/blog.service'; 
 import { blogModel } from '../../shared/models/blog.model'; 
-import { NotificationService } from '../../services/notification.service'; 
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   standalone: true,
@@ -19,7 +19,7 @@ export class PostComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private blogService: BlogService,
-    private notify: NotificationService
+
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +38,16 @@ export class PostComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.notify.showError('Error on Loading Post: ');
+          Swal.fire({
+            icon: 'error',
+            title: `Error`,
+            text: 'Error on Loading Post',
+            position: 'top-right',  
+            showConfirmButton: false,   
+            timer: 3000,  
+            toast: true,  
+            timerProgressBar: true 
+          });
       },
     });
   }

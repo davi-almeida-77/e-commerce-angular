@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service'; 
 import { CartService } from '../../services/cart.service';
 import { ProductImage } from '../../shared/models/product.images';
-import { NotificationService } from '../../services/notification.service';
 import Swal from 'sweetalert2';
 import { FavoritesService } from '../../services/favorites.service';
 
@@ -25,7 +24,7 @@ export class ProductComponent implements OnInit {
     private route: ActivatedRoute, 
     private productService: ProductService,
     private cartService: CartService,
-    private notify: NotificationService,
+
     private favoritesService: FavoritesService
   ) {}
 
@@ -53,12 +52,30 @@ export class ProductComponent implements OnInit {
             }
           },
           error: (err) => {
-            this.notify.showError('Error on Loading Images: ' + err);
+            Swal.fire({
+              title: `Error`, 
+              text: 'Error on Loading Images ',
+              icon: 'error',
+              position: 'top-right',  
+              showConfirmButton: false,   
+              timer: 3000,  
+              toast: true,  
+              timerProgressBar: true  
+            });
           },
         });
       },
       error: (err) => {
-        this.notify.showError('Error on Loading Product: ' + err);
+        Swal.fire({
+          title: `Error`, 
+          text: 'Error on Loading Images ',
+          icon: 'error',
+          position: 'top-right',  
+          showConfirmButton: false,   
+          timer: 3000,  
+          toast: true,  
+          timerProgressBar: true  
+        });
       },
     });
   }
@@ -82,7 +99,7 @@ export class ProductComponent implements OnInit {
       timerProgressBar: true  
     });
 
-    if (this.product) {
+    if ( this.product ) {
 
       const quantityToAdd = this.quantityItems > 1 ? this.quantityItems : 1;
 
@@ -99,7 +116,16 @@ export class ProductComponent implements OnInit {
 
   copyUrl () {
 
-    this.notify.showInfo('Copied url')
+    Swal.fire({
+      title: `Copied url`, 
+      icon: 'warning',
+      position: 'top-right',  
+      showConfirmButton: false,   
+      timer: 3000,  
+      toast: true,  
+      timerProgressBar: true  
+    });
+
 
     const url = window.location.href;
     navigator.clipboard.writeText(url)

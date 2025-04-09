@@ -3,7 +3,6 @@ import { OrderService } from '../../services/order.service';
 import { orderModel } from '../../shared/models/order.model';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-order-history',
@@ -22,7 +21,6 @@ export class OrderHistoryComponent implements OnInit, OnDestroy {
 
   constructor( 
     private orderService: OrderService,
-    private notify: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -57,21 +55,22 @@ export class OrderHistoryComponent implements OnInit, OnDestroy {
 
     this.orders.forEach(order => {
 
-      let existingOrder = this.groupedOrders.find(group => group.orderId === order.order_number);
+      let existingOrder = this.groupedOrders.find( group => group.orderId === order.order_number );
   
-      if (existingOrder) {
+      if ( existingOrder ) {
 
         existingOrder.products.push({
           product_name: order.product_name,
           product_quantity: order.product_quantity,
-          product_price: this.parseToNumber(order.product_price), 
-          total_product_value: this.parseToNumber(order.total_product_value) 
+          product_price: this.parseToNumber( order.product_price ), 
+          total_product_value: this.parseToNumber( order.total_product_value ) 
         });
-  
 
         existingOrder.totalQuantity += order.product_quantity;
-        existingOrder.totalValue += this.parseToNumber(order.total_product_value);  
-      } else {
+        existingOrder.totalValue += this.parseToNumber( order.total_product_value );  
+      } 
+
+      else {
 
         this.groupedOrders.push({
           orderId: order.order_number,
@@ -92,13 +91,10 @@ export class OrderHistoryComponent implements OnInit, OnDestroy {
     });
   }
   
-
   private parseToNumber(value: any): number {
     return isNaN(parseFloat(value)) ? 0 : parseFloat(value); 
   }
   
-  
-
   toggleOrderDetails(orderId: string): void {
 
     this.orderVisibility[orderId] = !this.orderVisibility[orderId];

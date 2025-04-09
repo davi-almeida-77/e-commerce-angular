@@ -3,11 +3,11 @@
   <h1>Checkout Page </h1>
 
   <div class="progress-bar-container">
-      <div class="progress-bar" [ngClass]="{'progress-30': currentStep === 1, 'progress-60': currentStep === 2, 'progress-100': currentStep === 3}"></div>
+      <div class="progress-bar" [ngClass]="{'progress-30': currentPage === 1, 'progress-60': currentPage === 2, 'progress-100': currentPage === 3}"></div>
   </div>
     
   <div class="checkout-card">
-    <div *ngIf="currentStep === 1">
+    <div *ngIf="currentPage === 1">
       <h2>Residential Information </h2>
       <form>
         <label for="address"><i class="fa-solid fa-house"></i> </label>
@@ -21,7 +21,7 @@
       </form>
     </div>
 
-    <div *ngIf="currentStep === 2">
+    <div *ngIf="currentPage === 2">
       <h2>Payment Information</h2>
       <form>
         <label for="cardNumber"><i class="fa-solid fa-credit-card"></i> </label>
@@ -38,7 +38,7 @@
     </div>
 
 
-    <div *ngIf="currentStep === 3" class="order-summary">
+    <div *ngIf="currentPage === 3" class="order-summary">
 
       <div class="address-info">
         <h2>Confirm  Information</h2>
@@ -77,11 +77,11 @@
     
 
     <div class="navigation-buttons">
-      <button *ngIf="currentStep > 1" (click)="prevStep()">Back</button>
-      <button *ngIf="currentStep < 3" (click)="nextStep()">Next</button>
+      <button *ngIf="currentPage > 1" (click)="prevStep()">Back</button>
+      <button *ngIf="currentPage < 3" (click)="nextStep()">Next</button>
     </div>
   </div>
 
-  <button class="SendOrder"  *ngIf="currentStep === 3"  (click)="sendOrderToDatabase()"> Finalize Order </button>
+  <button class="SendOrder"  *ngIf="currentPage === 3"  (click)="sendOrderToDatabase()"> Finalize Order </button>
 
 </div>
