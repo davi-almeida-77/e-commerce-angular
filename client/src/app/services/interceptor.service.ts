@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpHandler,  HttpRequest, HttpResponse, 
+import { HttpInterceptor, HttpHandler,  HttpRequest, 
 HTTP_INTERCEPTORS, 
 HttpEvent} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
-
-
 
 const TOKEN_HEADER_KEY = 'x-access-token';
 

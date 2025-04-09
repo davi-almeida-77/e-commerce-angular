@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { productModel } from '../shared/models/product.model';
 import { Router } from '@angular/router';
-import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,9 @@ export class CartService {
   totalItens: number = 0;
   totalPrice: number = 0;
 
-  constructor( private router: Router, notify: NotificationService ) {
+  constructor( 
+    private router: Router, 
+   ) {
     const storedCart = JSON.parse(sessionStorage.getItem('cart') || '[]');
     this.cartSubject.next(storedCart);  
     this.updateCart();  
@@ -30,7 +31,7 @@ export class CartService {
 
     const quantityToAdd = product.quantity ?? 1;
   
-    if (existentProduct) {
+    if ( existentProduct ) {
       
       existentProduct.quantity = (existentProduct.quantity || 0) + quantityToAdd;
     } 
@@ -46,8 +47,6 @@ export class CartService {
     this.cartSubject.next(cart);  
     this.updateCart();  
   }
-  
-
   
   updateCart(): void {
     const cart = this.cartSubject.getValue();  
@@ -83,6 +82,7 @@ export class CartService {
     this.cartSubject.next([]); 
     
     this.updateCart();
+
   }
 
 }

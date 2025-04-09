@@ -34,7 +34,6 @@ export class CartComponent implements OnInit {
       this.totalPrice = this.cartService.getTotalPrice();  
     });
 
-   
     this.cartService.totalItens$.subscribe((total) => {
       this.totalItems = total;  
     });
@@ -55,4 +54,5 @@ export class CartComponent implements OnInit {
   
     this.router.navigate(['/shop']);  
   }
+  
 }

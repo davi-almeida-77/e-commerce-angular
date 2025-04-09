@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
 import { OrderService } from '../../services/order.service';
-import { NotificationService } from '../../services/notification.service';
 import Swal from 'sweetalert2';
 
 
@@ -14,7 +13,14 @@ import Swal from 'sweetalert2';
 })
 
 export class CheckoutComponent {
-  currentStep: number = 1;  
+
+  constructor(
+    private authService: AuthService, 
+    private cartService: CartService,
+    private orderService: OrderService,
+  ) {}
+
+  currentPage: number = 1;  
 
   residenceInfo = {
     address: '',
@@ -34,9 +40,9 @@ export class CheckoutComponent {
       let isValid = true;
       let message = '';
   
-      if (this.currentStep === 1) {
+      if ( this.currentPage === 1 ) {
 
-        if (!this.residenceInfo.address || !this.residenceInfo.city || !this.residenceInfo.postalCode) {
+        if ( !this.residenceInfo.address || !this.residenceInfo.city || !this.residenceInfo.postalCode ) {
           isValid = false;
           message = 'Please fill in all address fields correctly ';
 
@@ -52,9 +58,9 @@ export class CheckoutComponent {
           });
 
         }
-      } else if (this.currentStep === 2) {
+      } else if (this.currentPage === 2) {
 
-        if (!this.paymentInfo.cardNumber || !this.paymentInfo.expirationDate || !this.paymentInfo.cvv || !this.paymentInfo.name) {
+        if ( !this.paymentInfo.cardNumber || !this.paymentInfo.expirationDate || !this.paymentInfo.cvv || !this.paymentInfo.name ) {
           isValid = false;
           message = 'Please fill in all payment fields correctly ';
 
@@ -77,14 +83,14 @@ export class CheckoutComponent {
   
 
     nextStep() {
-      if (this.currentStep < 3 && this.validateFields()) {
-        this.currentStep++;
+      if (this.currentPage < 3 && this.validateFields()) {
+        this.currentPage++;
       }
     }
   
     prevStep() {
-      if (this.currentStep > 1) {
-        this.currentStep--;
+      if (this.currentPage > 1) {
+        this.currentPage--;
       }
     }
   
@@ -103,20 +109,13 @@ export class CheckoutComponent {
 
   }
 
-
-  constructor(
-    private authService: AuthService, 
-    private cartService: CartService,
-    private orderService: OrderService,
-  ) {}
-
   sendOrderToDatabase(): void {
 
     if ( this.authService.isUserLoggedIn() ) {
       this.cartService.getCartItems().subscribe(cartItems => {
         const userId = this.authService.getUserId(); 
     
-        if (cartItems && userId) {
+        if ( cartItems && userId ) {
 
               Swal.fire({
                 title: `Sending order  `, 
@@ -129,7 +128,8 @@ export class CheckoutComponent {
                 timerProgressBar: true  
               });
   
-          this.orderService.orderParams(cartItems, userId);
+          this.orderService.orderParams( cartItems, userId );
+          
         } else {
 
           Swal.fire({

@@ -9,8 +9,6 @@ router.post("/create", orderController.create_order);
 router.get("/:userId", (req, res) => {
     const userId = req.params.userId; 
   
-    console.log(`Requisition For User Order with ID:  ${userId}`);
-  
     const query = `
       SELECT 
         u.username, 

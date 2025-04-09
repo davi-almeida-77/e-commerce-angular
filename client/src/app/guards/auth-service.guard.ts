@@ -7,16 +7,16 @@ import { TokenStorageService } from '../services/token-storage.service';
 })
 export class AuthGuardService implements CanActivate {
 
-  constructor(private _route: Router, private _token: TokenStorageService) {}
+  constructor( private route: Router, private token: TokenStorageService ) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const currentUser = this._token.getUser(); 
+  canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean {
+    const currentUser = this.token.getUser(); 
 
     if (currentUser) {
       return true; 
     }
 
-    this._route.navigate(['/login']); 
+    this.route.navigate(['/login']); 
     return false; 
   }
 }

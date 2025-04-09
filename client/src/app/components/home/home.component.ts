@@ -33,7 +33,16 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
         this.products = data;
       },
       ( error ) => {
-
+          Swal.fire ({
+            title: "Error",
+            text: 'Error on Load Products',
+            icon: 'error',
+            position: 'top-right',  
+            showConfirmButton: false,   
+            timer: 3000, 
+            toast: true,  
+            timerProgressBar: true  
+          })
       }
     );
 
@@ -42,7 +51,16 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
         this.bestSellers = data; 
       },
       ( error ) => {
-        console.error('Error fetching best sellers:', error);
+        Swal.fire ({
+          title: "Error",
+          text: 'Error fetching best sellers',
+          icon: 'error',
+          position: 'top-right',  
+          showConfirmButton: false,   
+          timer: 3000, 
+          toast: true,  
+          timerProgressBar: true  
+        })
       }
     )
 
@@ -50,7 +68,7 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   ngAfterViewInit(): void {
   
-    if (!this.swiperInitialized) {
+    if ( !this.swiperInitialized ) {
       this.initializeSwiper();
       this.swiperInitialized = true;  
     }
@@ -58,7 +76,7 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   ngAfterViewChecked(): void {
 
-    if (this.products.length > 0 && !this.swiperInitialized) {
+    if ( this.products.length > 0 && !this.swiperInitialized ) {
       this.initializeSwiper();
       this.swiperInitialized = true;
     }
@@ -85,7 +103,7 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   }
 
-  addToCart(product: productModel): void {
+  addToCart( product: productModel ): void {
     if ( product ){ 
       Swal.fire({
         title: `  "${product.p_name}"  Added to Cart`, 
@@ -107,10 +125,10 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
     });
   }
 
-    addFavorites(product: productModel) {
-      this.favoritesService.addToFavorites(product);
+    addFavorites( product: productModel ) {
+      this.favoritesService.addToFavorites( product );
   
-        if ( product ) {
+        if ( product ) { 
                 Swal.fire({
           title: `  "${ product.p_name }"  Added to Favorites`, 
           text: 'The Product Was Added on Favorites List ',
@@ -126,12 +144,10 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
         });
         }
   
-  
       }
 
   isActivePrev: boolean = false;
   isActiveNext: boolean = false;
-
 
   toggleActive(button: 'prev' | 'next'): void {
     if (button === 'prev') {
@@ -148,8 +164,9 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
       }
     }
   }
-
+  
   singleProductPage(productId: number): void {
     this.router.navigate([`/product/${productId}`]);
   }
+
 }

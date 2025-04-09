@@ -15,9 +15,7 @@ import { FavoritesService } from '../../services/favorites.service';
 export class ShopComponent implements OnInit {
   products: productModel[] = []; 
 
-  quantity: number = 0;
 
-  activeClass: boolean  = false;
   isCombinedFilter: boolean = false;
 
   filterCategory: string = '';
@@ -105,11 +103,6 @@ export class ShopComponent implements OnInit {
       ...product,
       quantity: 1,
     });
-  }
-
-
-  toggleActive(): void { 
-    this.activeClass = !this.activeClass;
   }
 
 

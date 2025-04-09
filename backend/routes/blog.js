@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../database/db'); 
 
 router.get("/", (req, res) => {
-    console.log(" Requisition For Posts  ");
+
     
     db.query("SELECT * FROM posts", (err, results) => {
       if (err) {
@@ -16,7 +16,6 @@ router.get("/", (req, res) => {
   router.get("/:id", (req, res) => {
     const postId = req.params.id; 
 
-    console.log(`Request to obtain Post with ID: ${postId}`);
 
     db.query("SELECT * FROM posts WHERE id = ?", [postId], (err, results) => {
         if (err) {

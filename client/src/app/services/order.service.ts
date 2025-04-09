@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 import { CartService } from './cart.service';
 import { orderModel } from '../shared/models/order.model';
 import { environment } from '../../environment/environment';
-import { NotificationService } from './notification.service';
+import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -22,7 +22,7 @@ export class OrderService {
   private apiService: ApiService, 
   private cartService: CartService, 
   private authService: AuthService,
-  private notify: NotificationService ) {
+ ) {
     this.apiUrl = this.apiService.baseUrl; 
   }
  
@@ -41,19 +41,44 @@ export class OrderService {
   }
   
   createOrder() {
-  if ( this.authService.isUserLoggedIn()) {
+  if ( this.authService.isUserLoggedIn() ) {
     const cartItems = this.cartService.getCartItems();
 
     const userId = this.authService.getUserId();
 
     if ( cartItems && userId ) {
-      this.notify.showSuccess('Order Created Successfully')
+        Swal.fire({
+          icon: 'success',
+          title: `Order Created Successfully`,
+          position: 'top-right',  
+          showConfirmButton: false,   
+          timer: 3000,  
+          toast: true,  
+          timerProgressBar: true 
+        });
     }
     else {
-      this.notify.showError('Cart is Empty')
+      Swal.fire({
+        icon: 'error',
+        title: `Cart is Empty'`,
+        position: 'top-right',  
+        showConfirmButton: false,   
+        timer: 3000,  
+        toast: true,  
+        timerProgressBar: true 
+      });
     }
-  } else {
-    this.notify.showError('User is not On ')
+  } 
+  else {
+    Swal.fire({
+      icon: 'error',
+      title: `User is not On`,
+      position: 'top-right',  
+      showConfirmButton: false,   
+      timer: 3000,  
+      toast: true,  
+      timerProgressBar: true 
+    });
   }
   }
 

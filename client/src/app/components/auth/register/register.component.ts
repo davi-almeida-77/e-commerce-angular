@@ -2,9 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { NotificationService } from '../../../services/notification.service';
 import Swal from 'sweetalert2';
-
 
 
 @Component({
@@ -24,10 +22,10 @@ export class RegisterComponent {
   loading: Boolean = false;
   error: any = '';
 
-  constructor ( private _auth: AuthService, 
-    private _router: Router,
+  constructor ( 
+    private authService: AuthService, 
+    private router: Router,
     private cdr: ChangeDetectorRef,
-    private notify: NotificationService
    ) {}
 
   ngOnInit(): void {}
@@ -40,7 +38,7 @@ matchPasswords( u_password: string, m_password: string ): boolean {
   onSubmit() {
     this.loading = true;
     this.error = '';
-    if (!this.username || !this.f_name || !this.l_name || !this.email || !this.u_password || !this.m_password ) {
+    if ( !this.username || !this.f_name || !this.l_name || !this.email || !this.u_password || !this.m_password ) {
       Swal.fire ({
         title: "Error In Registry",
         text: 'Please fill out all Forms, and Try again',
@@ -53,7 +51,7 @@ matchPasswords( u_password: string, m_password: string ): boolean {
       })
       return;
     }
-    if (!this.matchPasswords(this.u_password, this.m_password)) {
+    if ( !this.matchPasswords(this.u_password, this.m_password )) {
       Swal.fire ({
         title: "Error In Registry",
         text: 'The passwords do not match. Please try again',
@@ -67,11 +65,11 @@ matchPasswords( u_password: string, m_password: string ): boolean {
       return;
     }
     else {
-      this._auth.register({ username: this.username, f_name: this.f_name, l_name: this.l_name, email: this.email, u_password: this.u_password }).
+      this.authService.register({ username: this.username, f_name: this.f_name, l_name: this.l_name, email: this.email, u_password: this.u_password }).
       subscribe(
         response => {
           this.loading = false;
-          this._router.navigate(['/']);
+          this.router.navigate(['/']);
           Swal.fire ({
             title: "Sucessfull Registered ",
             icon: "success",
@@ -84,7 +82,15 @@ matchPasswords( u_password: string, m_password: string ): boolean {
           this.cdr.detectChanges();  
         },
         (err) => {
-          console.log(err)
+              Swal.fire({
+                  title: `Error in Registry `, 
+                  icon: 'error',
+                  position: 'top-right',  
+                  showConfirmButton: false,   
+                  timer: 2000,  
+                  toast: true,  
+                  timerProgressBar: true  
+                });
         }
       )
     }
