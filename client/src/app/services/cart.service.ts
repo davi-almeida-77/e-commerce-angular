@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { productModel } from '../shared/models/product.model';
-import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,14 @@ export class CartService {
   totalItens: number = 0;
   totalPrice: number = 0;
 
-  constructor( 
-    private router: Router, 
-   ) {
+  constructor() {
+
     const storedCart = JSON.parse(sessionStorage.getItem('cart') || '[]');
+
     this.cartSubject.next(storedCart);  
+
     this.updateCart();  
+
   }
 
   private totalItensSubject = new BehaviorSubject<number>(0); 
@@ -68,9 +70,10 @@ export class CartService {
     return this.cartSubject.asObservable();  
   }
 
-  getTotalItems() {
-    return this.totalItens;
+  getTotalItems(): Observable<number> {
+    return this.totalItensSubject.asObservable();
   }
+  
 
   getTotalPrice() {
     return this.totalPrice;
