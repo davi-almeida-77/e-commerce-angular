@@ -1,10 +1,9 @@
-import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { FavoritesService } from '../../services/favorites.service';
+import { ShoppingFacadeService } from '../../services/shopping-facade.service';
 
 @Component({
   selector: 'app-header',
@@ -25,29 +24,26 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userOn: boolean = false; 
 
   constructor(
-    private cartService: CartService, 
+    private ShoppingService: ShoppingFacadeService,
     private userService: UserService,
     private authService: AuthService,
-    private cdr: ChangeDetectorRef,
     private router: Router,
-    private favoriteService: FavoritesService
   ) {}
 
   ngOnInit(): void {   
-    this.cartSubscription = this.cartService.totalItens$.subscribe(total => {
-      this.totalItens = total; 
-
+    
+    this.cartSubscription = this.ShoppingService.getTotalItens().subscribe( total => {
+      this.totalItens = total;
     });
-
-    this.favoriteSubscription = this.favoriteService.getFavoritesLengthObservable()
+    
+    this.favoriteSubscription = this.ShoppingService.getFavoritesLengthObservable()
     .subscribe(length => {
       this.favoritesLength = length;
     });
 
-    this.authSubscription = this.userService.loggedIn$.subscribe(loggedIn => {
+    this.authSubscription = this.userService.loggedIn$.subscribe( loggedIn => {
       this.userOn = loggedIn;
-      this.cdr.detectChanges(); 
-      
+
     });
   }
 

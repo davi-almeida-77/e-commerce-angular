@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
 import { OrderService } from '../../services/order.service';
-import Swal from 'sweetalert2';
+import { AlertsService } from '../../shared/services/alerts.service';
 
 
 @Component({
@@ -18,6 +18,7 @@ export class CheckoutComponent {
     private authService: AuthService, 
     private cartService: CartService,
     private orderService: OrderService,
+    private alert: AlertsService
   ) {}
 
   currentPage: number = 1;  
@@ -44,36 +45,20 @@ export class CheckoutComponent {
 
         if ( !this.residenceInfo.address || !this.residenceInfo.city || !this.residenceInfo.postalCode ) {
           isValid = false;
+
           message = 'Please fill in all address fields correctly ';
 
-          Swal.fire({
-            title: `Success `, 
-            text: message, 
-            icon: 'warning',
-            position: 'top-right',  
-            showConfirmButton: false,   
-            timer: 3000,  
-            toast: true,  
-            timerProgressBar: true  
-          });
+          this.alert.error( message )
 
         }
       } else if (this.currentPage === 2) {
 
         if ( !this.paymentInfo.cardNumber || !this.paymentInfo.expirationDate || !this.paymentInfo.cvv || !this.paymentInfo.name ) {
           isValid = false;
+
           message = 'Please fill in all payment fields correctly ';
 
-          Swal.fire({
-            title: ` Success   `, 
-            text: message, 
-            icon: 'warning',
-            position: 'top-right',  
-            showConfirmButton: false,   
-            timer: 3000,  
-            toast: true,  
-            timerProgressBar: true  
-          });
+          this.alert.error( message )
 
         }
       }
@@ -95,67 +80,29 @@ export class CheckoutComponent {
     }
   
   submitCheckout() {
-
-    Swal.fire({
-      title: ` Success   `, 
-      text: 'Success Checkout',
-      icon: 'success',
-      position: 'top-right',  
-      showConfirmButton: false,   
-      timer: 3000,  
-      toast: true,  
-      timerProgressBar: true  
-    });
-
+    this.alert.success("Success Checkout")
   }
 
   sendOrderToDatabase(): void {
 
     if ( this.authService.isUserLoggedIn() ) {
+
       this.cartService.getCartItems().subscribe(cartItems => {
+
         const userId = this.authService.getUserId(); 
     
         if ( cartItems && userId ) {
+          this.alert.success("Sending order")
 
-              Swal.fire({
-                title: `Sending order  `, 
-                text: 'The Product Was Added on Favorites List ',
-                icon: 'success',
-                position: 'top-right',  
-                showConfirmButton: false,   
-                timer: 3000,  
-                toast: true,  
-                timerProgressBar: true  
-              });
-  
           this.orderService.orderParams( cartItems, userId );
-          
-        } else {
-
-          Swal.fire({
-            title: `Error  `, 
-            text: 'Error in cart',
-            icon: 'error',
-            position: 'top-right',  
-            showConfirmButton: false,   
-            timer: 3000,  
-            toast: true,  
-            timerProgressBar: true  
-          });
-
+        
+        } 
+        else {
+          this.alert.error("Error in cart")
         }
-      }, error => {
-
-        Swal.fire({
-          title: `Error  `, 
-          text: 'Error in get Cart Products',
-          icon: 'error',
-          position: 'top-right',  
-          showConfirmButton: false,   
-          timer: 3000,  
-          toast: true,  
-          timerProgressBar: true  
-        });
+      },
+       error => {
+        this.alert.error("Error in get Cart Products")
       });
     }
 

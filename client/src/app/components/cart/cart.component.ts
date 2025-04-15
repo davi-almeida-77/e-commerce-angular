@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../services/cart.service';
 import { productModel } from '../../shared/models/product.model';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import Swal from 'sweetalert2';
+import { ShoppingFacadeService } from '../../services/shopping-facade.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,6 +12,7 @@ import Swal from 'sweetalert2';
   standalone: true,
 })
 export class CartComponent implements OnInit {
+
   cartItems: productModel[] = [];  
   totalItems: number = 0;           
   totalPrice: number = 0;
@@ -20,39 +20,31 @@ export class CartComponent implements OnInit {
         
 
   constructor(
-    private cartService: CartService,
-    private router: Router
+    private ShoppingService: ShoppingFacadeService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
 
     this.cartExists = sessionStorage.getItem('cart') !== null;    
 
-    this.cartService.getCartItems().subscribe((cart: productModel[]) => {
-      this.cartItems = cart; 
-      this.totalItems = this.cartService.getTotalItems();  
-      this.totalPrice = this.cartService.getTotalPrice();  
-    });
+    this.ShoppingService.getCartItems().subscribe(( cart: productModel[]) => {
+      this.cartItems = cart
+      this.totalPrice = this.ShoppingService.getTotalPrice();
+    })
 
-    this.cartService.totalItens$.subscribe((total) => {
-      this.totalItems = total;  
-    });
+    this.ShoppingService.getTotalItens().subscribe(( total => {
+      this.totalItems = total
+    }))
+
   }
 
   resetCart() {
-    this.cartService.resetCart(); 
+    this.ShoppingService.resetCart();
 
-    Swal.fire({
-        title: `Cleaned Cart `, 
-        icon: 'success',
-        position: 'top-right',  
-        showConfirmButton: false,   
-        timer: 2000,  
-        toast: true,  
-        timerProgressBar: true  
-      });
-  
     this.router.navigate(['/shop']);  
+
   }
-  
+
+
 }

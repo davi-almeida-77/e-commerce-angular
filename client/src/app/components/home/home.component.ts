@@ -1,12 +1,8 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import { AfterViewChecked, AfterViewInit, Component, OnInit  } from '@angular/core';
+import { ShoppingFacadeService } from '../../services/shopping-facade.service';
 import { productModel } from '../../shared/models/product.model';
-import { CartService } from '../../services/cart.service';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
-import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
-import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-home',
@@ -21,46 +17,25 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
   bestSellers: any[] = [];
 
   constructor(
-    private productService: ProductService,
-    private cartService: CartService,
-    private router: Router,
-    private favoritesService: FavoritesService
+    private ShoppingService: ShoppingFacadeService,
   ) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(
+    this.ShoppingService.getProducts().subscribe(
       ( data: productModel[] ) => {
         this.products = data;
       },
       ( error ) => {
-          Swal.fire ({
-            title: "Error",
-            text: 'Error on Load Products',
-            icon: 'error',
-            position: 'top-right',  
-            showConfirmButton: false,   
-            timer: 3000, 
-            toast: true,  
-            timerProgressBar: true  
-          })
+        this.ShoppingService.alertError("Error on Load Products")
       }
     );
 
-    this.productService.getBestSeller().subscribe(
+    this.ShoppingService.getBestSeller().subscribe(
       ( data ) => {
         this.bestSellers = data; 
       },
       ( error ) => {
-        Swal.fire ({
-          title: "Error",
-          text: 'Error fetching best sellers',
-          icon: 'error',
-          position: 'top-right',  
-          showConfirmButton: false,   
-          timer: 3000, 
-          toast: true,  
-          timerProgressBar: true  
-        })
+        this.ShoppingService.alertError("Error fetching best sellers")
       }
     )
 
@@ -82,69 +57,21 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
     }
   }
 
-  private initializeSwiper() {
-    new Swiper('.swiper-container', {
-      loop: true,              
-      slidesPerView: 4,      
-      spaceBetween: 0,        
-      autoplay: {
-        delay: 3500,           
-        disableOnInteraction: false, 
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,      
-      },
-      navigation: {
-        nextEl: '.custom-next',
-        prevEl: '.custom-prev',
-      },
-    });
-
-  }
-
   addToCart( product: productModel ): void {
-    if ( product ){ 
-      Swal.fire({
-        title: `  "${product.p_name}"  Added to Cart`, 
-        text: 'The Product Was Added on Cart ',
-        icon: 'success',
-        imageUrl: product.image,  
-        imageWidth: 120,  
-        imageHeight: 120,
-        position: 'top-right',  
-        showConfirmButton: false,   
-        timer: 3000,  
-        toast: true,  
-        timerProgressBar: true  
-      })
-    }
-    this.cartService.addToCart({
-      ...product,
-      quantity: 1,
-    });
+
+    this.ShoppingService.addToCart( product )
+
   }
 
-    addFavorites( product: productModel ) {
-      this.favoritesService.addToFavorites( product );
+  addFavorites( product: productModel ) {
+
+    this.ShoppingService.addToFavorites( product )
   
-        if ( product ) { 
-                Swal.fire({
-          title: `  "${ product.p_name }"  Added to Favorites`, 
-          text: 'The Product Was Added on Favorites List ',
-          icon: 'success',
-          imageUrl: product.image,  
-          imageWidth: 120,  
-          imageHeight: 120,
-          position: 'top-right',  
-          showConfirmButton: false,   
-          timer: 3000,  
-          toast: true,  
-          timerProgressBar: true  
-        });
-        }
-  
-      }
+  }
+
+  goToProduct( productId: number) {
+      this.ShoppingService.goToProduct( productId )
+  }
 
   isActivePrev: boolean = false;
   isActiveNext: boolean = false;
@@ -165,8 +92,25 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
     }
   }
   
-  singleProductPage(productId: number): void {
-    this.router.navigate([`/product/${productId}`]);
+  private initializeSwiper() {
+    new Swiper('.swiper-container', {
+      loop: true,              
+      slidesPerView: 4,      
+      spaceBetween: 0,        
+      autoplay: {
+        delay: 3500,           
+        disableOnInteraction: false, 
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,      
+      },
+      navigation: {
+        nextEl: '.custom-next',
+        prevEl: '.custom-prev',
+      },
+    });
+
   }
 
 }

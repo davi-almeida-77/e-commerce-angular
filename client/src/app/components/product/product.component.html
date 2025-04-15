@@ -27,13 +27,13 @@
 
   <div class="product-info">
     <p class="product-title"> 
-      {{ product?.p_name }} <a>{{ product?.category}}</a> 
+      {{ product.p_name }} <a>{{ product.category}}</a> 
     </p> 
 
 
 <div class="description-container">
   <p class="description">
-    {{ product?.product_desc }} 
+    {{ product.product_desc }} 
   </p>
 
 </div>
@@ -53,7 +53,7 @@
 
     </div>
 
-    <p class="price"> $ {{ product?.price }}</p>
+    <p class="price"> $ {{ product.price }}</p>
 
     <div class="quantity">
       <label   class="selectors" > Qty  </label>
@@ -78,7 +78,7 @@
 
   <div class="icon-bubbles">
     <div class="icon-bubble">
-      <i class="fa fa-heart" (click)="addFavorite()"></i> 
+      <i class="fa fa-heart" (click)="addToFavorites()"></i> 
     </div>
     <div class="icon-bubble" (click)="copyUrl()" >
       <i class="fa-regular fa-copy"></i>
