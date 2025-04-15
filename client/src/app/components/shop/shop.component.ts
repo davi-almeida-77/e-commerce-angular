@@ -1,10 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { CartService } from '../../services/cart.service';
+import { Component, OnInit } from '@angular/core';
 import { productModel } from '../../shared/models/product.model'; 
-import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
-import { FavoritesService } from '../../services/favorites.service';
+import { ShoppingFacadeService } from '../../services/shopping-facade.service';
 
 @Component({
   selector: 'app-shop',
@@ -15,149 +11,60 @@ import { FavoritesService } from '../../services/favorites.service';
 export class ShopComponent implements OnInit {
   products: productModel[] = []; 
 
-
   isCombinedFilter: boolean = false;
 
   filterCategory: string = '';
   filterPrice: string = '';
   filterModel: string = '';
-  filteredProductCount: number = 0;
 
+  filteredProductCount: number = 0;
   itensByPage: number = 0; 
+
   currentLimit = this.itensByPage; 
 
   limits: number[] = []; 
 
   constructor(
-    private productService: ProductService, 
-    private router: Router,
-    private cartService: CartService,
-    private cdr: ChangeDetectorRef,
-    private favoritesService: FavoritesService
+    private ShoppingService: ShoppingFacadeService,
   ) {}  
-
 
   ngOnInit(): void {
 
     window.scrollTo(0, 0);
 
-    this.productService.getProducts().subscribe(
-      ( data: productModel[]) => {  
+    this.ShoppingService.getProducts().subscribe(
+      ( data: productModel[] ) => {  
         this.products = data;
-        this.calcLimits();  
+        this.numberOfProducts();  
         this.filterByCombination(this.filterCategory, this.filterModel)
       },
       ( error ) => {
-        Swal.fire({
-          icon: 'error',
-          title: ` on Load Products '${error}' `,
-          position: 'top-right',  
-          showConfirmButton: false,   
-          timer: 3000,  
-          toast: true,  
-          timerProgressBar: true 
-        });
+        this.ShoppingService.alertError(`on Load Products '${error}'`)
       }
     );
 
   }
 
-  calcLimits(): void {
-    const totalProducts = this.products.length;
-
-    const limits = [
-      Math.floor(totalProducts / 1), 
-      Math.floor(totalProducts / 2), 
-      Math.floor(totalProducts / 3), 
-    ];
-
-    this.limits = limits.reverse();
-    this.currentLimit = limits[0]; 
-  }
-
-
-  singleProductPage(productId: number): void {
-    this.router.navigate([`/product/${productId}`]);
-  }
-
-
   addToCart(product: productModel): void {
 
-    if ( product ) {
-      Swal.fire({
-        title: `  "${product.p_name}"  Added to Cart`, 
-        text: 'The Product Was Added on Cart ',
-        icon: 'success',
-        imageUrl: product.image,  
-        imageWidth: 120,  
-        imageHeight: 120,
-        position: 'top-right',  
-        showConfirmButton: false,   
-        timer: 3000,  
-        toast: true,  
-        timerProgressBar: true  
-      })
-    }
+    this.ShoppingService.addToCart( product )
 
-    this.cartService.addToCart({
-      ...product,
-      quantity: 1,
-    });
   }
-
-
-  changeLimit(newLimit: number): void {
-    this.itensByPage = newLimit;
-    this.currentLimit = newLimit;
-    this.cdr.detectChanges(); 
-  }
-
-  resetFilters(): void {
-    this.filterCategory = '';
-    this.filterPrice = '';
-    this.filterModel = '';
-
-    this.changeLimit(this.currentLimit);
-
-    Swal.fire({
-      icon: 'info',
-      title: 'Reseted Filters',
-      position: 'top-right',  
-      showConfirmButton: false,   
-      timer: 3000,  
-      toast: true,  
-      timerProgressBar: true 
-    });
-    this.cdr.detectChanges(); 
-  }
-
-
+  
   addFavorites( product: productModel ) {
-    this.favoritesService.addToFavorites( product );
 
-      if ( product ) {
-              Swal.fire({
-        title: `  "${ product.p_name }"  Added to Favorites`, 
-        text: 'The Product Was Added on Favorites List ',
-        icon: 'success',
-        imageUrl: product.image,  
-        imageWidth: 120,  
-        imageHeight: 120,
-        position: 'top-right',  
-        showConfirmButton: false,   
-        timer: 3000,  
-        toast: true,  
-        timerProgressBar: true  
-      });
-      }
+    this.ShoppingService.addToFavorites( product )
 
+  }
 
-    }
+  goToProduct( productId: number ) {
+    this.ShoppingService.goToProduct( productId )
+  }
 
     filterByCombination( category: string, model: string): number {
 
-      const combinatedProducts = this.products.filter(produto => 
-        produto.model === model && produto.category === category
+      const combinatedProducts = this.products.filter(product => 
+        product.model === model && product.category === category
       );
 
       this.filteredProductCount = combinatedProducts.length
@@ -173,6 +80,34 @@ export class ShopComponent implements OnInit {
 
     }
 
+    changeLimit(newLimit: number): void {
+      this.itensByPage = newLimit;
+      this.currentLimit = newLimit;
+    }
   
+    resetFilters(): void {
+      this.filterCategory = '';
+      this.filterPrice = '';
+      this.filterModel = '';
+  
+      this.changeLimit(this.currentLimit);
+  
+      this.ShoppingService.alertInfo("Reseted Filters")
+  
+    }
+
+    numberOfProducts(): void {
+      const totalProducts = this.products.length;
+  
+      const limits = [
+        Math.floor(totalProducts / 1), 
+        Math.floor(totalProducts / 2), 
+        Math.floor(totalProducts / 3), 
+      ];
+  
+      this.limits = limits.reverse();
+      this.currentLimit = limits[0]; 
+    }
+
   }
 

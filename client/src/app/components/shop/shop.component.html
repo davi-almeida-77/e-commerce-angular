@@ -125,7 +125,7 @@
     <div class="products">
       <div  class="product-card" *ngFor="let product of (products | FilterCategory: filterCategory | FilterPrice: filterPrice | FilterModel: filterModel)
                                       .slice(0, currentLimit)">
-        <img (click)="singleProductPage(product.id_product)"   [src]="product.image" alt="{{ product.p_name }}" class="product-image"/>
+        <img (click)="goToProduct(product.id_product)"   [src]="product.image" alt="{{ product.p_name }}" class="product-image"/>
         <div class="product-details">
 
             <div class="name-avaliation">
