@@ -1,8 +1,8 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import Swal from 'sweetalert2';
+import { AlertsService } from '../../../shared/services/alerts.service';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class RegisterComponent {
   constructor ( 
     private authService: AuthService, 
     private router: Router,
-    private cdr: ChangeDetectorRef,
+    private alert: AlertsService,
    ) {}
 
   ngOnInit(): void {}
@@ -39,29 +39,15 @@ matchPasswords( u_password: string, m_password: string ): boolean {
     this.loading = true;
     this.error = '';
     if ( !this.username || !this.f_name || !this.l_name || !this.email || !this.u_password || !this.m_password ) {
-      Swal.fire ({
-        title: "Error In Registry",
-        text: 'Please fill out all Forms, and Try again',
-        icon: "error",
-        position: 'top-right',  
-        showConfirmButton: false,   
-        timer: 3000, 
-        toast: true,  
-        timerProgressBar: true  
-      })
+
+      this.alert.error("Please fill out all Forms, and Try again")
+
       return;
     }
     if ( !this.matchPasswords(this.u_password, this.m_password )) {
-      Swal.fire ({
-        title: "Error In Registry",
-        text: 'The passwords do not match. Please try again',
-        icon: "error",
-        position: 'top-right',  
-        showConfirmButton: false,   
-        timer: 3000, 
-        toast: true,  
-        timerProgressBar: true  
-      })
+
+      this.alert.error("The passwords do not match. Please try again")
+
       return;
     }
     else {
@@ -69,28 +55,16 @@ matchPasswords( u_password: string, m_password: string ): boolean {
       subscribe(
         response => {
           this.loading = false;
+
           this.router.navigate(['/']);
-          Swal.fire ({
-            title: "Sucessfull Registered ",
-            icon: "success",
-            position: 'top-right',  
-            showConfirmButton: false,   
-            timer: 3000, 
-            toast: true,  
-            timerProgressBar: true  
-          })
-          this.cdr.detectChanges();  
+
+          this.alert.success("Sucessfull Registered")
+
         },
         (err) => {
-              Swal.fire({
-                  title: `Error in Registry `, 
-                  icon: 'error',
-                  position: 'top-right',  
-                  showConfirmButton: false,   
-                  timer: 2000,  
-                  toast: true,  
-                  timerProgressBar: true  
-                });
+
+          this.alert.error("Error in Registry")
+
         }
       )
     }

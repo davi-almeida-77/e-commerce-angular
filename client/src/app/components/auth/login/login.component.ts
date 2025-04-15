@@ -1,8 +1,8 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';  
-import Swal from 'sweetalert2';
+import { AlertsService } from '../../../shared/services/alerts.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginComponent {
   constructor( 
       private authService: AuthService,
       private router: Router,
-      private cdr: ChangeDetectorRef
+      private alert: AlertsService,
   ) {}
 
   ngOnInit(): void {}
@@ -29,15 +29,9 @@ export class LoginComponent {
     this.loading = true;
     this.error = '';
     if ( !this.email || !this.u_password ) {
-      Swal.fire({
-          title: `Fill out all forms, and try again`, 
-          icon: 'error',
-          position: 'top-right',  
-          showConfirmButton: false,   
-          timer: 2000,  
-          toast: true,  
-          timerProgressBar: true  
-        });
+
+      this.alert.error("Fill out all forms, and try again")
+
       this.loading = false;
       return; 
     } else {
@@ -45,29 +39,14 @@ export class LoginComponent {
           response => {
             this.loading = false;
             this.router.navigate(['/']);
-                  Swal.fire ({
-                    title: "Sucessful",
-                    text: 'Login  Sucessful',
-                    icon: 'success',
-                    position: 'top-right',  
-                    showConfirmButton: false,   
-                    timer: 3000, 
-                    toast: true,  
-                    timerProgressBar: true  
-                  })
-            this.cdr.detectChanges();  
+            
+            this.alert.success("Login  Sucessful")
+
           },
           (err) => {
-            Swal.fire ({
-              title: "Error",
-              text: 'Something Went Wrong',
-              icon: 'error',
-              position: 'top-right',  
-              showConfirmButton: false,   
-              timer: 3000, 
-              toast: true,  
-              timerProgressBar: true  
-            })
+
+            this.alert.error("Something Went Wrong")
+
             this.loading = false;
           }
         );
