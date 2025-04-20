@@ -1,0 +1,1519 @@
+DROP TABLE IF EXISTS `product_images`;
+
+CREATE TABLE `product_images` (
+  `id_image` int NOT NULL AUTO_INCREMENT,
+  `product_id` int NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `image_type` enum('side', 'sole', 'otherside', 'top', 'front', 'back') NOT NULL,
+  PRIMARY KEY (`id_image`),
+  KEY `product_id` (`product_id`),
+  CONSTRAINT `product_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id_product`) ON DELETE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 306 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+
+LOCK TABLES `product_images` WRITE;
+
+INSERT INTO
+  `product_images`
+VALUES
+  (
+    1,
+    2,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d0c8528c-3e68-4886-a1b8-1a05d1865347/JORDAN+LUKA+3+SE.png',
+    'sole'
+  ),
+(
+    2,
+    2,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/72c18d45-8751-49e2-a467-a13ce27855f5/JORDAN+LUKA+3+SE.png',
+    'otherside'
+  ),
+(
+    3,
+    2,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c96a3762-26f0-4df9-abad-af6c182efbe8/JORDAN+LUKA+3+SE.png',
+    'top'
+  ),
+(
+    4,
+    2,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/1fe98e31-edab-44c8-8410-05b486770b1d/JORDAN+LUKA+3+SE.png',
+    'front'
+  ),
+(
+    5,
+    2,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/93529674-855e-46cf-aad4-14eb1215ed39/JORDAN+LUKA+3+SE.png',
+    'back'
+  ),
+(
+    6,
+    1,
+    'https://imgnike-a.akamaihd.net/360x360/079413IGA11.jpg',
+    'sole'
+  ),
+(
+    7,
+    1,
+    'https://imgnike-a.akamaihd.net/360x360/079413IGA10.jpg',
+    'otherside'
+  ),
+(
+    8,
+    1,
+    'https://imgnike-a.akamaihd.net/360x360/079413IGA7.jpg',
+    'top'
+  ),
+(
+    9,
+    1,
+    'https://imgnike-a.akamaihd.net/360x360/079413IGA9.jpg',
+    'front'
+  ),
+(
+    10,
+    1,
+    'https://imgnike-a.akamaihd.net/360x360/079413IGA8.jpg',
+    'back'
+  ),
+(
+    11,
+    3,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/dbe04213-ab03-42ce-a133-5ca5c05be13c/JORDAN+LUKA+3.png',
+    'sole'
+  ),
+(
+    12,
+    3,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7a561186-746b-4b88-b65c-35b886cfe829/JORDAN+LUKA+3.png',
+    'otherside'
+  ),
+(
+    13,
+    3,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/4515034f-54bd-4275-91cd-d25abae059d0/JORDAN+LUKA+3.png',
+    'top'
+  ),
+(
+    14,
+    3,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d205ebaa-e871-4a07-af7c-e6d827f8515c/JORDAN+LUKA+3.png',
+    'front'
+  ),
+(
+    15,
+    3,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/9208aa54-1c24-49bd-817a-376af1fbfed0/JORDAN+LUKA+3.png',
+    'back'
+  ),
+(
+    16,
+    4,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/909b7772-b18c-40a3-925c-b66bdd9fba0d/JORDAN+LUKA+3.png',
+    'sole'
+  ),
+(
+    17,
+    4,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/2fe9d7d4-f4dd-467d-a552-599c9076f051/JORDAN+LUKA+3.png',
+    'otherside'
+  ),
+(
+    18,
+    4,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7675cdc5-92f1-432c-9ce3-a36dc37c60ad/JORDAN+LUKA+3.png',
+    'top'
+  ),
+(
+    19,
+    4,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d296a3f4-aab1-45db-a2e6-2de6ecb7c11e/JORDAN+LUKA+3.png',
+    'front'
+  ),
+(
+    20,
+    4,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/82ffee25-f17a-4bfa-b748-d3342045d273/JORDAN+LUKA+3.png',
+    'back'
+  ),
+(
+    21,
+    5,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/272de2b2-ca52-4bd0-8fac-df3e012ca51e/JORDAN+HEIR+SERIES.png',
+    'sole'
+  ),
+(
+    22,
+    5,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b15ef5b5-14ea-44f2-88d2-790df52399bb/JORDAN+HEIR+SERIES.png',
+    'otherside'
+  ),
+(
+    23,
+    5,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/40201b65-752b-42db-a212-70effecbdd95/JORDAN+HEIR+SERIES.png',
+    'top'
+  ),
+(
+    24,
+    5,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/05714384-18b5-4c6d-b71f-ddb21272c72f/JORDAN+HEIR+SERIES.png',
+    'front'
+  ),
+(
+    25,
+    5,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7b4cd9b2-a3fa-4019-a8dd-dbd79cf80008/JORDAN+HEIR+SERIES.png',
+    'back'
+  ),
+(
+    26,
+    6,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/6d2b33de-d324-49ef-b2c9-cee1b76a6867/KILLSHOT+2+LEATHER.png',
+    'sole'
+  ),
+(
+    27,
+    6,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/8967ebe3-481e-45ba-8e9b-122c0544495f/KILLSHOT+2+LEATHER.png',
+    'otherside'
+  ),
+(
+    28,
+    6,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/3c3e002e-f272-418b-a6a5-c02991ab045d/KILLSHOT+2+LEATHER.png',
+    'top'
+  ),
+(
+    29,
+    6,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/21bf7d37-87d1-40fe-80a3-7c8df0cc3be8/KILLSHOT+2+LEATHER.png',
+    'front'
+  ),
+(
+    30,
+    6,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/9eb35067-ee8c-4f3e-8245-53d71a1518dd/KILLSHOT+2+LEATHER.png',
+    'back'
+  ),
+(
+    31,
+    7,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d113738e-f55e-4b63-9327-54f744bf042d/JORDAN+6+RINGS.png',
+    'sole'
+  ),
+(
+    32,
+    7,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/5667b24b-8d8c-4d11-82f5-58c2387fd691/JORDAN+6+RINGS.png',
+    'otherside'
+  ),
+(
+    33,
+    7,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/1b0a40d1-d6e5-4f80-9e65-ec28e706c79f/JORDAN+6+RINGS.png',
+    'top'
+  ),
+(
+    34,
+    7,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/685fdad8-cf0b-461a-b164-82ed0707ca67/JORDAN+6+RINGS.png',
+    'front'
+  ),
+(
+    35,
+    7,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/5719c9e3-66a7-4038-8990-94a0bb5b77f0/JORDAN+6+RINGS.png',
+    'back'
+  ),
+(
+    36,
+    8,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/6cc8b9fc-9f91-4963-8f41-44482e790471/WMNS+AIR+JORDAN+1+LOW.png',
+    'sole'
+  ),
+(
+    37,
+    8,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7709df52-f96e-4c12-9f13-ca13d5198971/WMNS+AIR+JORDAN+1+LOW.png',
+    'otherside'
+  ),
+(
+    38,
+    8,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/8b689ec3-0967-449a-a9e2-04bb3152b2bc/WMNS+AIR+JORDAN+1+LOW.png',
+    'top'
+  ),
+(
+    39,
+    8,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/35e9a24e-6337-4fda-abbb-6bc8e31c12c1/WMNS+AIR+JORDAN+1+LOW.png',
+    'front'
+  ),
+(
+    40,
+    8,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/fc1d471c-e699-4564-8f63-8b5b054ac15a/WMNS+AIR+JORDAN+1+LOW.png',
+    'back'
+  ),
+(
+    46,
+    9,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d2e343e5-4b45-46d2-a9e5-7025401c861f/JORDAN+WINTERIZED+6+RINGS.png',
+    'sole'
+  ),
+(
+    47,
+    9,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/98dfd238-bf04-48ff-9999-4b02c62f1c3f/JORDAN+WINTERIZED+6+RINGS.png',
+    'otherside'
+  ),
+(
+    48,
+    9,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a0751948-a810-40ba-a928-be94a3c595f8/JORDAN+WINTERIZED+6+RINGS.png',
+    'top'
+  ),
+(
+    49,
+    9,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/20fad25b-0388-4791-a936-6b0037ff33ad/JORDAN+WINTERIZED+6+RINGS.png',
+    'front'
+  ),
+(
+    50,
+    9,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/376f2568-69f2-4292-b047-1d3f64e515b6/JORDAN+WINTERIZED+6+RINGS.png',
+    'back'
+  ),
+(
+    51,
+    10,
+    'https://imgnike-a.akamaihd.net/360x360/02944515A2.jpg',
+    'sole'
+  ),
+(
+    52,
+    10,
+    'https://imgnike-a.akamaihd.net/360x360/02944515A3.jpg',
+    'otherside'
+  ),
+(
+    53,
+    10,
+    'https://imgnike-a.akamaihd.net/360x360/02944515A4.jpg',
+    'top'
+  ),
+(
+    54,
+    10,
+    'https://imgnike-a.akamaihd.net/360x360/02944515A6.jpg',
+    'front'
+  ),
+(
+    55,
+    10,
+    'https://imgnike-a.akamaihd.net/360x360/02944515A5.jpg',
+    'back'
+  ),
+(
+    56,
+    11,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/blhq4sibicc9hzifoypi/WMNS+NIKE+FREE+RN+2018.png',
+    'sole'
+  ),
+(
+    57,
+    11,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/mm3xaivyadyevly9gvmq/WMNS+NIKE+FREE+RN+2018.png',
+    'otherside'
+  ),
+(
+    58,
+    11,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/tp4byzxhxqthkavigvgk/WMNS+NIKE+FREE+RN+2018.png',
+    'top'
+  ),
+(
+    59,
+    11,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/aneevf1t2ry3isopa0qz/WMNS+NIKE+FREE+RN+2018.png',
+    'front'
+  ),
+(
+    60,
+    11,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/xxld0d25otwutxxw23gf/WMNS+NIKE+FREE+RN+2018.png',
+    'back'
+  ),
+(
+    61,
+    12,
+    'https://imgnike-a.akamaihd.net/360x360/031373IDA2.jpg',
+    'sole'
+  ),
+(
+    62,
+    12,
+    'https://imgnike-a.akamaihd.net/360x360/031373IDA3.jpg',
+    'otherside'
+  ),
+(
+    63,
+    12,
+    'https://imgnike-a.akamaihd.net/360x360/031373IDA4.jpg',
+    'top'
+  ),
+(
+    64,
+    12,
+    'https://imgnike-a.akamaihd.net/360x360/031373IDA5.jpg',
+    'front'
+  ),
+(
+    65,
+    12,
+    'https://imgnike-a.akamaihd.net/360x360/031373IDA6.jpg',
+    'back'
+  ),
+(
+    66,
+    13,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/db464b93-920a-4a6c-8955-db474f2e4487/G.T.+CUT+3+TURBO+LX.png',
+    'sole'
+  ),
+(
+    67,
+    13,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/83331511-dc36-47f7-8049-60ee510c66c1/G.T.+CUT+3+TURBO+LX.png',
+    'otherside'
+  ),
+(
+    68,
+    13,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/95e52136-75e2-450e-8ce3-7adb482dd074/G.T.+CUT+3+TURBO+LX.png',
+    'top'
+  ),
+(
+    69,
+    13,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/94e83fb4-f987-46a0-8f95-5649510a95ca/G.T.+CUT+3+TURBO+LX.png',
+    'front'
+  ),
+(
+    70,
+    13,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b69b96b7-f36a-4c6d-ba5a-835373c1264b/G.T.+CUT+3+TURBO+LX.png',
+    'back'
+  ),
+(
+    71,
+    14,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/ed19174c-8679-4c3e-9096-60ab1d0ff1d6/AIR+FORCE+1+%2707+LV8.png',
+    'sole'
+  ),
+(
+    72,
+    14,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a3f22147-332d-4c18-a11b-fad3738b271f/AIR+FORCE+1+%2707+LV8.png',
+    'otherside'
+  ),
+(
+    73,
+    14,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/0653baa8-27bf-4fb4-bac5-1881a1922621/AIR+FORCE+1+%2707+LV8.png',
+    'top'
+  ),
+(
+    74,
+    14,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/13a356db-dd34-4cb9-8c2b-3b55523c2608/AIR+FORCE+1+%2707+LV8.png',
+    'front'
+  ),
+(
+    75,
+    14,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4d363c00-731e-423d-9c80-55773d8a7330/AIR+FORCE+1+%2707+LV8.png',
+    'back'
+  ),
+(
+    81,
+    16,
+    'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/108428/01/dt01/fnd/BRA/w/1000/h/1000/fmt/png',
+    'sole'
+  ),
+(
+    82,
+    16,
+    'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/108428/01/sv03/fnd/BRA/w/1000/h/1000/fmt/png',
+    'otherside'
+  ),
+(
+    83,
+    16,
+    'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/108428/01/sv02/fnd/BRA/w/1000/h/1000/fmt/png',
+    'top'
+  ),
+(
+    84,
+    16,
+    'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/108428/01/fnd/BRA/w/100/h/100/fmt/png',
+    'front'
+  ),
+(
+    85,
+    16,
+    'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/108428/01/bv/fnd/BRA/w/1000/h/1000/fmt/png',
+    'back'
+  ),
+(
+    91,
+    17,
+    'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/107990/02/fnd/BRA/w/1000/h/1000/fmt/png',
+    'sole'
+  ),
+(
+    92,
+    17,
+    'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/107990/02/sv03/fnd/BRA/w/1000/h/1000/fmt/png',
+    'otherside'
+  ),
+(
+    93,
+    17,
+    'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/107990/02/sv02/fnd/BRA/w/1000/h/1000/fmt/png',
+    'top'
+  ),
+(
+    94,
+    17,
+    'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/107990/02/sv04/fnd/BRA/w/1000/h/1000/fmt/png',
+    'front'
+  ),
+(
+    95,
+    17,
+    'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/107990/02/bv/fnd/BRA/w/1000/h/1000/fmt/png',
+    'back'
+  ),
+(
+    96,
+    18,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/6a815356-4821-4bc8-b0a7-b5fbe29bf542/W+NIKE+SHOX+TL.png',
+    'sole'
+  ),
+(
+    97,
+    18,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/fd33a2c2-a986-4d53-9ef3-e6f767516a60/W+NIKE+SHOX+TL.png',
+    'otherside'
+  ),
+(
+    98,
+    18,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/817faf0f-2595-4f32-a627-0e7339246cfd/W+NIKE+SHOX+TL.png',
+    'top'
+  ),
+(
+    99,
+    18,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/8b36a026-c005-4592-9f75-c9dce7a98577/W+NIKE+SHOX+TL.png',
+    'front'
+  ),
+(
+    100,
+    18,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/0f908ed8-73cc-407e-a81c-51a8f50abdc5/W+NIKE+SHOX+TL.png',
+    'back'
+  ),
+(
+    101,
+    19,
+    'https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/769f9355-add0-4e22-9a80-962402c90c96/AIR+JORDAN+14+G.png',
+    'sole'
+  ),
+(
+    102,
+    19,
+    'https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/acefd45a-59f2-4c8d-abf3-ca336185e9c1/AIR+JORDAN+14+G.png',
+    'otherside'
+  ),
+(
+    103,
+    19,
+    'https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/914f8d77-de99-4451-bdd3-a05647f382af/AIR+JORDAN+14+G.png',
+    'top'
+  ),
+(
+    104,
+    19,
+    'https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a5fa5b26-75d7-4f8f-91a5-c66cd0d426f1/AIR+JORDAN+14+G.png',
+    'front'
+  ),
+(
+    105,
+    19,
+    'https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/44a7d41b-382a-4ff1-ace8-1ec023b2e88b/AIR+JORDAN+14+G.png',
+    'back'
+  ),
+(
+    111,
+    20,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f48c5e4b-2ea5-42fa-8943-607690e4f0ba/KAWA+SLIDE+%28GS%2FPS%29.png',
+    'sole'
+  ),
+(
+    112,
+    20,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/abf6cd94-f57d-4e6d-b698-f009d5096e9d/KAWA+SLIDE+%28GS%2FPS%29.png',
+    'otherside'
+  ),
+(
+    113,
+    20,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/1087a7bd-67a3-4f8f-9859-fc6a3f7765ab/KAWA+SLIDE+%28GS%2FPS%29.png',
+    'top'
+  ),
+(
+    114,
+    20,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/ccb2b58b-a485-44a5-b232-e265a5f832b1/KAWA+SLIDE+%28GS%2FPS%29.png',
+    'front'
+  ),
+(
+    115,
+    20,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e5d0f7c5-64cb-4dad-a444-cee7888a3a24/KAWA+SLIDE+%28GS%2FPS%29.png',
+    'back'
+  ),
+(
+    116,
+    21,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/88fd82e4-6a95-4882-852e-2c0d9faf29b3/NIKE+KAWA+SLIDE+%28GS%2FPS%29.png',
+    'sole'
+  ),
+(
+    117,
+    21,
+    'https://static.nike.com/a/images/t_default/bsqxzinx1skvammi9gan/NIKE+KAWA+SLIDE+%28GS%2FPS%29.png',
+    'otherside'
+  ),
+(
+    118,
+    21,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/65d1d707-cf51-4233-bf29-ff2495cae060/NIKE+KAWA+SLIDE+%28GS%2FPS%29.png',
+    'top'
+  ),
+(
+    119,
+    21,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/c025652f-79f2-4c21-b0e1-9042fe1d3705/NIKE+KAWA+SLIDE+%28GS%2FPS%29.png',
+    'front'
+  ),
+(
+    120,
+    21,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/lx4h9fe8r2mc1fumczjp/NIKE+KAWA+SLIDE+%28GS%2FPS%29.png',
+    'back'
+  ),
+(
+    146,
+    26,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/bf18b3f0-6365-497a-abc1-19fbb7355364/custom-nike-air-force-1-low-by-you-shoes.png',
+    'sole'
+  ),
+(
+    147,
+    26,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/e3948167-8162-4101-9aa3-ef2fbec5596a/custom-nike-air-force-1-low-by-you-shoes.png',
+    'otherside'
+  ),
+(
+    148,
+    26,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/e53066e1-59d4-43de-bf67-708706f2d554/custom-nike-air-force-1-low-by-you-shoes.png',
+    'top'
+  ),
+(
+    149,
+    26,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/2783be5d-566f-49cb-9a26-a2c396b234dc/custom-nike-air-force-1-low-by-you-shoes.png',
+    'front'
+  ),
+(
+    150,
+    26,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/a4d8c4d8-99cb-4405-a962-043268828f03/custom-nike-air-force-1-low-by-you-shoes.png',
+    'back'
+  ),
+(
+    151,
+    27,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/167d0f3e-4d7b-4cd8-8315-8b4a7d91be86/nike-dunk-low-unlocked-by-you.png',
+    'sole'
+  ),
+(
+    152,
+    27,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/67eec017-e849-4ef9-a374-64461f05d7b9/nike-dunk-low-unlocked-by-you.png',
+    'otherside'
+  ),
+(
+    153,
+    27,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/fbed087d-0522-4864-9c59-2d1636291579/nike-dunk-low-unlocked-by-you.png',
+    'top'
+  ),
+(
+    154,
+    27,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/c1be1254-404c-44b8-98bd-36df55edf501/nike-dunk-low-unlocked-by-you.png',
+    'front'
+  ),
+(
+    155,
+    27,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/81a31fa3-2932-42b9-b535-1474084bba45/nike-dunk-low-unlocked-by-you.png',
+    'back'
+  ),
+(
+    156,
+    28,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/0d29edac-7936-4878-ac15-f8b9c6b1027b/AIR+FORCE+1+%2707.png',
+    'sole'
+  ),
+(
+    157,
+    28,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/293a711d-19f3-4705-8f7f-5a87e91de315/AIR+FORCE+1+%2707.png',
+    'otherside'
+  ),
+(
+    158,
+    28,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f344947d-7112-4c14-a163-e9aadc2ac149/AIR+FORCE+1+%2707.png',
+    'top'
+  ),
+(
+    159,
+    28,
+    'https://static.nike.com/a/images/t_default/06ea8eb8-987d-46f2-a0fe-44b5388d569d/AIR+FORCE+1+%2707.png',
+    'front'
+  ),
+(
+    160,
+    28,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/649ce98c-54b7-4610-a45d-6e1d6d518c65/AIR+FORCE+1+%2707.png',
+    'back'
+  ),
+(
+    161,
+    29,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b310041d-8719-4ee2-b2d7-b128d0fec67a/KILLSHOT+2+LTR.png',
+    'sole'
+  ),
+(
+    162,
+    29,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/8e61a541-cb55-4669-9fe1-700ba74c56f4/KILLSHOT+2+LTR.png',
+    'otherside'
+  ),
+(
+    163,
+    29,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/544df6be-018f-4582-9b78-650a96346c31/KILLSHOT+2+LTR.png',
+    'top'
+  ),
+(
+    164,
+    29,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e6b7fc32-8f2b-40b8-b34d-8b73494e9ff6/KILLSHOT+2+LTR.png',
+    'front'
+  ),
+(
+    165,
+    29,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/9e4889cd-b0ed-4f1a-9a14-138fba90c58c/KILLSHOT+2+LTR.png',
+    'back'
+  ),
+(
+    166,
+    30,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e0e49dd1-2df6-4a65-98ee-8ec51a08c0b5/KILLSHOT+2+LTR+PRM.png',
+    'sole'
+  ),
+(
+    167,
+    30,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78297611-bcc8-403a-ae4a-e1f9bf7bf227/KILLSHOT+2+LTR+PRM.png',
+    'otherside'
+  ),
+(
+    168,
+    30,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/165dd032-02f6-4701-a3fd-b77db0278d47/KILLSHOT+2+LTR+PRM.png',
+    'top'
+  ),
+(
+    169,
+    30,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/cc012441-b134-4234-a06f-b82b8b1664c8/KILLSHOT+2+LTR+PRM.png',
+    'front'
+  ),
+(
+    170,
+    30,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/c6c5ff6b-923c-4455-beef-4b649d042410/KILLSHOT+2+LTR+PRM.png',
+    'back'
+  ),
+(
+    181,
+    22,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b8052ebb-59ea-4eec-99f2-3c4a39f46ed4/AIR+JORDAN+XXXIX.png',
+    'sole'
+  ),
+(
+    182,
+    22,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/9eb9ee55-d274-48a1-ad95-6c48a153e2c9/AIR+JORDAN+XXXIX.png',
+    'otherside'
+  ),
+(
+    183,
+    22,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/1d913042-388d-4df0-8835-5064753aefab/AIR+JORDAN+XXXIX.png',
+    'top'
+  ),
+(
+    184,
+    22,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/2e9a81d6-e62d-46ee-8905-db430c414d37/AIR+JORDAN+XXXIX.png',
+    'front'
+  ),
+(
+    185,
+    22,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/295cd71f-f771-46d3-a965-9566ca6e0805/AIR+JORDAN+XXXIX.png',
+    'back'
+  ),
+(
+    186,
+    15,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/68dadbec-05f2-4fc1-85f0-2052cd25603d/AIR+JORDAN+XXXIX.png',
+    'sole'
+  ),
+(
+    187,
+    15,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/99528f36-d2ae-41ed-a067-bf9ea7f6a505/AIR+JORDAN+XXXIX.png',
+    'otherside'
+  ),
+(
+    188,
+    15,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/6de590ae-df9a-4197-b1fe-87ea1ae3389f/AIR+JORDAN+XXXIX.png',
+    'top'
+  ),
+(
+    189,
+    15,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/cfa6021b-f32c-4fe3-aca1-73455805853c/AIR+JORDAN+XXXIX.png',
+    'front'
+  ),
+(
+    190,
+    15,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/9945c40a-4c94-4f4d-9147-32385e50e6e1/AIR+JORDAN+XXXIX.png',
+    'back'
+  ),
+(
+    191,
+    23,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/5ea6498f-56bf-4238-b988-45e4c5e0a538/AIR+JORDAN+XXXIX+RNWY.png',
+    'sole'
+  ),
+(
+    192,
+    23,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ef9e0c14-56f3-4f24-8ef2-175ec721166b/AIR+JORDAN+XXXIX+RNWY.png',
+    'otherside'
+  ),
+(
+    193,
+    23,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/878849a6-4aa8-41e6-a4a1-d1cd90ed2f8c/AIR+JORDAN+XXXIX+RNWY.png',
+    'top'
+  ),
+(
+    194,
+    23,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/95518abd-c2b0-4a5b-bed3-a7159425ecfa/AIR+JORDAN+XXXIX+RNWY.png',
+    'front'
+  ),
+(
+    195,
+    23,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/9fcff911-3740-4cd9-930d-212a1e649c94/AIR+JORDAN+XXXIX+RNWY.png',
+    'back'
+  ),
+(
+    196,
+    24,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/041f6a57-6f96-44b3-a7a5-59b19b4c7405/AIR+JORDAN+XXXIX.png',
+    'sole'
+  ),
+(
+    197,
+    24,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/24801895-29a6-4899-b708-e5d6f1ba4e87/AIR+JORDAN+XXXIX.png',
+    'otherside'
+  ),
+(
+    198,
+    24,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/aed76270-214a-4acd-957a-8d061c254efe/AIR+JORDAN+XXXIX.png',
+    'top'
+  ),
+(
+    199,
+    24,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c34be45f-26ea-4421-b3ad-1529d9fce375/AIR+JORDAN+XXXIX.png',
+    'front'
+  ),
+(
+    200,
+    24,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/4db14569-93ed-4798-bca2-b55d77b807a6/AIR+JORDAN+XXXIX.png',
+    'back'
+  ),
+(
+    201,
+    25,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b95e1a99-d44f-4e37-8b85-c69f50691cae/NIKE+AIR+ZOOM+G.T.+JUMP+2.png',
+    'sole'
+  ),
+(
+    202,
+    25,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/d994e667-9088-4246-af99-2c1fcbff962e/NIKE+AIR+ZOOM+G.T.+JUMP+2.png',
+    'otherside'
+  ),
+(
+    203,
+    25,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/60a45f0a-dd6b-467f-b504-f53445312825/NIKE+AIR+ZOOM+G.T.+JUMP+2.png',
+    'top'
+  ),
+(
+    204,
+    25,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/813e482d-2130-4a1b-99a6-3ff4dfcd9226/NIKE+AIR+ZOOM+G.T.+JUMP+2.png',
+    'front'
+  ),
+(
+    205,
+    25,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/be021672-ea96-44e3-a9a7-13a6b1b29ff0/NIKE+AIR+ZOOM+G.T.+JUMP+2.png',
+    'back'
+  ),
+(
+    206,
+    31,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7e43b3bb-f0ce-4043-9710-f411f9c7d6b5/NIKE+PRECISION+VII+EASYON.png',
+    'sole'
+  ),
+(
+    207,
+    31,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7fcdce74-ed65-4b89-98ff-37903bd254d8/NIKE+PRECISION+VII+EASYON.png',
+    'otherside'
+  ),
+(
+    208,
+    31,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/9487ddf6-7750-4daa-8468-6bb4b4adef5e/NIKE+PRECISION+VII+EASYON.png',
+    'top'
+  ),
+(
+    209,
+    31,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e9e8c686-b95e-43eb-a44e-a41ff2c30433/NIKE+PRECISION+VII+EASYON.png',
+    'front'
+  ),
+(
+    210,
+    31,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e9e8c686-b95e-43eb-a44e-a41ff2c30433/NIKE+PRECISION+VII+EASYON.png',
+    'back'
+  ),
+(
+    211,
+    32,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/6cda6a36-92d1-4dd7-ba38-61e2847a7e5d/NIKE+PRECISION+VII+EASYON.png',
+    'sole'
+  ),
+(
+    212,
+    32,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/6ca5d91d-2dc1-4342-9882-1bdf07c1544f/NIKE+PRECISION+VII+EASYON.png',
+    'otherside'
+  ),
+(
+    213,
+    32,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/ef2dc77b-c605-4649-98d2-a036aa3c6788/NIKE+PRECISION+VII+EASYON.png',
+    'top'
+  ),
+(
+    214,
+    32,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78f99ea4-2e0d-433c-9d96-bcd4f0c4abe4/NIKE+PRECISION+VII+EASYON.png',
+    'front'
+  ),
+(
+    215,
+    32,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/614524c9-dd9f-41ad-b712-e65e8b14387e/NIKE+PRECISION+VII+EASYON.png',
+    'back'
+  ),
+(
+    216,
+    33,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/1a34bbc7-9bfd-4a11-adab-8acbe41af9b5/custom-nike-sabrina-2-by-you.png',
+    'sole'
+  ),
+(
+    217,
+    33,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/8f758d33-ea2c-46a0-821a-62752d448d9d/custom-nike-sabrina-2-by-you.png',
+    'otherside'
+  ),
+(
+    218,
+    33,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/0b82563c-2370-4570-8f4e-58ce0097925e/custom-nike-sabrina-2-by-you.png',
+    'top'
+  ),
+(
+    219,
+    33,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/9b545342-cf7f-4994-95d4-d8150e50441b/custom-nike-sabrina-2-by-you.png',
+    'front'
+  ),
+(
+    220,
+    33,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/91eb27b9-719c-4c1d-baaf-9555a196df1e/custom-nike-sabrina-2-by-you.png',
+    'back'
+  ),
+(
+    221,
+    34,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/cbf5e65b-3497-489d-b468-db9f91b2c776/custom-nike-sabrina-2-by-you.png',
+    'sole'
+  ),
+(
+    222,
+    34,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/c7cab941-0fbf-417f-87e7-733b0b16bc7e/custom-nike-sabrina-2-by-you.png',
+    'otherside'
+  ),
+(
+    223,
+    34,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/34b8df7a-3aa0-45dc-b2b6-6510dd07be52/custom-nike-sabrina-2-by-you.png',
+    'top'
+  ),
+(
+    224,
+    34,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/323c72ee-a77c-4097-bcf5-a542785539eb/custom-nike-sabrina-2-by-you.png',
+    'front'
+  ),
+(
+    225,
+    34,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/0c62f60b-36d9-42c3-87d6-5b6cf502e56a/custom-nike-sabrina-2-by-you.png',
+    'back'
+  ),
+(
+    226,
+    35,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/ed3dcd86-57ce-4a96-9e25-c403c441b44c/custom-nike-sabrina-2-by-you.png',
+    'sole'
+  ),
+(
+    227,
+    35,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/65901f18-7a04-4f44-a1c9-3fb5f36408cb/custom-nike-sabrina-2-by-you.png',
+    'otherside'
+  ),
+(
+    228,
+    35,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/ce6378d1-d653-4992-be22-806b412c9b66/custom-nike-sabrina-2-by-you.png',
+    'top'
+  ),
+(
+    229,
+    35,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/9cbee4a1-7b4b-4da3-8e5d-650becf14519/custom-nike-sabrina-2-by-you.png',
+    'front'
+  ),
+(
+    230,
+    35,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/306263b6-12c0-48ef-b2a3-1085243ddb47/custom-nike-sabrina-2-by-you.png',
+    'back'
+  ),
+(
+    231,
+    36,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/d64297a0-21c4-40c7-a3ce-e786abe3ac06/custom-nike-sabrina-2-by-you.png',
+    'sole'
+  ),
+(
+    232,
+    36,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/5e80ef75-a6dd-4da8-bec1-6b9e848387dd/custom-nike-sabrina-2-by-you.png',
+    'otherside'
+  ),
+(
+    233,
+    36,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/5d4960c5-1660-46ea-9b3b-b30f0eea5baf/custom-nike-sabrina-2-by-you.png',
+    'top'
+  ),
+(
+    234,
+    36,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/512036da-2729-4118-aa8b-44c1b8b62d89/custom-nike-sabrina-2-by-you.png',
+    'front'
+  ),
+(
+    235,
+    36,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/9c3aa67a-246d-472d-8061-f98d61596726/custom-nike-sabrina-2-by-you.png',
+    'back'
+  ),
+(
+    236,
+    37,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/2a41e23c-f8f7-432b-9a61-6ec62462eb5b/custom-nike-sabrina-2-by-you.png',
+    'sole'
+  ),
+(
+    237,
+    37,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/d65d8c36-c9f2-4773-a225-f9e78ea95c2f/custom-nike-sabrina-2-by-you.png',
+    'otherside'
+  ),
+(
+    238,
+    37,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/c0673036-d01d-4be8-acaf-16f99bf686c0/custom-nike-sabrina-2-by-you.png',
+    'top'
+  ),
+(
+    239,
+    37,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/7c40b862-e0f2-4686-a79b-3a0535668398/custom-nike-sabrina-2-by-you.png',
+    'front'
+  ),
+(
+    240,
+    37,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/f76bdef2-2305-4dce-b955-263f116cf99a/custom-nike-sabrina-2-by-you.png',
+    'back'
+  ),
+(
+    241,
+    38,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/e1540451-2972-4954-a684-e0363d4570d0/custom-nike-sabrina-2-by-you.png',
+    'sole'
+  ),
+(
+    242,
+    38,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/8ad76948-59e2-40e7-a2b8-c594b5e5ab7b/custom-nike-sabrina-2-by-you.png',
+    'otherside'
+  ),
+(
+    243,
+    38,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/de0a5f38-ba9b-4119-855f-e6621efd8b62/custom-nike-sabrina-2-by-you.png',
+    'top'
+  ),
+(
+    244,
+    38,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/ed308caa-5cbc-4604-b23c-68d613cbceab/custom-nike-sabrina-2-by-you.png',
+    'front'
+  ),
+(
+    245,
+    38,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/2214a1d7-95fe-4bcc-a5d5-eac7eb42533d/custom-nike-sabrina-2-by-you.png',
+    'back'
+  ),
+(
+    246,
+    39,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7f8ba076-8b44-4672-bac9-fbfc8fddb68e/NIKE+CORTEZ.png',
+    'sole'
+  ),
+(
+    247,
+    39,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5512397d-6a0b-47cb-8d80-105851259c07/NIKE+CORTEZ.png',
+    'otherside'
+  ),
+(
+    248,
+    39,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/6ea5b002-54bc-4cc7-b048-420971a183ea/NIKE+CORTEZ.png',
+    'top'
+  ),
+(
+    249,
+    39,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e7f02e6c-427f-4f00-a5af-c21d00cd01a3/NIKE+CORTEZ.png',
+    'front'
+  ),
+(
+    250,
+    39,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4fe6448e-507a-4e05-9715-e823ec8164fe/NIKE+CORTEZ.png',
+    'back'
+  ),
+(
+    251,
+    40,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a36db111-03d9-4e7c-b5e2-16aabc912856/GIANNIS+FREAK+6+NRG.png',
+    'sole'
+  ),
+(
+    252,
+    40,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/064da01e-e3ba-4a4f-bc9e-c306d4dd8c0e/GIANNIS+FREAK+6+NRG.png',
+    'otherside'
+  ),
+(
+    253,
+    40,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/24e54aa3-b729-4d53-b49b-26a57880fdf0/GIANNIS+FREAK+6+NRG.png',
+    'top'
+  ),
+(
+    254,
+    40,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/26fb3d71-e207-4d5d-97a3-56a08c1ecf85/GIANNIS+FREAK+6+NRG.png',
+    'front'
+  ),
+(
+    255,
+    40,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/8e8a99f8-34dc-4a67-90ad-7ad9d84acb7d/GIANNIS+FREAK+6+NRG.png',
+    'back'
+  ),
+(
+    256,
+    41,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a10d78b7-a906-4806-b8c6-696ce9410a05/NIKE+TERRASCOUT+%28GS%29.png',
+    'sole'
+  ),
+(
+    257,
+    41,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4b93f35d-c987-4f03-98b5-ae26e4f44339/NIKE+TERRASCOUT+%28GS%29.png',
+    'otherside'
+  ),
+(
+    258,
+    41,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/435ef92d-1a7b-4ca2-b1f0-d6d229b37e10/NIKE+TERRASCOUT+%28GS%29.png',
+    'top'
+  ),
+(
+    259,
+    41,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/cd233351-1385-44c3-b0e2-b692254ea9b7/NIKE+TERRASCOUT+%28GS%29.png',
+    'front'
+  ),
+(
+    260,
+    41,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e74aa972-decf-45e3-9ceb-3832abe1458a/NIKE+TERRASCOUT+%28GS%29.png',
+    'back'
+  ),
+(
+    261,
+    42,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/e1bdc567-2790-4db1-91be-ff34f1e6d880/custom-nike-air-force-1-high.png',
+    'sole'
+  ),
+(
+    262,
+    42,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/b1ba2d23-fe6f-4f4d-b0ed-3937c37a0520/custom-nike-air-force-1-high.png',
+    'otherside'
+  ),
+(
+    263,
+    42,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/a00386b6-db1a-4510-b656-c47070853c29/custom-nike-air-force-1-high.png',
+    'top'
+  ),
+(
+    264,
+    42,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/5c178899-5862-4db4-850b-0a20a7a00ed0/custom-nike-air-force-1-high.png',
+    'front'
+  ),
+(
+    265,
+    42,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/068e05a3-50a5-4b3e-9c09-100c5417e82b/custom-nike-air-force-1-high.png',
+    'back'
+  ),
+(
+    266,
+    43,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f2d1f594-6ca7-4b10-9078-eae036c5199f/NIKE+CYGNAL.png',
+    'sole'
+  ),
+(
+    267,
+    43,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/8b21d2e1-0fb9-467e-8a8f-f7329f68af64/NIKE+CYGNAL.png',
+    'otherside'
+  ),
+(
+    268,
+    43,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/87f13530-5163-4c8b-a648-0c29ea91ae00/NIKE+CYGNAL.png',
+    'top'
+  ),
+(
+    269,
+    43,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/fa2d788a-14d6-4461-b593-8ef37df74d4d/NIKE+CYGNAL.png',
+    'front'
+  ),
+(
+    270,
+    43,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/ac429581-9fa9-45f5-ae9c-249f87332def/NIKE+CYGNAL.png',
+    'back'
+  ),
+(
+    271,
+    44,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/677d3101-d5e2-4efb-b625-0b6700b84729/NIKE+ZOOM+BLAZER+MID+QS.png',
+    'sole'
+  ),
+(
+    272,
+    44,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/1bc034a0-506e-47c1-9359-b226c03b2286/NIKE+ZOOM+BLAZER+MID+QS.png',
+    'otherside'
+  ),
+(
+    273,
+    44,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/62d9842e-7d68-46a6-a5a2-940f215f94bc/NIKE+ZOOM+BLAZER+MID+QS.png',
+    'top'
+  ),
+(
+    274,
+    44,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/0c18c4cc-1302-4c9c-87df-265ecbecc391/NIKE+ZOOM+BLAZER+MID+QS.png',
+    'front'
+  ),
+(
+    275,
+    44,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/72fa4878-ced7-4d9e-a680-bf0bf1cb40f9/NIKE+ZOOM+BLAZER+MID+QS.png',
+    'back'
+  ),
+(
+    276,
+    45,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/e841eed7-5012-4505-8a7c-c23928d821e5/custom-nike-blazer-mid-77-shoes-by-you.png',
+    'sole'
+  ),
+(
+    277,
+    45,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/6c07f915-3a5e-4586-a75c-78e3aecc402f/custom-nike-blazer-mid-77-shoes-by-you.png',
+    'otherside'
+  ),
+(
+    278,
+    45,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/452c3e0e-63b8-4c18-b89b-24b8e1d892cf/custom-nike-blazer-mid-77-shoes-by-you.png',
+    'top'
+  ),
+(
+    279,
+    45,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/20794f43-e9e0-4daf-a202-8a56d7ddb20f/custom-nike-blazer-mid-77-shoes-by-you.png',
+    'front'
+  ),
+(
+    280,
+    45,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/73ee36d7-4abe-4ac5-9868-6f26f2029adf/custom-nike-blazer-mid-77-shoes-by-you.png',
+    'back'
+  ),
+(
+    281,
+    46,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7f9fdd30-6cc7-4a53-895d-bf9c6d24fa88/NIKE+MOTIVA.png',
+    'sole'
+  ),
+(
+    282,
+    46,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/603d002b-bc18-47c1-bbdf-133feff8f799/NIKE+MOTIVA.png',
+    'otherside'
+  ),
+(
+    283,
+    46,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/8c18565a-f6b0-407c-b048-a5d27a0d758b/NIKE+MOTIVA.png',
+    'top'
+  ),
+(
+    284,
+    46,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/92dca1cb-f522-42b9-bcab-b396705c8a98/NIKE+MOTIVA.png',
+    'front'
+  ),
+(
+    285,
+    46,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/367b1595-4fad-47e2-8dab-fddb64f7f9f2/NIKE+MOTIVA.png',
+    'back'
+  ),
+(
+    286,
+    47,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f7254129-ea0e-4edf-a55a-624d33124597/NIKE+PEGASUS+PREMIUM.png',
+    'sole'
+  ),
+(
+    287,
+    47,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5e9d3d8d-974c-4dfa-ad31-b82a0d9ca82e/NIKE+PEGASUS+PREMIUM.png',
+    'otherside'
+  ),
+(
+    288,
+    47,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/51bc1b66-2044-4b48-8c96-758569bec5d9/NIKE+PEGASUS+PREMIUM.png',
+    'top'
+  ),
+(
+    289,
+    47,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/9e0bda8b-f922-4868-8eae-b20143f71cf5/NIKE+PEGASUS+PREMIUM.png',
+    'front'
+  ),
+(
+    290,
+    47,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/aa1f9f6f-fe3c-41cd-8731-c70a98540103/NIKE+PEGASUS+PREMIUM.png',
+    'back'
+  ),
+(
+    291,
+    48,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/f3df64f0-cf3e-4d3d-ad3c-aeba6a909a3c/custom-nike-air-zoom-pegasus-41-shoes-by-you.png',
+    'sole'
+  ),
+(
+    292,
+    48,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/7031ce34-d037-4c5e-9a52-6408331b1953/custom-nike-air-zoom-pegasus-41-shoes-by-you.png',
+    'otherside'
+  ),
+(
+    293,
+    48,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/a246ba08-cd38-4366-a985-e2b3c2b18aa3/custom-nike-air-zoom-pegasus-41-shoes-by-you.png',
+    'top'
+  ),
+(
+    294,
+    48,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/cae0d3a0-5d0e-4529-b2ab-edf22cfeea1c/custom-nike-air-zoom-pegasus-41-shoes-by-you.png',
+    'front'
+  ),
+(
+    295,
+    48,
+    'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/5710717e-87dc-48d0-9efd-45f39b0adcd5/custom-nike-air-zoom-pegasus-41-shoes-by-you.png',
+    'back'
+  ),
+(
+    296,
+    49,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/05c4d7ab-961f-4047-9557-ad19db51b6f6/AIR+MONARCH+IV.png',
+    'sole'
+  ),
+(
+    297,
+    49,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/3d9f59cf-cf57-4d60-8873-51889795f70e/AIR+MONARCH+IV.png',
+    'otherside'
+  ),
+(
+    298,
+    49,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/2013aa36-3cf6-46a0-ad9a-cd5ff7927a11/AIR+MONARCH+IV.png',
+    'top'
+  ),
+(
+    299,
+    49,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a3ce45dc-21a3-4b34-ad29-cc09ec142136/AIR+MONARCH+IV.png',
+    'front'
+  ),
+(
+    300,
+    49,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/bc3d0920-1f5a-4d02-8c6e-95139818f5b7/AIR+MONARCH+IV.png',
+    'back'
+  ),
+(
+    301,
+    50,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/64844709-ce2a-4f18-b889-572f4d6a4887/ZM+SUPERFLY+10+ELITE+FG.png',
+    'sole'
+  ),
+(
+    302,
+    50,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/64844709-ce2a-4f18-b889-572f4d6a4887/ZM+SUPERFLY+10+ELITE+FG.png',
+    'otherside'
+  ),
+(
+    303,
+    50,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/8c8def7d-342b-4db3-9d59-31b505f304f5/ZM+SUPERFLY+10+ELITE+FG.png',
+    'top'
+  ),
+(
+    304,
+    50,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/da2bc48c-dee4-44f3-83fa-7b60b2ae7e4d/ZM+SUPERFLY+10+ELITE+FG.png',
+    'front'
+  ),
+(
+    305,
+    50,
+    'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/2d11c28a-8d92-4cca-bdf1-ed8c15973130/ZM+SUPERFLY+10+ELITE+FG.png',
+    'back'
+  );
+
+UNLOCK TABLES;
