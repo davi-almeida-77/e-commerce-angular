@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 import { ShoppingFacadeService } from '../../services/shopping-facade.service';
 
 @Component({
@@ -27,7 +26,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private ShoppingService: ShoppingFacadeService,
     private userService: UserService,
     private authService: AuthService,
-    private router: Router,
   ) {}
 
   ngOnInit(): void {   
@@ -60,6 +58,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.logout();
     this.totalItens = 0;
 
-    this.router.navigate(['/']);
+    this.ShoppingService.Navigate('/');
+
   }
 }
