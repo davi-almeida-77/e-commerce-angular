@@ -1,7 +1,7 @@
 <div class="page-info"></div>
 
 
-<div class="product-container">
+<div class="product-container" *ngIf="product">
 
   <div class="product-image-carousel" *ngIf="images.length > 0">
     <div class="image-carousel">
@@ -53,7 +53,7 @@
 
     </div>
 
-    <p class="price"> $ {{ product.price }}</p>
+    <p class="price" > $ {{ product.price }}</p>
 
     <div class="quantity">
       <label   class="selectors" > Qty  </label>
@@ -88,3 +88,20 @@
 
   </div>
 </div>
+
+<div class="related-container" *ngIf="relatedProducts.length > 0">
+  <h1 > Related Products </h1>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let related of relatedProducts">
+        <div class="related-card">
+          <img  (click)="goToProduct(related.id_product)"  [src]="related.image" alt="{{ related.p_name }}"/>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
