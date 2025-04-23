@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { map  } from 'rxjs/operators';
 import { TokenStorageService } from './token-storage.service';
@@ -20,8 +20,8 @@ export class AuthService {
 
     this.userDataSubject = new BehaviorSubject<any>(this.token.getUser());
     this.userState$ = this.userDataSubject.asObservable();
-
-  }
+  
+    }
 
   getUser() {
     return this.token.getUser();  
@@ -68,25 +68,11 @@ export class AuthService {
   }
 
   getUserId() {
-
-    const user = sessionStorage.getItem('auth-user');
-
-    if ( user ) {
-
-      const parsedUser = JSON.parse( user );
-
-      const userId = parsedUser.id;
-
-      return userId;
-
-    } 
-
+     return JSON.parse(sessionStorage.getItem('auth-user') || '{}')?.id;
   }
 
   isUserLoggedIn(): boolean {
-
     return !!sessionStorage.getItem('auth-user');
-
   }
 
 }
