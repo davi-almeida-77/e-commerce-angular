@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../database/db'); 
+const { getMostSoldProducts } = require('../services/mostSoldService');
 
 router.get("/", (req, res) => {
 
@@ -12,6 +13,22 @@ router.get("/", (req, res) => {
       res.json(results);
     });
   });
+
+router.get("/most-sold", async (req, res) => {
+
+  try {
+
+    const mostSold = await getMostSoldProducts();
+
+    res.json( mostSold )
+
+  }
+  catch ( err ) 
+  {
+      console.log("Not Found", err )
+  }
+
+})
 
   router.get("/:id", (req, res) => {
     const productId = req.params.id; 
