@@ -1,4 +1,4 @@
-CREATE DATABASE ecommerce_db;
+CREATE DATABASE IF NOT EXISTS ecommerce_db;
 USE ecommerce_db;
 
 
