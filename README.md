@@ -1,5 +1,22 @@
 # E-Commerce Application in Angular
 
+## Requirements to Run the Project (with Docker)
+
+Make sure you have **Docker** and **Docker Compose** installed on your system:
+
+- [Install Docker](https://docs.docker.com/get-docker/)
+- [Install Docker Compose](https://docs.docker.com/compose/install/)
+
+Once installed, you can run the entire application with:
+
+```bash
+git clone https://github.com/davi-almeida-77/e-commerce-angular.git
+cd e-commerce-angular
+docker-compose build
+docker-compose up
+```
+
+
 This project was developed as part of my learning journey to master a modern web development stack. The goal was to gain hands-on experience with a range of technologies, including:
 
 - **Angular**: To build the frontend of the e-commerce application.
