@@ -225,3 +225,60 @@
   font-size: 20px;  
   color: #f3770a;  
 }
+
+.swiper-container {
+  width: 100%;
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+.swiper-slide {
+  width: auto; 
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.related-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  margin: 30px;
+}
+
+.related-card img {
+  height: 200px;
+  object-fit: contain;
+  margin: 0 auto;
+  width: 200px;
+}
+
+.related-container {
+  width: 100%;
+  max-width: 1200px; 
+  margin: 90px auto;
+  overflow: hidden; 
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.related-container h1 {
+  color: #333;
+  font-size: 50px;
+}
+
+.swiper-slide img {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.related-card:hover {
+  cursor: pointer;
+}

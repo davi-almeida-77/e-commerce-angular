@@ -6,6 +6,7 @@ import { AlertsService } from '../shared/services/alerts.service';
 import { productModel } from '../shared/models/product.model';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class ShoppingFacadeService {
     private cartService: CartService,
     private productService: ProductService,
     private favoritesService: FavoritesService,
+    private authService: AuthService,
     private alert: AlertsService,
     private router: Router
   ) { }
@@ -87,6 +89,14 @@ export class ShoppingFacadeService {
       return this.favoritesService.getFavoritesLengthObservable();
   }
 
+  cleanFavorites () {
+    this.favoritesService.cleanFavorites();
+  }
+
+  getUserId() {
+    return this.authService.getUserId();
+  }
+
   alertSuccess( message: string ) {
     this.alert.success( message)
   }
@@ -97,6 +107,10 @@ export class ShoppingFacadeService {
 
   alertInfo( message: string ) {
     this.alert.info( message)
+  }
+
+  Navigate( where: string ) {
+    this.router.navigate([ where ])
   }
 
 }

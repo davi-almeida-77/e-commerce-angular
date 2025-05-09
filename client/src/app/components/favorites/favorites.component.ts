@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
-import { FavoritesService } from '../../services/favorites.service';
+import { ShoppingFacadeService } from '../../services/shopping-facade.service';
 
 @Component({
   selector: 'app-favorites',
@@ -18,8 +16,7 @@ export class FavoritesComponent implements OnInit {
   favoriteList: any [] = [];
 
   constructor ( 
-    private router: Router,
-    private favoritesService: FavoritesService
+    private ShoppingService: ShoppingFacadeService,
    ) {}
 
   ngOnInit(): void {
@@ -29,19 +26,11 @@ export class FavoritesComponent implements OnInit {
   }
 
   Clean() {
-    this.favoritesService.cleanFavorites();
+    this.ShoppingService.cleanFavorites();
 
-      Swal.fire({
-          title: `Cleaned Favorites `, 
-          text: 'Clean Favorite List',
-          icon: 'success',
-          position: 'top-right',  
-          showConfirmButton: false,   
-          timer: 3000,  
-          toast: true,  
-          timerProgressBar: true  
-        });
-        this.router.navigate(['/']);  
+    this.ShoppingService.alertSuccess('Cleaned Favorites')
+
+    this.ShoppingService.Navigate('/')
         
   }
 

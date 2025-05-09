@@ -4,10 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { AuthService } from './auth.service';
-import { CartService } from './cart.service';
 import { orderModel } from '../shared/models/order.model';
 import { environment } from '../../environment/environment';
-import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { CartService } from './cart.service';
 
 
 @Injectable({
@@ -22,67 +22,26 @@ export class OrderService {
   private apiService: ApiService, 
   private cartService: CartService, 
   private authService: AuthService,
+  private router: Router
  ) {
     this.apiUrl = this.apiService.baseUrl; 
   }
  
-  sendOrderToDatabase(orderData: any): void {
-
+  createOrder(orderData: any) {
     const apiUrl = `${this.apiService.baseUrl}orders/create`;
   
-    this.http.post(apiUrl, orderData).subscribe( response => {
-      
-      return response;
-
-    }, error => {
-
-      return error;
-    });
+    this.http.post(apiUrl, orderData).subscribe(
+      response => {
+        this.router.navigate(['/']);
+        this.cartService.resetCart();
+      },
+      error => {
+        console.log( error )
+      }
+    );
   }
   
-  createOrder() {
-  if ( this.authService.isUserLoggedIn() ) {
-    const cartItems = this.cartService.getCartItems();
-
-    const userId = this.authService.getUserId();
-
-    if ( cartItems && userId ) {
-        Swal.fire({
-          icon: 'success',
-          title: `Order Created Successfully`,
-          position: 'top-right',  
-          showConfirmButton: false,   
-          timer: 3000,  
-          toast: true,  
-          timerProgressBar: true 
-        });
-    }
-    else {
-      Swal.fire({
-        icon: 'error',
-        title: `Cart is Empty'`,
-        position: 'top-right',  
-        showConfirmButton: false,   
-        timer: 3000,  
-        toast: true,  
-        timerProgressBar: true 
-      });
-    }
-  } 
-  else {
-    Swal.fire({
-      icon: 'error',
-      title: `User is not On`,
-      position: 'top-right',  
-      showConfirmButton: false,   
-      timer: 3000,  
-      toast: true,  
-      timerProgressBar: true 
-    });
-  }
-  }
-
-  orderParams(cartItems: any[], userId: number): void {
+  getOrderData(cartItems: any[], userId: number): void {
 
     userId = this.authService.getUserId();
 
@@ -96,7 +55,7 @@ export class OrderService {
       products: orderItems
     }
   
-    this.sendOrderToDatabase(orderData);
+    this.createOrder( orderData ) 
     
   }
 
